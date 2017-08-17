@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Campaign - Admin Panel</title>
+    <title>Admin Panel</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -118,7 +118,11 @@
     <ul class="nav flaty-nav pull-right">
 
         <!-- BEGIN Tasks Dropdown -->
-
+        <li class="hidden-xs">
+            <a href="{{(App::getLocale('en'))? url('set_ar_locale') : url('set_en_locale')}}">
+                <i>@lang('messages.language')</i>
+            </a>
+        </li>
         <!-- BEGIN Button User -->
         <li class="user-profile">
             <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">

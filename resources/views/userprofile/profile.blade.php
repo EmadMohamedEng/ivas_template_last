@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-pink">
+            <div class="box box-blue">
                 <div class="box-title">
                     <h3><i class="fa fa-file"></i> Edit Profile</h3>
                     <div class="box-tool">
@@ -64,7 +64,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="box box-orange">
+            <div class="box box-blue">
                 <div class="box-title">
                     <h3><i class="fa fa-file"></i> Edit Profile Picture</h3>
                     <div class="box-tool">
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="box box-red">
+            <div class="box box-blue">
                 <div class="box-title">
                     <h3><i class="fa fa-file"></i> Change Password</h3>
                     <div class="box-tool">

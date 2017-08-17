@@ -119,19 +119,19 @@
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="password" class="form-control" id="current-password" name="current-password" placeholder="Password" required="required">
+                                    <input type="password" class="form-control" id="current-password" name="current-password" placeholder="Password" required>
                                 </div>
                             </div>
                             <label for="password" class="col-sm-4 control-label">New Password</label>
                             <div class="col-sm-8">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                 </div>
                             </div>
                             <label for="password_confirmation" class="col-sm-4 control-label">Re-enter Password</label>
                             <div class="col-sm-8">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-enter Password" required="required">
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-enter Password" required>
                                 </div>
                             </div>
                         </div>

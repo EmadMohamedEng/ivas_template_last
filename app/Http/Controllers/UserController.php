@@ -17,7 +17,6 @@ class UserController extends Controller
     public function index()
     {
             $users = \App\User::all();
-            // return $users;
             return view('users.index', compact('users'));
     }
 
@@ -221,11 +220,12 @@ class UserController extends Controller
 
     public function UpdateNameAndEmail(Request $request)
     {
-        $check = User::where('email',$request['email'])->where('id','!=',Auth::User()->id)->get();
-        if (count($check)>0)
-        {
-            \Session::flash('failed',"This mail already taken by another user") ;
-            return redirect('user_profile');
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.Auth::User()->id,
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
         }
         $id = Auth::User()->id ;
         $user_obj = User::findOrFail($id);

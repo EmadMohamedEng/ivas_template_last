@@ -15,7 +15,6 @@ class CheckLocale
      */
     public function handle($request, Closure $next)
     {
-
         if ($request->locale != 'en' && $request->locale != 'ar') {
             return back();
         }

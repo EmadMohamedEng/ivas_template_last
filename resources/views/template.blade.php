@@ -35,7 +35,12 @@
     <!--flaty css styles-->
     <link rel="stylesheet" href="{{url('css/flaty.css')}}">
     <link rel="stylesheet" href="{{url('css/flaty-responsive.css')}}">
-
+    {{-- {{dd(App::getLocale())}} --}}
+    @if(App::getLocale() == 'ar')
+        <link rel="stylesheet" type="text/css" href="{{url('css/rtl.css')}}">
+        <link href="{{url('https://fonts.googleapis.com/css?family=Cairo:600')}}" rel="stylesheet">
+    @endif
+        
     <link rel="shortcut icon" href="{{url('img/favicon.png')}}">
     <script>
         function ConfirmDelete()
@@ -110,7 +115,7 @@
     <a class="navbar-brand" href="{{url('/dashboard')}}">
         <small>
             <i class="fa fa-user-secret"></i>
-            Admin Panel
+            @lang('messages.dashboard')
         </small>
     </a>
 
@@ -118,10 +123,19 @@
     <ul class="nav flaty-nav pull-right">
 
         <!-- BEGIN Tasks Dropdown -->
-        <li class="hidden-xs">
-            <a href="{{(App::getLocale('en'))? url('set_ar_locale') : url('set_en_locale')}}">
-                <i>@lang('messages.language')</i>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{ Config::get('languages')[App::getLocale()] }}
             </a>
+            <ul class="dropdown-menu">
+                @foreach (Config::get('languages') as $lang => $language)
+                    @if ($lang != App::getLocale())
+                        <li>
+                            <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
         </li>
         <!-- BEGIN Button User -->
         <li class="user-profile">
@@ -137,7 +151,7 @@
                 <li>
                     <a href="{{url('user_profile')}}">
                         <i class="fa fa-user"></i>
-                        Edit Profile
+                        @lang('messages.profile')
                     </a>
                 </li>
 
@@ -148,7 +162,7 @@
                 <li>
                     <a href="{{url('/auth/logout')}}">
                         <i class="fa fa-off"></i>
-                        Logout
+                        @lang('messages.logout')
                     </a>
                 </li>
             </ul>
@@ -170,14 +184,14 @@
                 <li id="user">
                     <a href="#" class="dropdown-toggle">
                         <i class="glyphicon glyphicon-user"></i>
-                        <span>Users</span>
+                        <span>@lang('messages.users.users')</span>
                         <b class="arrow fa fa-angle-right"></b>
                     </a>
 
                     <!-- BEGIN Submenu -->
                     <ul class="submenu">
-                        <li id="user-create"><a href="{{url('users/new')}}">Create User</a></li>
-                        <li id="user-index"><a href="{{url('users')}}">Users</a></li>
+                        <li id="user-create"><a href="{{url('users/new')}}">@lang('messages.users.add_user')</a></li>
+                        <li id="user-index"><a href="{{url('users')}}">@lang('messages.users.users')</a></li>
                     </ul>
                     <!-- END Submenu -->
                 </li>
@@ -185,14 +199,14 @@
                 <li id="role">
                     <a href="#" class="dropdown-toggle">
                         <i class="glyphicon glyphicon-road"></i>
-                        <span>Roles</span>
+                        <span>@lang('messages.role')</span>
                         <b class="arrow fa fa-angle-right"></b>
                     </a>
 
                     <!-- BEGIN Submenu -->
                     <ul class="submenu">
-                        <li id="role-create"><a href="{{url('roles/new')}}">Create Role</a></li>
-                        <li id="role-index"><a href="{{url('roles')}}">Roles</a></li>
+                        <li id="role-create"><a href="{{url('roles/new')}}">@lang('messages.create-role')</a></li>
+                        <li id="role-index"><a href="{{url('roles')}}">@lang('messages.role')</a></li>
                     </ul>
                     <!-- END Submenu -->
                 </li>
@@ -224,7 +238,7 @@
         <!-- BEGIN Breadcrumb -->
         <div id="breadcrumbs">
             <ul class="breadcrumb">
-                <li class="active"><i class="fa fa-home"></i> Home/ @yield('page_title') </li>
+                <li class="active"><i class="fa fa-home"></i> @lang('messages.home')/ @yield('page_title') </li>
             </ul>
         </div>
         <!-- END Breadcrumb -->

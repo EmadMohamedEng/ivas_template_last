@@ -26,21 +26,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('set_en_locale', function() {
-        \App::setlocale('en');
-        return redirect('/en');
-    });
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
 
-Route::get('set_ar_locale', function() {
-        \App::setlocale('ar');
-        return redirect('/ar');
-    });
-Route::get('/', function() {
-    return redirect('/en');
-})->middleware('auth');
-
-Route::group(['middleware' => ['auth','chackLocale'],'prefix' => '{locale}'], function() {
+Route::group(['middleware' => ['auth']], function() {
     Route::resource('dashboard', 'DashboardController');
     Route::get('/', 'DashboardController@index');
 
@@ -50,7 +39,7 @@ Route::group(['middleware' => ['auth','chackLocale'],'prefix' => '{locale}'], fu
     Route::post('user_profile/updateuserdata','UserController@UpdateNameAndEmail');
 });
 
-Route::group(['middleware' => ['auth','role:super_admin','chackLocale'],'prefix' => '{locale}'], function() {
+Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('users', 'UserController@index');
     Route::get('users/{id}/delete', 'UserController@destroy');
     Route::get('users/{id}/edit', 'UserController@edit');

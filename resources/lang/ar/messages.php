@@ -3,6 +3,7 @@ return [
     'title' => 'ألرسائل النصيه',
     'language' => 'english',
     'role' => 'الادوار',
+    'create-role' => 'انشاء دور',
     'dashboard' => 'لوحة التحكم',
     'text-messages' => 'الرسائل النصيه',
     'text-messages-send-message' => 'ارسال رساله',
@@ -11,7 +12,7 @@ return [
     'text-messages-scheduled-file-sms' => 'جدولة الارقام',
     'audiance' => 'جهات الاتصال ',
     'audiance-contacts' => 'الاسماء',
-    'audiance-members' => 'المستخدمين',
+    'audiance-users' => 'المستخدمين',
     'audiance-senders-id' => 'المرسلين',
     'audiance-country' => 'البلاد',
     'dashboard-welcome' => 'مرحباً بكم فى لوحة تحكم IVAS',
@@ -120,11 +121,11 @@ return [
         'contact_name' => 'أسم جهة الاتصال',
         'group_name' => 'أسم ألمجموعه',
     ],
-    'members' => [
-        'members' => 'ألاعضاء',
-        'add_member' => 'أضف عضو جديد',
-        'edit_member' => 'تعديل بيانات العضر',
-        'member_name' => 'أسم العضو',
+    'users' => [
+        'users' => 'ألاعضاء',
+        'add_user' => 'أضف عضو جديد',
+        'edit_user' => 'تعديل بيانات العضو',
+        'user_name' => 'أسم العضو',
         'first_name' => 'ألاسم الاول',
         'last_name' => 'ألاسم الاخير',
         'user_name' => 'اسم المستخدم',
@@ -166,10 +167,10 @@ return [
     ],
      'notification' => 'اشعار' , 
     
-     'reports' => 'تقارير' ,
-      'direct-message' => 'رسالة سريعة'
-      ,
-      'template' => [
+    'reports' => 'تقارير' ,
+    'direct-message' => 'رسالة سريعة'
+    ,
+    'template' => [
         'template' => 'قالب',
         'templates' => 'القوالب',
         'name' => 'عنوان القالب',
@@ -190,4 +191,15 @@ return [
         'edit' => 'تعديل',
         'connection-name' => 'أسم قناة الاتصال',
     ],
+    'home' => 'الصفحة الرئيسية',
+    'profile_info' => 'معلومات الحساب',
+    'edit_profile_picture' => 'تعديل الصورة الشخصيه',
+    'old_password' => 'كلمة المرور القديمة',
+    'new_password' => 'كلمة المرور الجديده',
+    'reenter' => 'أعد ادخال',
+    'image' => 'صوره',
+    'select_image' => 'أختيار صوره',
+    'add_user' => 'أضافة مستخدم جديد',
+    'action' => 'إجراء',
+
 ];

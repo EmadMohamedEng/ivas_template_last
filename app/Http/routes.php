@@ -28,7 +28,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
-
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('dashboard', 'DashboardController');
     Route::get('/', 'DashboardController@index');

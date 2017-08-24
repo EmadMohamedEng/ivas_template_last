@@ -145,6 +145,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Amranidev\ScaffoldInterface\ScaffoldInterfaceServiceProvider::class,
+        Amranidev\Ajaxis\AjaxisServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Vinkla\Pusher\PusherServiceProvider::class,
     ],
 
     /*

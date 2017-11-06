@@ -123,19 +123,15 @@
     <ul class="nav flaty-nav pull-right">
 
         <!-- BEGIN Tasks Dropdown -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                {{ Config::get('languages')[App::getLocale()] }}
+        <li>
+            <a href="<?php use App\Notification;if(Config::get('languages')[App::getLocale()] == "English" ){ echo route('lang.switch', "ar"); } else { echo route('lang.switch', "en"); } ?>" >
+                <?php
+                if (Config::get('languages')[App::getLocale()] == "English")
+                    echo "عربي" ;
+                else
+                    echo  "English";
+                ?>
             </a>
-            <ul class="dropdown-menu">
-                @foreach (Config::get('languages') as $lang => $language)
-                    @if ($lang != App::getLocale())
-                        <li>
-                            <a href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
-                        </li>
-                    @endif
-                @endforeach
-            </ul>
         </li>
         <!-- BEGIN Button User -->
         <li class="user-profile">
@@ -212,7 +208,20 @@
                 </li>
             @endif
 
+                <li id="setting">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="fa fa-gears"></i>
+                        <span>Setting</span>
+                        <b class="arrow fa fa-angle-right"></b>
+                    </a>
 
+                    <!-- BEGIN Submenu -->
+                    <ul class="submenu">
+                        <li id="setting-create"><a href="{{url('setting/new')}}">Add Settings</a></li>
+                        <li id="setting-index"><a href="{{url('setting')}}">Settings</a></li>
+                    </ul>
+                    <!-- END Submenu -->
+                </li>
             {{--@endif--}}
         </ul>
         <!-- END Navlist -->
@@ -247,7 +256,7 @@
         @yield('content')
     </div>
     <div class="footer" align="center">
-        <p>2015 © iVAS Template</p>
+        <p>{{\Carbon\Carbon::now()->year}} © iVAS Template</p>
     </div>
     <a id="btn-scrollup" class="btn btn-circle btn-lg" href="#"><i class="fa fa-chevron-up"></i></a>
 </div>
@@ -268,7 +277,7 @@
 <script src="{{url('assets/flot/jquery.flot.pie.js')}}"></script>
 <script src="{{url('assets/flot/jquery.flot.stack.js')}}"></script>
 <script src="{{url('assets/flot/jquery.flot.crosshair.js')}}"></script>
-<script src="{{url('assets/flot/jquery.flot.tooltip.min.js')}}"></script>
+{{--<script src="{{url('assets/flot/jquery.flot.tooltip.min.js')}}"></script>--}}
 <script src="{{url('assets/sparkline/jquery.sparkline.min.js')}}"></script>
 
 
@@ -316,6 +325,84 @@
             });
         });
     });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+        var el = $('.chosen-rtl') ;
+        if ("<?php echo App::getLocale(); ?>" == "ar") {
+            el.chosen({
+                rtl: true,
+                width: '100%'
+            });
+        }
+        else{
+            el.addClass("chosen");
+            el.removeClass("chosen-rtl");
+            $(".chosen").chosen();
+        }
+    } );
+</script>
+<script>
+
+    var selected_list = [] ;
+    var checker_list = [] ;
+    function collect_selected(element) {
+        if (checker_list[element.value])
+        {
+            var index = selected_list.indexOf(element.value);
+            selected_list.splice(index,1) ;
+            checker_list[element.value] = false ;
+        }
+        else{
+            if (! selected_list.includes(element.value))
+            {
+                selected_list.push(element.value) ;
+                checker_list[element.value] = true ;
+            }
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+
+    function delete_selected(table_name) {
+        var form = document.createElement("form");
+        var element = document.createElement("input");
+        var tb_name = document.createElement("input") ;
+        var csrf = document.createElement("input") ;
+        csrf.name = "_token" ;
+        csrf.value= "{{ csrf_token() }}" ;
+        csrf.type = "hidden" ;
+
+        form.method = "POST";
+        form.action = "{{url('delete_multiselect')}}";
+
+        element.value= selected_list ;
+        element.name = "selected_list" ;
+        element.type = "hidden" ;
+
+        tb_name.value = table_name ;
+        tb_name.name = "table_name" ;
+        tb_name.type = "hidden" ;
+
+        form.appendChild(element);
+        form.appendChild(csrf) ;
+        form.appendChild(tb_name);
+
+        document.body.appendChild(form);
+
+        form.submit();
+    }
+
+    var initChosenWidgets = function(){
+        $(".chosen").chosen();
+    };
 </script>
 <script>
     $(document).ready(function() {

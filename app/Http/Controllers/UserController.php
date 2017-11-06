@@ -36,7 +36,8 @@ class UserController extends Controller
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required',
-                'role' => 'required'
+                'role' => 'required',
+                'phone' => 'required|numeric'
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
@@ -47,11 +48,13 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->name = $request->name;
             $user->password = Hash::make($request->password);
+            $user->phone = $request->phone ;
 
             $user->save();
 
             $user->assignRole($request->role);
 
+            $request->session()->flash('success','User Added Successfully');
             return redirect('users');
     }
 
@@ -73,7 +76,8 @@ class UserController extends Controller
             $validator = Validator::make($request->all(),[
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email,'.$id,
-                'role' => 'required'
+                'role' => 'required',
+                'phone' => 'required|numeric|unique:users,phone,'.$id
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
@@ -83,6 +87,7 @@ class UserController extends Controller
 
             $user->email = $request->email;
             $user->name = $request->name;
+            $user->phone = $request->phone ;
             if(isset($request->password) && !empty($request->password))
             {
                 $user->password = Hash::make($request->password);
@@ -190,7 +195,7 @@ class UserController extends Controller
 
     public function UpdateProfilePicture(Request $request)
     {
-        if (! $request->hasFile('profile_image'))
+        if (! $request->hasFile('image'))
         {
             \Session::flash('failed','Submitting Image Form without image !!!! please choose image before submitting that form!');
             return redirect('user_profile');
@@ -198,18 +203,18 @@ class UserController extends Controller
         $imgExtensions = array("png","jpeg","jpg");
         $user_id = Auth::User()->id;
         $destinationFolder = "profile_images/" ;
-        $file = $request->file('profile_image');
+        $file = $request->file('image');
         if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
         {
             \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
             return redirect('user_profile');
         }
         $obj_user = User::find($user_id);
-        if (file_exists($obj_user->profile_image))
-            Storage::delete($obj_user->profile_image);
+        if (file_exists($obj_user->image))
+            Storage::delete($obj_user->image);
         $uniqueID = uniqid();
         $file->move($destinationFolder,$uniqueID.".".$file->getClientOriginalExtension());
-        $obj_user->profile_image = $destinationFolder.$uniqueID.".".$file->getClientOriginalExtension() ;
+        $obj_user->image = $destinationFolder.$uniqueID.".".$file->getClientOriginalExtension() ;
         \Session::flash('success','Profile picture updated');
         $obj_user->save();
         return redirect('user_profile');
@@ -222,15 +227,19 @@ class UserController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.Auth::User()->id,
+            'phone' => 'required|numeric|unique:users,phone,'.Auth::User()->id,
         ]);
         if ($validator->fails()) {
+            $request->session()->flash('failed','Email and phone must be unique');
             return back()->withErrors($validator)->withInput();
         }
         $id = Auth::User()->id ;
         $user_obj = User::findOrFail($id);
         $user_obj->name = $request['name'];
         $user_obj->email = $request['email'];
+        $user_obj->phone = $request['phone'] ;
         $user_obj->save();
+        $request->session()->flash('success','Updated Successfully');
         return redirect('user_profile');
     }
 

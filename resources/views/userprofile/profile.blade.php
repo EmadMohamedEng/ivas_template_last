@@ -15,7 +15,7 @@
         <div class="box-content">
             <div class="row">
                 <div class="col-md-3">
-                    <img class="img-responsive img-thumbnail" src="{{$user->profile_image}}" alt="profile picture" />
+                    <img class="img-responsive img-thumbnail" src="{{$user->image}}" alt="profile picture" />
                     <br/><br/>
                 </div>
                 <div class="col-md-9 user-profile-info">
@@ -53,6 +53,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.phone') *</label>
+                            <div class="col-sm-9 col-lg-10 controls">
+                                <input type="text" name="phone" placeholder="@lang('messages.users.phone')" value="{{$user->phone}}" class="form-control input-lg" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
                                 <button type="submit" class="btn btn-primary">@lang('messages.save')</button>
                             </div>
@@ -79,13 +85,13 @@
                             <div class="col-sm-9 col-md-8 controls">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="{{$user->profile_image}}" alt="" />
+                                        <img src="{{$user->image}}" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
                                                <span class="btn btn-file"><span class="fileupload-new">@lang('messages.select_image')</span>
                                                     <span class="fileupload-exists">Change</span>
-                                                    {!! Form::file('profile_image',["accept"=>"image/png, image/jpeg, image/jpg" ,"class"=>"default"]) !!}
+                                                    {!! Form::file('image',["accept"=>"image/*" ,"class"=>"default"]) !!}
                                                </span>
                                         <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>

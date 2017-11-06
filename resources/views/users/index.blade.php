@@ -14,15 +14,22 @@
 					</div>
 				</div>
 				<div class="box-content">
-
+					<div class="btn-toolbar pull-right">
+						<div class="btn-group">
+							<a class="btn btn-circle show-tooltip" title="" href="{{url('users/new')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
+							<a  id="delete_button" onclick="delete_selected('users')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
+						</div>
+					</div>
+					<br><br>
 					<div class="table-responsive">
 						<table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
 							<thead>
 							<tr>
 								<th style="width:18px"><input type="checkbox"></th>
-								<th>@lang('messages.users.user_name')<div></div><div></div></th>
+								<th>@lang('messages.users.user_name')</th>
 								<th>@lang('messages.users.email')</th>
 								<th>@lang('messages.users.role')</th>
+								<th>@lang('messages.users.phone')</th>
 								{{-- <th>Role</th> --}}
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
 							</tr>
@@ -31,10 +38,11 @@
 							@foreach($users as $user)
 								@if($user->email!=\Auth::user()->email)
 									<tr class="table-flag-blue">
-										<td><input type="checkbox"></td>
+										<th><input type="checkbox" name="selected_rows[]" value="{{$user->id}}" onclick="collect_selected(this)"></th>
 										<td>{{$user->name}}</td>
 										<td>{{$user->email}}</td>
 										<td>{{$user->roles->first()->name}}</td>
+										<td>{{$user->phone}}</td>
 										{{-- <td>{{$user->roles()->first()}}</td> --}}
 										<td class="visible-md visible-lg">
 											<div class="btn-group">

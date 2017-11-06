@@ -42,11 +42,16 @@
                                 <input type="password" name="password" placeholder="@lang('messages.users.password')" class="form-control input-lg" required>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.phone') *</label>
+                            <div class="col-sm-9 col-lg-10 controls">
+                                <input type="text" name="phone" placeholder="@lang('messages.users.phone')" class="form-control input-lg" required>
+                            </div>
+                        </div>
                         <div class="form-group">
                           <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.role') *</label>
                           <div class="col-sm-9 col-lg-10 controls">
-                             <select class="form-control chosen" data-placeholder="Choose a Role" name="role" tabindex="1" required>
+                             <select class="form-control chosen-rtl" data-placeholder="Choose a Role" name="role" tabindex="1" required>
                                 @foreach($roles as $role)
                                     <option value="{{$role->name}}">{{$role->name}}</option>
                                 @endforeach

@@ -126,10 +126,9 @@ return [
         'users' => 'users',
         'add_user' => 'Add new User',
         'edit_user' => 'Edit User',
-        'user_name' => 'user Name',
+        'user_name' => 'User Name',
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
-        'user_name' => 'User Name',
         'image' => 'Image',
         'select' => 'Select',
         'change' => 'Change',
@@ -146,6 +145,7 @@ return [
         'message_quota' => 'Message Quota',
         'message_sent' => 'Message Sent',
         'role' => 'Role',
+        'phone' => 'Phone'
       ],
       'helps' => [
         'head' => 'How can we help you ?',
@@ -163,19 +163,22 @@ return [
         'not-image' => 'file is not an image',
         'quota-error' => 'user quota can not be greater then or equal to message sent',
         'updated' => 'updated successfuly',
+        'no_selected_item' => 'No items selected',
+        'deleted' => 'Deleted Successfully' 
     ],
      'notification' => 'Notifications' ,
     
       'reports' => 'Reports' ,
       'direct-message' => 'Direct Message' ,
       'template' => [
-        'template' => 'Template',
-        'templates' => 'Templates',
-        'name' => 'Template Name',
-        'add' => 'Add new template',
-        'message' => 'Template message',
-        'delete' => 'Delete',
-        'edit' => 'Edit'
+          'template' => 'Template',
+          'templates' => 'Templates',
+          'name' => 'Template Name',
+          'add' => 'Add new template',
+          'message' => 'Template message',
+          'delete' => 'Delete',
+          'edit' => 'Edit',
+          'delete_many' => 'Delete Selected'
         ],
         'zero' => 'You have Zero messages',
         'notice' => 'Notice',

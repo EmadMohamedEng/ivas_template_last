@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
@@ -38,6 +40,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('user_profile/updateuserdata','UserController@UpdateNameAndEmail');
 });
 
+Route::post('delete_multiselect',function (Request $request){
+    if (strlen($request['selected_list'])==0)
+    {
+        \Session::flash('failed',\Lang::get('messages.custom-messages.no_selected_item'));
+        return back();
+    }
+    delete_multiselect($request) ;
+    return back();
+});
+
 Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('users', 'UserController@index');
     Route::get('users/{id}/delete', 'UserController@destroy');
@@ -46,7 +58,14 @@ Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('users/new', 'UserController@create');
     Route::post('users', 'UserController@store');
 });
-
+Route::group(['middleware'=> 'auth'], function() {
+    Route::get('setting', 'SettingController@index');
+    Route::get('setting/new', 'SettingController@create');
+    Route::get('setting/{id}/delete', 'SettingController@destroy');
+    Route::get('setting/{id}/edit', 'SettingController@edit');
+    Route::post('setting/{id}/update', 'SettingController@update');
+    Route::post('setting', 'SettingController@store');
+});
 Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('roles', 'RoleController@index');
     Route::get('roles/new', 'RoleController@create');

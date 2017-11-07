@@ -10,6 +10,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--page specific css styles-->
     <link rel="stylesheet" type="text/css" href="{{url('assets/chosen-bootstrap/chosen.min.css')}}" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="{{url('assets/jquery-tags-input/jquery.tagsinput.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('assets/jquery-pwstrength/jquery.pwstrength.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('assets/bootstrap-fileupload/bootstrap-fileupload.css')}}" />
@@ -52,7 +53,13 @@
                 return false;
         }
     </script>
-
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+        $( "#resizable" ).resizable();
+        });
+    </script>
 </head>
 <body>
 <div id="theme-setting">
@@ -237,6 +244,21 @@
                     </ul>
                     <!-- END Submenu -->                    
                 </li>
+
+                <li id="images"> 
+                    <a href="#" class="dropdown-toggle">
+                        <i class="fa fa-"></i>
+                        <span>Image</span>
+                        <b class="arrow fa fa-angle-right"></b>
+                    </a>
+
+                    <!-- BEGIN Submenu -->
+                    <ul class="submenu">
+                        <li id="upload_resize"><a href="{{url('upload_resize')}}">Upload/Resize Image</a></li> 
+                    </ul>
+                    <!-- END Submenu -->                    
+                </li>                
+                
             {{--@endif--}}
         </ul>
         <!-- END Navlist -->

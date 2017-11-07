@@ -71,6 +71,8 @@ Route::group(['middleware'=> 'auth'], function() {
     
     Route::get('upload_items','DashboardController@multi_upload') ;
     Route::post('save_items','DashboardController@save_uploaded');
+    
+    Route::get('upload_resize','DashboardController@upload_resize') ;
 });
 Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('roles', 'RoleController@index');

@@ -123,5 +123,10 @@ class DashboardController extends Controller
         }
 
     }
+    
+    public function upload_resize()
+    {
+        return view('dashboard.upload_resize');
+    }
 
 }

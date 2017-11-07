@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::post('users/{id}/update', 'UserController@update');
     Route::get('users/new', 'UserController@create');
     Route::post('users', 'UserController@store');
+
+    Route::get('file_manager','DashboardController@file_manager');
 });
 Route::group(['middleware'=> 'auth'], function() {
     Route::get('setting', 'SettingController@index');

@@ -91,4 +91,10 @@ class DashboardController extends Controller
     {
         //
     }
+
+    public function file_manager()
+    {
+        return view('dashboard.file_manager');
+    }
+
 }

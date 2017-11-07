@@ -222,6 +222,13 @@
                     </ul>
                     <!-- END Submenu -->
                 </li>
+
+                <li id="file_manager">
+                    <a href="{{url('file_manager')}}" class="dropdown-toggle">
+                        <i class="fa fa-file"></i>
+                        <span>File Manager</span>
+                    </a>
+                </li>
             {{--@endif--}}
         </ul>
         <!-- END Navlist -->

@@ -2,15 +2,141 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6080fbe-3a20-43b7-833e-9a3a7e92bbcb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/settings_images/5a007418e7cae.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/files/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/files/.trash/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/files/test/Halftokom Bel Ghaley.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/files/test/Meen Zay Sedna Rasool Allah.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/files/test/Salet Aleek Ya Naby.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/files/test/Wakhdeny El Shouq.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/arrows-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/arrows-normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/crop.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/dialogs.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_aceeditor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_ckeditor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_codemirror.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_creativecloud.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_pixlreditor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_pixlrexpress.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_simplemde.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/edit_tinymce.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/icons-big.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/icons-small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/progress.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/quicklook-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/quicklook-icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/resize.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/spinner-mini.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/toolbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_box.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_dropbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_ftp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_googledrive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_local.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_onedrive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_sql.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/img/volume_icon_trash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/plugins/Watermark/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/resources/image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/resources/video.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/sounds/rm.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/Changelog" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/css/elfinder.full.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/css/elfinder.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/css/theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/elfinder.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/elfinder.legacy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/elfinder.full.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/elfinder.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/extras/editors.default.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/extras/editors.default.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/extras/encoding-japanese.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/extras/quicklook.googledocs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/extras/quicklook.googledocs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.LANG.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.fa.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.fallback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.fo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.he.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.hr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.hu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.id.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.jp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.ko.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.no.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.ro.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.si.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.sk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.sl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.sr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.sv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.ug_CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.uk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.vi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.zh_CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/elfinder.zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/help/cs.html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/help/en.html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/help/jp.html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/help/pl.html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/i18n/help/sk.html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/js/proxy/elFinderSupportVer1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/main.default.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/.tmp/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/MySQLStorage.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/autoload.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/connector.minimal.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinder.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderConnector.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderFlysystemGoogleDriveNetmount.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderPlugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderSession.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderSessionInterface.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeBox.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeDriver.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeDropbox.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeDropbox2.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeFTP.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeGoogleDrive.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeGroup.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeLocalFileSystem.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeMySQL.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeOneDrive.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/elFinderVolumeTrash.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/libs/GdBmp.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/mime.types" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/plugins/AutoResize/plugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/plugins/AutoRotate/plugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/plugins/Normalizer/plugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/plugins/Sanitizer/plugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/elFinder/php/plugins/Watermark/plugin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/dashboard/file_manager.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/password.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/password.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/reset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/reset.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/setting/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/setting/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/setting/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/setting/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/setting/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/setting/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/template.blade.php" afterPath="$PROJECT_DIR$/resources/views/template.blade.php" />
     </list>
     <ignored path="myCompound.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,61 +170,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Setting.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Setting.php">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="376">
+              <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SettingController.php">
+      <file leaf-file-name="DashboardController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DashboardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/setting/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/roles/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/setting/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/setting/create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="52" column="88" selection-start-line="52" selection-start-column="88" selection-end-line="52" selection-end-column="88" />
+            <state relative-caret-position="699">
+              <caret line="96" column="46" selection-start-line="96" selection-start-column="46" selection-end-line="96" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -107,18 +193,8 @@
       <file leaf-file-name="template.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/template.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3791">
-              <caret line="223" column="21" selection-start-line="223" selection-start-column="21" selection-end-line="223" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="459">
+              <caret line="228" column="49" selection-start-line="228" selection-start-column="49" selection-end-line="228" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -134,7 +210,6 @@
       <list>
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/config/mail.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
@@ -153,10 +228,8 @@
         <option value="$PROJECT_DIR$/resources/lang/ar/messages.php" />
         <option value="$PROJECT_DIR$/resources/views/roles/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2017_10_16_084836_create_settings_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/users/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/template.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/password.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/reset.blade.php" />
@@ -165,6 +238,10 @@
         <option value="$PROJECT_DIR$/resources/views/setting/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" />
         <option value="$PROJECT_DIR$/resources/views/setting/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/file_manager.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/template.blade.php" />
       </list>
     </option>
   </component>
@@ -336,6 +413,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="roles" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ivas_template_v2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ivas_template_v2" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dashboard" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -552,11 +651,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\XAMPP\htdocs\ivas_template_v2" />
       <recent name="E:\XAMPP\htdocs\ivas_template_v2\resources\views" />
       <recent name="E:\XAMPP\htdocs\ivas_template_v2\app\Http\Controllers" />
       <recent name="E:\XAMPP\htdocs\ivas_template_v2\app" />
       <recent name="E:\XAMPP\htdocs\ivas_template_v2\database\migrations" />
-      <recent name="E:\XAMPP\htdocs\myCompound\database\migrations" />
     </key>
   </component>
   <component name="RunManager">
@@ -610,12 +709,12 @@
       <workItem from="1503559052723" duration="2948000" />
       <workItem from="1503562102024" duration="1696000" />
       <workItem from="1503576285331" duration="514000" />
-      <workItem from="1509970338750" duration="17000000" />
+      <workItem from="1509970338750" duration="18583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26432000" />
+    <option name="totallyTimeSpent" value="28015000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -626,7 +725,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.122294374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -659,27 +758,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/pusher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ScaffoldInterface/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/amranidev/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
@@ -942,14 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Setting.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -970,14 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
           <caret line="54" column="70" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/template.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3791">
-          <caret line="223" column="21" selection-start-line="223" selection-start-column="21" selection-end-line="223" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1058,8 +1120,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SettingController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
+        <state relative-caret-position="-695">
           <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/elFinder/js/i18n/help/cs.html.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/file_manager.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DashboardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="96" column="46" selection-start-line="96" selection-start-column="46" selection-end-line="96" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/template.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="228" column="49" selection-start-line="228" selection-start-column="49" selection-end-line="228" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="54" column="62" selection-start-line="54" selection-start-column="62" selection-end-line="54" selection-end-column="62" />
           <folding />
         </state>
       </provider>

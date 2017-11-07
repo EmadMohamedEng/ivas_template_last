@@ -58,7 +58,6 @@ Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('users/new', 'UserController@create');
     Route::post('users', 'UserController@store');
 
-    Route::get('file_manager','DashboardController@file_manager');
 });
 Route::group(['middleware'=> 'auth'], function() {
     Route::get('setting', 'SettingController@index');
@@ -67,6 +66,11 @@ Route::group(['middleware'=> 'auth'], function() {
     Route::get('setting/{id}/edit', 'SettingController@edit');
     Route::post('setting/{id}/update', 'SettingController@update');
     Route::post('setting', 'SettingController@store');
+
+    Route::get('file_manager','DashboardController@file_manager');
+    
+    Route::get('upload_items','DashboardController@multi_upload') ;
+    Route::post('save_items','DashboardController@save_uploaded');
 });
 Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::get('roles', 'RoleController@index');

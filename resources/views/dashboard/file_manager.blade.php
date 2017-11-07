@@ -33,5 +33,6 @@
 @section('script')
     <script>
         $('#file_manager').addClass('active');
+        $('#elfinder').addClass('active');
     </script>
 @stop

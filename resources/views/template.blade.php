@@ -223,11 +223,19 @@
                     <!-- END Submenu -->
                 </li>
 
-                <li id="file_manager">
-                    <a href="{{url('file_manager')}}" class="dropdown-toggle">
+                <li id="file_manager"> 
+                    <a href="#" class="dropdown-toggle">
                         <i class="fa fa-file"></i>
                         <span>File Manager</span>
+                        <b class="arrow fa fa-angle-right"></b>
                     </a>
+
+                    <!-- BEGIN Submenu -->
+                    <ul class="submenu">
+                        <li id="elfinder"><a href="{{url('file_manager')}}">UI File Manager</a></li>
+                        <li id="uploader"><a href="{{url('upload_items')}}">file uploader</a></li>
+                    </ul>
+                    <!-- END Submenu -->                    
                 </li>
             {{--@endif--}}
         </ul>

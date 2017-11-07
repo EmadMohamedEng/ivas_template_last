@@ -50,9 +50,9 @@
                                     <br>
                                 @else
                                     @if($setting->value[0]=="<" || $setting->value[strlen($setting->value)-3]==">")
-                                        <textarea name="value" id="value" value="{{$setting->value}}" placeholder="value" class="form-control col-md-12 ckeditor" required>{{$setting->value}}</textarea>
+                                        <textarea name="value" name="value" placeholder="value" class="form-control col-md-12 ckeditor" required>{{$setting->value}}</textarea>
                                     @else
-                                        <textarea name="value" id="value" value="{{$setting->value}}" placeholder="value" class="form-control col-md-12" required>{{$setting->value}}</textarea>
+                                        <textarea name="value" name="value" placeholder="value" class="form-control col-md-12" required>{{$setting->value}}</textarea>
                                     @endif
                                 @endif
                             </div>

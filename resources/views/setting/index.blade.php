@@ -20,6 +20,7 @@
 					<div class="btn-toolbar pull-right">
 						<div class="btn-group">
 							<a class="btn btn-circle show-tooltip" title="" href="{{url('setting/new')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
+							<a  id="delete_button" onclick="delete_selected('settings')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
 						</div>
 					</div>
 					<br><br>
@@ -37,7 +38,7 @@
 						<tbody>
 						@foreach($settings as $setting)
 							<tr class="table-flag-blue">
-								<td><input type="checkbox"></td>
+								<td><input type="checkbox" name="selected_rows[]" value="{{$setting->id}}" onclick="collect_selected(this)"></td>
 								<td>{{$setting->key}}</td>
 								<td>
 									@if(file_exists($setting->value))

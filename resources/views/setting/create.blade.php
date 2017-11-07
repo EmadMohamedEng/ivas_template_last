@@ -33,28 +33,30 @@
                             </div>
                         </div>
                          <div class="form-group">
-                            <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Key</label>
+                            <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Key *</label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 <input type="text" name="key" id="key" placeholder="key" class="form-control" required>
                             </div>
                           </div>
 
-                        <div class="form-group"  id="ckeditor_textarea">
-                            <label class="col-sm-3 col-lg-2 control-label">Value</label>
+
+                        <div class="form-group"  id="cktextarea">
+                            <label class="col-sm-3 col-lg-2 control-label">Value *</label>
                             <div class="col-sm-9 col-lg-10 controls" >
-                                <textarea class="form-control col-md-12 ckeditor" name="TxtValue" rows="6" ></textarea>
+                                <textarea class="form-control col-md-12 ckeditor" name="TxtValue1" rows="6"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group" hidden id="normal_textarea">
-                            <label class="col-sm-3 col-lg-2 control-label">Value</label>
+                            <label class="col-sm-3 col-lg-2 control-label">Value *</label>
                             <div class="col-sm-9 col-lg-10 controls" >
-                                <textarea class="form-control col-md-12" name="TxtValue" rows="6"></textarea>
+                                <textarea class="form-control col-md-12" name="TxtValue2" rows="6"></textarea>
                             </div>
                         </div>
 
+
                         <div class="form-group" hidden id="image_div">
-                            <label class="col-sm-3 col-lg-2 control-label">Value</label>
+                            <label class="col-sm-3 col-lg-2 control-label">Image *</label>
                             <div class='col-sm-9 col-lg-10 controls'>
                                 <div class='fileupload fileupload-new' data-provides='fileupload'>
                                     <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
@@ -64,7 +66,7 @@
                                     <div>
                                                 <span class='btn btn-default btn-file'><span class='fileupload-new'>Select image</span>
                                                 <span class='fileupload-exists'>Change</span>
-                                                <input type='file' name='TxtValue' accept="image/*"></span>
+                                                <input type='file' name='TxtValue3' accept="image/*"></span>
                                         <a href='#' class='btn btn-default fileupload-exists' data-dismiss='fileupload'>Remove</a>
                                     </div>
                                 </div>
@@ -91,21 +93,22 @@
             if (this.value==1) {
                 $('#normal_textarea').hide('slow');
                 $('#image_div').hide('slow') ;
-                $('#ckeditor_textarea').show(1000);
+                $('#cktextarea').show(1000);
             }
             else if (this.value==2)
             {
                 $('#normal_textarea').show(1000) ;
                 $('#image_div').hide('slow');
-                $('#ckeditor_textarea').hide('slow');
+                $('#cktextarea').hide('slow');
             }
             else if(this.value==3)
             {
                 $('#normal_textarea').hide('slow');
                 $('#image_div').show(1000) ;
-                $('#ckeditor_textarea').hide('slow');
+                $('#cktextarea').hide('slow');
             }
         });
+
         $('#setting').addClass('active');
         $('#setting-create').addClass('active');
     </script>

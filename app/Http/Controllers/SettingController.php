@@ -52,18 +52,16 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        return $request['TxtValue'];
         $this->validate($request,[
-            'key' => 'required|unique:settings',
-            'TxtValue' => 'required',
+            'key' => 'required|unique:settings'
         ]);
         $setting = new Setting();
         $check = false ;
-        if ($request->hasFile('TxtValue'))
+        if ($request->hasFile('TxtValue3'))
         {
             $imgExtensions = array("png","jpeg","jpg");
             $destinationFolder = "settings_images/";
-            $file = $request->file("TxtValue");
+            $file = $request->file("TxtValue3");
             if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
             {
                 \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
@@ -77,8 +75,18 @@ class SettingController extends Controller
 
         $setting->key = $request->key;
         if(!$check)
-            $setting->value = $request->TxtValue;
-        $setting->save();        
+        {
+            if (!empty($request->TxtValue1))
+                $setting->value = $request->TxtValue1;
+            elseif (!empty($request->TxtValue2))
+                $setting->value = $request->TxtValue2;
+            else
+            {
+                \Session::flash('failed','Value is Required');
+                return back()->withInput();
+            }
+        }
+        $setting->save();
         $request->session()->flash('success', 'Setting created successfull');
 
         return redirect('setting');
@@ -108,8 +116,7 @@ class SettingController extends Controller
     public function update($id,Request $request)
     {
         $this->validate($request,[
-            'key' => 'required',
-            'value' => 'required',
+            'key' => 'required'
         ]);
         $setting = Setting::findOrfail($id);
         $check = false ;
@@ -137,8 +144,15 @@ class SettingController extends Controller
         
         $setting->key = $request->key;
         if (!$check)
-            $setting->value = $request->value;
-        
+        {
+            if (!empty($request->value))
+                $setting->value = $request->value;
+            else{
+                \Session::flash('failed','No changes takes place');
+                return redirect('setting');
+            }
+        }
+
         $setting->save();
         $request->session()->flash('success', 'updated successfully');
 
@@ -157,9 +171,10 @@ class SettingController extends Controller
         $setting = Setting::findOrfail($id);
         if (file_exists($setting->value))
         {
-            Storage::delete($setting->value);
+            unlink($setting->value);
         }
         $setting->delete();
+        \Session::flash('success', 'deleted successfully');
         return back();
     }
 }

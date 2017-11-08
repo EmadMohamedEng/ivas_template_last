@@ -59,6 +59,20 @@ Route::group(['middleware' => ['auth','role:super_admin']], function() {
     Route::post('users', 'UserController@store');
 
 });
+
+Route::group(['middleware'=> 'auth'],function(){
+  Route::resource('language','\App\Http\Controllers\LanguageController');
+  Route::post('language/{id}/update','\App\Http\Controllers\LanguageController@update');
+  Route::get('language/{id}/delete','\App\Http\Controllers\LanguageController@destroy');
+});
+
+Route::group(['middleware'=> 'auth'],function(){
+  Route::resource('static_translation','\App\Http\Controllers\StaticTranslationController');
+  Route::post('static_translation/{id}/update','\App\Http\Controllers\StaticTranslationController@update');
+  Route::get('static_translation/{id}/delete','\App\Http\Controllers\StaticTranslationController@destroy');
+});
+
+
 Route::group(['middleware'=> 'auth'], function() {
     Route::get('setting', 'SettingController@index');
     Route::get('setting/new', 'SettingController@create');

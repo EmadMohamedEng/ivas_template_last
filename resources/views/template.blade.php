@@ -9,7 +9,7 @@
  
       
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  
+  <link rel="stylesheet" href="{{url('css/cropper.min.css')}}">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style>
   #resizable { width: 150px; height: 150px; padding: 0.5em; }
@@ -269,8 +269,41 @@
                     </ul>
                     <!-- END Submenu -->                    
                 </li>                
-                
-            {{--@endif--}}
+                <ul class="nav nav-list">
+                    <li id="static">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            <span>Static Translations</span>
+                            <b class="arrow fa fa-angle-right"></b>
+                        </a>
+
+                        <!-- BEGIN Submenu -->
+                        <ul class="submenu">
+                            <li id="static-create"><a href="{{url('static_translation/create')}}">Add Static Translation</a></li>
+                            <li id="static-index"><a href="{{url('static_translation')}}">Static Translations</a></li>
+                        </ul>
+                        <!-- END Submenu -->
+                    </li>
+                </ul>    
+                        
+        <ul class="nav nav-list">
+            <li id="language">
+                <a href="#" class="dropdown-toggle">
+                    <i class="glyphicon glyphicon-cloud"></i>
+                    <span>Language</span>
+                    <b class="arrow fa fa-angle-right"></b>
+                </a>
+
+                <!-- BEGIN Submenu -->
+                <ul class="submenu">
+                    <li id="language"><a href="{{url('language/create')}}">Add Language</a></li>
+                    <li id="language"><a href="{{url('language')}}">Languages</a></li>
+                </ul>
+                <!-- END Submenu -->
+            </li>
+        </ul>
+                         
+               {{--@endif--}}
         </ul>
         <!-- END Navlist -->
 
@@ -459,6 +492,7 @@
 </script>
 
 @yield('script')
+<script src="{{url('js/cropper.min.js')}}" defer></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>

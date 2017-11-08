@@ -6,7 +6,23 @@
     <title>Admin Panel</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+      
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+  #resizable { width: 150px; height: 150px; padding: 0.5em; }
+  #resizable h3 { text-align: center; margin: 0; }
+  </style>
 
+
+  
+  <script>
+  $( function() {
+    $( "#resizable" ).resizable();
+  } );
+  </script> 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--page specific css styles-->
     <link rel="stylesheet" type="text/css" href="{{url('assets/chosen-bootstrap/chosen.min.css')}}" />
@@ -52,14 +68,9 @@
             else
                 return false;
         }
-    </script>
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    $( function() {
-        $( "#resizable" ).resizable();
-        });
-    </script>
+    </script> 
+
+    
 </head>
 <body>
 <div id="theme-setting">
@@ -247,7 +258,7 @@
 
                 <li id="images"> 
                     <a href="#" class="dropdown-toggle">
-                        <i class="fa fa-"></i>
+                        <i class="glyphicon glyphicon-fullscreen"></i>
                         <span>Image</span>
                         <b class="arrow fa fa-angle-right"></b>
                     </a>
@@ -448,6 +459,6 @@
 </script>
 
 @yield('script')
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>

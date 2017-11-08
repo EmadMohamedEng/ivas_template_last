@@ -1,46 +1,42 @@
-<!doctype html>
-<html lang="en">
-<head>
  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Resizable - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <style>
-  #resizable { width: 150px; height: 150px; padding: 0.5em; }
-  #resizable h3 { text-align: center; margin: 0; }
-  </style>
+ @extends('template')
+@section('page_title')
+    Upload And Resize
+@stop
+@section('content')
+    @include('errors')
+    
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-title">
+                    <h3><i class="fa fa-bars"></i>Upload And Resize</h3>
+                    <div class="box-tool">
+                        <a data-action="collapse" href="#"><i class="fa fa-chevron-up"></i></a>
+                        <a data-action="close" href="#"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <div id="resizable" class="ui-widget-content" style="display:none;">
+                      <img id="image" src="#" class="main_resizing"/>
+                    </div><br>
+                    <input id="image_file" type='file' onchange="readURL(this);" />
+                    <br><br>
+                    <div class="form-group" style="display: none;" id="save_btn"> 
+                        <input type="submit" class="btn btn-primary" value="@lang('messages.save')" onclick="save_image()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#resizable" ).resizable();
-  } );
-  </script>
-</head>
-<body>
- 
-<div id="resizable" class="ui-widget-content" style="display:none;">
-  <h3 class="ui-widget-header">Resizable</h3>
-  <img id="blah" src="#" alt="your image" class="main"/>
-</div>
-<input type='file' onchange="readURL(this);" />
-<style>
-.main {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100% ; 
-}
-</style>
- 
-</body>
-<script>
+    </div>
+
+@stop
+
+@section('script')
+   <script>
     var width = 250 ; 
     var height = 300 ; 
     $('#resizable').on('resize',function(){
@@ -52,7 +48,7 @@
                var reader = new FileReader();
 
                reader.onload = function (e) {
-                   $('#blah')
+                   $('#image')
                        .attr('src', e.target.result)
                        .width(250)
                        .height(300);
@@ -60,15 +56,45 @@
                                         'width':250,
                                         'height':300,
                                         'display':'block'
-                                        }) ;    
+                                        }) ;  
+                   $('#save_btn').css('display','block');
                };
                reader.readAsDataURL(input.files[0]);
             }
     }
+    function save_image()
+    { 
+        var theImage = $('#image_file').prop('files')[0] ; 
+        var form_data = new FormData();
+        form_data.append('width',width); 
+        form_data.append('height',height) ;
+        form_data.append('image',theImage)
+       $.ajax({
+            type:"POST" , 
+            url : "save_image", 
+            data:  form_data , 
+            cache       : false,
+            contentType : false,
+            processData : false,
+            success : function(result){
+                
+                if(result=="true")
+                {
+                   alert('Image saved with new dimensions')    ; 
+                }
+                else{
+                    alert('Error while saving image') ;
+                }
+                location.reload() ;
+            }
+       });
+    }
     </script>
-</html>
-
-
+    <script>
+        $('#images').addClass('active');
+        $('#upload_resize').addClass('active');
+    </script>
+@stop 
 
 
 

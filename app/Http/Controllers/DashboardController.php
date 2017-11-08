@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class DashboardController extends Controller
 {
@@ -128,5 +129,55 @@ class DashboardController extends Controller
     {
         return view('dashboard.upload_resize');
     }
+    
+    public function save_image(Request $request)
+    {
+        if($request->hasFile('image'))
+        {
+            $image = $request->file('image') ; 
+            $filename    = $image->getClientOriginalName();
+            $image_resize = Image::make($image->getRealPath()); 
+            $width = trim($request['width'],'px') ;
+            $height = trim($request['height'],'px') ;
+            $image_resize->resize($width, $height);
+            $image_resize->save('uploads/' .$filename) ;
+            return "true" ;
+        }
+        else{
+            return "false" ; 
+        } 
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

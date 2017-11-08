@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'save_items'
+        'save_items',
+        'save_image'
     ];
 }

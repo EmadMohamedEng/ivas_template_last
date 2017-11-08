@@ -296,8 +296,8 @@
 
                 <!-- BEGIN Submenu -->
                 <ul class="submenu">
-                    <li id="language"><a href="{{url('language/create')}}">Add Language</a></li>
-                    <li id="language"><a href="{{url('language')}}">Languages</a></li>
+                    <li id="language-create"><a href="{{url('language/create')}}">Add Language</a></li>
+                    <li id="language-index"><a href="{{url('language')}}">Languages</a></li>
                 </ul>
                 <!-- END Submenu -->
             </li>

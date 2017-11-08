@@ -73,11 +73,10 @@ class LanguageController extends Controller
     	return redirect('language');
     }
 
-    public function destroy($id,Request $request)
+    public function destroy($id)
     {
-    	$language = Language::find($id);
-    	$language->destroy();
-    	$request->session()->flash('success', 'Deleted Successfully');
+    	Language::destroy($id);
+    	\Session::flash('success', 'Deleted Successfully');
     	return redirect('language');
     }
 }

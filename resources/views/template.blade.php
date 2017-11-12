@@ -336,7 +336,7 @@
         @include('partial.flash')
         @yield('content')
     </div>
-    <div class="footer" align="center">
+    <div class="footer" align="center" style=" position: absolute; width: 100%; bottom: 0;">
         <p>{{\Carbon\Carbon::now()->year}} © iVAS Template</p>
     </div>
     <a id="btn-scrollup" class="btn btn-circle btn-lg" href="#"><i class="fa fa-chevron-up"></i></a>

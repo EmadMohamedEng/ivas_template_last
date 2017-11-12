@@ -18,10 +18,10 @@
                 </div>
                 <div class="box-content">
                      @if(isset($language))
-                        {!! Form::model($language, ['route' => ['language.update', $language->id], 'method' => 'PUT', 'class' => 'form-horizontal', 'files'=>'true' ]) !!}
+                        {!! Form::model($language, ['url'=>'language/'.$language->id.'/update' , 'method' => 'post', 'class' => 'form-horizontal', 'files'=>'true' ]) !!}
 
                     @else
-                        {!! Form::open(['method' => 'POST', 'route' => 'language.store', 'class' => 'form-horizontal', 'files'=>'true' ]) !!}
+                        {!! Form::open(['method' => 'POST', 'url'=>'language' , 'class' => 'form-horizontal', 'files'=>'true' ]) !!}
                         
                            
                     @endif

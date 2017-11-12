@@ -69,7 +69,7 @@ class LanguageController extends Controller
 
     	$language = Language::find($id);
     	$language->update($request->all());
-    	$request->session()->flash('success', 'Created Successfully');
+    	$request->session()->flash('success', 'Updated Successfully');
     	return redirect('language');
     }
 

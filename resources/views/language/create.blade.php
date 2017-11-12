@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-title">
-                    <h3><i class="fa fa-bars"></i>Add Language</h3>
+                    <h3><i class="fa fa-bars"></i>Language</h3>
                     <div class="box-tool">
                         <a data-action="collapse" href="#"><i class="fa fa-chevron-up"></i></a>
                         <a data-action="close" href="#"><i class="fa fa-times"></i></a>
@@ -39,6 +39,5 @@
     <script>
         $('#language').addClass('active');
         $('#language-create').addClass('active');
-        // $('input[name="rtl"]').bootstrapSwitch('state',true,true);
     </script>
 @stop

@@ -11,6 +11,6 @@ class RouteModel extends Model
     
     public function roles_routes()
     {
-        return $this->hasMany('App\RoleRoute','role_id','id') ; 
+        return $this->hasMany('App\RoleRoute','route_id','id') ; 
     }
 }

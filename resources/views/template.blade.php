@@ -224,6 +224,20 @@
                     </ul>
                     <!-- END Submenu -->
                 </li>
+                <li id="route">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="glyphicon glyphicon-random"></i>
+                        <span>Routes</span>
+                        <b class="arrow fa fa-angle-right"></b>
+                    </a>
+
+                    <!-- BEGIN Submenu -->
+                    <ul class="submenu">
+                        <li id="route-create"><a href="{{url('routes/create')}}">Create Route</a></li>
+                        <li id="route-index"><a href="{{url('routes')}}">Routes</a></li>
+                    </ul>
+                    <!-- END Submenu -->
+                </li>
             @endif
 
                 <li id="setting">

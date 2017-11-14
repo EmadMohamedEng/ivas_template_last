@@ -69,9 +69,15 @@ function get_dynamic_routes()
        if(is_numeric($route[$i]))
        {
            if(!$checker){
-                $action .= "{id}" ; 
-                // for the edit request , language/9/edit => language/{id}/edit 
-               $checker = true ;    
+               if($route[$i-1]=="/") 
+               {
+                // it may be a route with name index_v2,without this validation it will be index_v{id} 
+                    $action .= "{id}" ; 
+                    // for the edit request , language/9/edit => language/{id}/edit 
+                    $checker = true ;      
+               }
+               else
+                   $action .= $route[$i] ;  
            }
            else 
                continue ;
@@ -84,8 +90,7 @@ function get_dynamic_routes()
                   JOIN role_route ON routes.id = role_route.route_id           
                   JOIN roles ON role_route.role_id = roles.id
                   WHERE routes.route = '".$action."' AND routes.method='".$request_method."'" ;  
-   $route_model = \DB::select($query);  
-    
+   $route_model = \DB::select($query);   
    if(count($route_model) > 0)
    {
        dynamic_routes($route_model,true) ;   
@@ -107,7 +112,8 @@ function dynamic_routes($route_model,$found_roles)
         return ; 
     }
     $route = $route_model[0]->route ; 
-    $controller_method = $route_model[0]->controller_method ; 
+    $controller_method = 
+    $route_model[0]->controller_name."@".$route_model[0]->function_name ; 
     $route_method = $route_model[0]->method ;
     if($found_roles)
     {

@@ -8,6 +8,7 @@ use Validator;
 use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\RouteModel ; 
 
 class RoleController extends Controller
 {
@@ -99,4 +100,32 @@ class RoleController extends Controller
 
             return redirect('roles');
     }
+    
+    public function view_access($id)
+    {
+        $controllers = $this->get_controllers() ; // in main controller 
+        $routes = RouteModel::all() ; 
+        $role = Role::findOrFail($id) ;
+        $query = "SELECT * FROM routes JOIN role_route ON routes.id = role_route.route_id JOIN roles ON role_route.role_id = roles.id WHERE roles.id = $id ORDER BY routes.controller_name" ; // order by here to sort them as the file system sorting
+        $methods = \DB::select($query) ;  
+        return view('roles.access',compact('role','routes','controllers','methods')) ;   
+    }
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label class="col-sm-3 col-lg-2 control-label">Method *</label>
+    <label class="col-sm-3 col-lg-2 control-label">Method Type *</label>
     <div class="col-sm-9 col-lg-10 controls">
         <select class="form-control chosen-rtl" name="method" required>
             <option value="get" @if($route && $route->method=='get') selected @endif >GET</option>
@@ -16,27 +16,52 @@
     <div class="col-sm-9 col-lg-10 controls">
         {!! Form::text('route',null, ['class'=>'form-control input-lg','required' => 'required']) !!}
     </div>
-</div> 
+</div>  
+
 <?php 
+ if(!$route)
+ {
     $controller_name = null ; 
-    $method_name = null ; 
-    if($route)
+    $role_id = null ; 
+    if(isset($_GET['controller_name'])&&!empty($_GET['controller_name']))
     {
-        $controller_name = explode('@',$route->controller_method)[0] ; 
-        $method_name = explode('@',$route->controller_method)[1] ;     
+        $controller_name = $_GET['controller_name'] ;  
     }
+    if(isset($_GET['role'])&&!empty($_GET['role']))
+    { 
+        $role_id = $_GET['role'] ;
+    }     
+ }
+ else{
+     $controller_name = $route->controller_name ; 
+ }
 ?>
+
 <div class="form-group">
   <label class="col-sm-3 col-lg-2 control-label">Controller Name *</label>
   <div class="col-sm-9 col-lg-10 controls">
-    {!! Form::text('controller_name',$controller_name, ['class'=>'form-control input-lg','required' => 'required']) !!}
+   @if($controller_name)
+    {!! Form::text('controller_name',$controller_name, ['class'=>'form-control input-lg','required' => 'required','readonly']) !!}
+   @else       
+    {!! Form::text('controller_name',null, ['class'=>'form-control input-lg','required' => 'required']) !!}       
+   @endif 
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-sm-3 col-lg-2 control-label">Method Name *</label>
+  <label class="col-sm-3 col-lg-2 control-label">Function Name *</label>
   <div class="col-sm-9 col-lg-10 controls">
-    {!! Form::text('method_name',$method_name, ['class'=>'form-control input-lg','required' => 'required']) !!}
+   <select class="form-control chosen-rtl" name="function_name">
+       @foreach($controllers as $index=>$controller)
+           @for($i = 0 ; $i < count($controller) ; $i++) 
+                @if($index==$controller_name)
+                   <option value="{{$controller[$i]}}">
+                       {{$controller[$i]}}
+                   </option>  
+                @endif
+           @endfor
+       @endforeach
+   </select> 
   </div>
 </div>
 
@@ -48,7 +73,12 @@
               <option value="{{$role->id}}" @if($route) @foreach($route->roles_routes as $item) @if($item->role->id==$role->id)
                selected
               @endif
-              @endforeach @endif> {{$role->name}} </option>
+              @endforeach
+                @elseif($role_id)
+                  @if($role_id==$role->id)
+                      selected
+                  @endif
+              @endif> {{$role->name}} </option>
           @endforeach
       </select>      
   </div>

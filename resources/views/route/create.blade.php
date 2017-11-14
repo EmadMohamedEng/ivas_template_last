@@ -29,14 +29,12 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 @stop
 
 @section('script')
     <script>
-        $('#route').addClass('active');
-        $('#route-create').addClass('active');
+        $('#role').addClass('active');
+        $('#route-index').addClass('active');
     </script>
 @stop

@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 get_static_routes() ;
 get_dynamic_routes();
+
+
+
+
+
+
+
+
+

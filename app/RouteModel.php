@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RouteModel extends Model
 {
     protected $table = "routes" ; 
-    protected $fillable = ['method','route','controller_method'] ; 
+    protected $fillable = ['method','route','controller_name','function_name'] ; 
     
     public function roles_routes()
     {

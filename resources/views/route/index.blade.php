@@ -28,7 +28,8 @@
 								<th style="width:18px"><input type="checkbox"></th>
 								<th>method</th>
 								<th>route</th>
-								<th>controller@method</th>
+								<th>controller</th>
+								<th>method</th>
 								<th>Roles Assigned</th>
 								<th class="visible-md visible-lg" style="width:130px">Action</th>
 							</tr>
@@ -36,10 +37,11 @@
 							<tbody>
 							@foreach($routes as $route)
 								<tr class="table-flag-blue">
-									<td><input type="checkbox"></td>
+									<th><input type="checkbox" name="selected_rows[]" value="{{$route->id}}" onclick="collect_selected(this)"></th>
 									<td>{{$route->method}}</td>
 									<td>{{$route->route}}</td>
-									<td>{{$route->controller_method}}</td>
+									<td>{{$route->controller_name}}</td>
+									<td>{{$route->function_name}}</td>
 									<td>
 									    @foreach($route->roles_routes as $item)
 									        - {{$item->role->name}}<br>
@@ -64,7 +66,7 @@
 
 @section('script')
 	<script>
-		$('#route').addClass('active');
+		$('#role').addClass('active');
 		$('#route-index').addClass('active');
 	</script>
 @stop

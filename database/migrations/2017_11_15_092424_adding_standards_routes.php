@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class RoutesTableSeeder extends Seeder
+class AddingStandardsRoutes extends Migration
 {
-
     /**
-     * Auto generated seed file
+     * Run the migrations.
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         
 
@@ -478,7 +478,15 @@ class RoutesTableSeeder extends Seeder
                 'function_name' => 'view_access',
             ),
         ));
-        
-        
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
     }
 }

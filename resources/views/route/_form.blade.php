@@ -52,11 +52,15 @@
   <label class="col-sm-3 col-lg-2 control-label">Function Name *</label>
   <div class="col-sm-9 col-lg-10 controls">
    <select class="form-control chosen-rtl" name="function_name">
+      <option value=""></option>
        @foreach($controllers as $index=>$controller)
            @for($i = 0 ; $i < count($controller) ; $i++) 
                 @if($index==$controller_name)
-                   <option value="{{$controller[$i]}}">
-                       {{$controller[$i]}}
+                  <?php
+                        $controller[$i] = str_replace(' ','',$controller[$i]) ; 
+                   ?>
+                   <option value="{{$controller[$i]}}" @if($route && $controller[$i] == $route->function_name) selected @endif>
+                       {{$controller[$i]}}  
                    </option>  
                 @endif
            @endfor

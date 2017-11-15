@@ -86,22 +86,28 @@ function get_dynamic_routes()
            $action .= $route[$i] ;  
        }
    }   
-   $query = "SELECT * FROM routes 
-                  JOIN role_route ON routes.id = role_route.route_id           
-                  JOIN roles ON role_route.role_id = roles.id
-                  WHERE routes.route = '".$action."' AND routes.method='".$request_method."'" ;  
-   $route_model = \DB::select($query);   
-   if(count($route_model) > 0)
-   {
-       dynamic_routes($route_model,true) ;   
-   }
-   else{ 
-       $query_2 = "SELECT * FROM routes  
-                        WHERE routes.route = '".$action."' 
-                        AND routes.method='".$request_method."'" ;
-       $route_model = \DB::select($query_2);  
-       dynamic_routes($route_model,false) ; 
-   }    
+    try{
+       $query = "SELECT * FROM routes 
+                      JOIN role_route ON routes.id = role_route.route_id           
+                      JOIN roles ON role_route.role_id = roles.id
+                      WHERE routes.route = '".$action."' AND routes.method='".$request_method."'" ;  
+       $route_model = \DB::select($query);   
+       if(count($route_model) > 0)
+       {
+           dynamic_routes($route_model,true) ;   
+       }
+       else{ 
+           $query_2 = "SELECT * FROM routes  
+                            WHERE routes.route = '".$action."' 
+                            AND routes.method='".$request_method."'" ;
+           $route_model = \DB::select($query_2);  
+           dynamic_routes($route_model,false) ; 
+       }    
+    }
+    catch(Illuminate\Database\QueryException $e){
+
+    }
+
 }
 
 function dynamic_routes($route_model,$found_roles)

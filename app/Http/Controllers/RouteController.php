@@ -8,9 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\RouteModel ;
 use App\Role ;
-use App\RoleRoute ;
-
-
+use App\RoleRoute ; 
+use Validator;
 class RouteController extends Controller
 {
     /**
@@ -59,6 +58,16 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'method' => 'required|min:3|unique_with:routes,method,route',
+            'route' => 'required|min:3|unique_with:routes,method,route',
+            'controller_name' => 'required' , 
+            'function_name' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        
         $route['method'] = $request['method'] ;
         $route['route'] = $request['route'] ; 
         $route['controller_name'] = $request['controller_name'] ;
@@ -112,6 +121,15 @@ class RouteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(),[
+            'method' => 'required|min:3|unique_with:routes,method,route,'.$id,
+            'route' => 'required|min:3|unique_with:routes,method,route,'.$id,
+            'controller_name' => 'required' , 
+            'function_name' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         $old = RouteModel::findOrFail($id) ; 
         $old['method'] = $request['method'] ;
         $old['route'] = $request['route'] ; 

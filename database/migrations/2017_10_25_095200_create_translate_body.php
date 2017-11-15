@@ -33,6 +33,6 @@ class CreateTranslateBody extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('tans_bodies');
     }
 }

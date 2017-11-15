@@ -487,6 +487,6 @@ class AddingStandardsRoutes extends Migration
      */
     public function down()
     {
-        //
+        \DB::table('routes')->delete();
     }
 }

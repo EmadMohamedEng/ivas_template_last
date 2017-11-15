@@ -25,6 +25,9 @@ class AddShortCodeAndRtlToLanguage extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('languages', function($table) {
+            $table->dropColumn(['short_code']);
+            $table->dropColumn(['rtl']);
+        });
     }
 }

@@ -13,7 +13,7 @@ abstract class Controller extends BaseController
     
     public function get_methods($filename)
     {
-        $path = $this->file_build_path("app","http","controllers") ;
+        $path = $this->file_build_path("app","Http","Controllers") ;
         $txt_file    = file_get_contents($path.'/'.$filename);
         $matches = array() ; 
         preg_match_all("/function(.*)\(\D*\w*\)/U", $txt_file, $matches);
@@ -24,7 +24,7 @@ abstract class Controller extends BaseController
     public function get_controllers() {
         $controllers = array() ; 
         $i = 0 ; 
-        $path = $this->file_build_path("app","http","controllers") ;
+        $path = $this->file_build_path("app","Http","Controllers") ;
         if ($handle = opendir($path)) {
             while (false !== ($file = readdir($handle))) {
                 if ($file != "." && $file != ".." && $file!="Auth" && $file!="Controller.php" && $file!="ScaffoldInterface") {

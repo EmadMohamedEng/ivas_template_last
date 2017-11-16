@@ -23,7 +23,8 @@ abstract class Controller extends BaseController
     public function get_controllers() {
         $controllers = array() ; 
         $i = 0 ; 
-        if ($handle = opendir('app/http/controllers')) {
+        $path = $this->file_build_path("app","http","controllers") ;
+        if ($handle = opendir($path)) {
             while (false !== ($file = readdir($handle))) {
                 if ($file != "." && $file != ".." && $file!="Auth" && $file!="Controller.php" && $file!="ScaffoldInterface") {
                     $parsed_methods[explode('.php',$file)[0]] = 
@@ -34,5 +35,10 @@ abstract class Controller extends BaseController
             return $parsed_methods ; 
         } 
     }
+    
+    public function file_build_path(...$segments) {
+        return join(DIRECTORY_SEPARATOR, $segments);
+    }
+    
     
 }

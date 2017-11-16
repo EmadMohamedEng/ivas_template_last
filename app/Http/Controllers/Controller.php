@@ -13,7 +13,8 @@ abstract class Controller extends BaseController
     
     public function get_methods($filename)
     {
-        $txt_file    = file_get_contents('app/http/controllers/'.$filename);
+        $path = $this->file_build_path("app","http","controllers") ;
+        $txt_file    = file_get_contents($path.'/'.$filename);
         $matches = array() ; 
         preg_match_all("/function(.*)\(\D*\w*\)/U", $txt_file, $matches);
         $result = $matches[1] ;

@@ -20,6 +20,8 @@ return [
     'quick-text-message' => 'Quick Text Message',
     'outbox' => 'Outbox',
     'recipients' => 'Recipients',
+    'video' => 'Video',
+    'audio' => 'Audio',
     'body' => 'Body',
     'edit' => 'Edit',
     'save' => 'Save',

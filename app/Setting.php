@@ -13,9 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Setting extends Model
 {
-	
-	
-    protected $table = 'settings';
 
+    protected $table = 'settings';
+    protected $fillable = ['key','value','type'];
 	
 }

@@ -56,23 +56,63 @@ class SettingController extends Controller
             'key' => 'required|unique:settings'
         ]);
         $setting = new Setting();
+        dd($request->myField);
         $check = false ;
-        if ($request->hasFile('TxtValue3'))
+        if($request['myField'] == '3')
         {
-            $imgExtensions = array("png","jpeg","jpg");
-            $destinationFolder = "settings_images/";
-            $file = $request->file("TxtValue3");
-            if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+           if ($request->hasFile('TxtValue3'))
             {
-                \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
-                return redirect('setting');
-            }
-            $uniqueid = uniqid();
-            $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
-            $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
-            $check = true ;
+                $imgExtensions = array("png","jpeg","jpg");
+                $destinationFolder = "settings_images/";
+                $file = $request->file("TxtValue3");
+                if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+                {
+                    \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+                    return redirect('setting');
+                }
+                $uniqueid = uniqid();
+                $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
+                $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
+                $check = true ;
+           } 
         }
-
+        else if($request['myField'] == '4')
+        {
+           if ($request->hasFile('TxtValue4'))
+            {
+                $vidExtensions = array("mp4","flv","3gp");
+                $destinationFolder = "settings_videos/";
+                $file = $request->file("TxtValue4");
+                if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
+                {
+                    \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
+                    return redirect('setting');
+                }
+                $uniqueid = uniqid();
+                $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
+                $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
+                $check = true ;
+           } 
+        }
+        
+        else if($request['myField'] == '5')
+        {
+           if ($request->hasFile('TxtValue5'))
+            {
+                $audExtensions = array("mp3","webm");
+                $destinationFolder = "settings_sounds/";
+                $file = $request->file("TxtValue5");
+                if(! in_array($file->getClientOriginalExtension(),$audExtensions))
+                {
+                    \Session::flash('failed','Audio must be mp3, webm only !! No updates takes place, try again with that extensions please..');
+                    return redirect('setting');
+                }
+                $uniqueid = uniqid();
+                $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
+                $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
+                $check = true ;
+           } 
+        }
         $setting->key = $request->key;
         if(!$check)
         {
@@ -86,6 +126,7 @@ class SettingController extends Controller
                 return back()->withInput();
             }
         }
+        $setting->type = $request->myField;
         $setting->save();
         $request->session()->flash('success', 'Setting created successfull');
 
@@ -120,26 +161,77 @@ class SettingController extends Controller
         ]);
         $setting = Setting::findOrfail($id);
         $check = false ;
-        if ($request->hasFile('value'))
+        
+        if($setting->type == "3")
         {
+            if ($request->hasFile('value'))
+            {
 
-            $imgExtensions = array("png","jpeg","jpg");
-            $destinationFolder = "settings_images/";
-            $file = $request->file("value");
-            if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
-            {
-                \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
-                return redirect('setting');
+                $imgExtensions = array("png","jpeg","jpg");
+                $destinationFolder = "settings_images/";
+                $file = $request->file("value");
+                if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+                {
+                    \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+                    return redirect('setting');
+                }
+                $uniqueid = uniqid();
+                $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
+                if (file_exists($setting->value))
+                {
+                    unlink($setting->value);
+                }
+                $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
+                $check = true ;
             }
-            $uniqueid = uniqid();
-            $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
-            if (file_exists($setting->value))
-            {
-                Storage::delete($setting->value);
-            }
-            $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
-            $check = true ;
         }
+        else if($setting->type == "4")
+        {
+            if ($request->hasFile('TxtValue4'))
+            {
+
+                $vidExtensions = array("mp4","flv","3gp");
+                $destinationFolder = "settings_videos/";
+                $file = $request->file("TxtValue4");
+                if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
+                {
+                    \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
+                    return redirect('setting');
+                }
+                $uniqueid = uniqid();
+                $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
+                if (file_exists($setting->value))
+                {
+                    unlink($setting->value);
+                }
+                $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
+                $check = true ;
+            }
+        }
+        else if($setting->type == "5")
+        {
+            if ($request->hasFile('TxtValue5'))
+            {
+
+                $audExtensions = array("mp3","webm");
+                $destinationFolder = "settings_sounds/";
+                $file = $request->file("TxtValue5");
+                if(! in_array($file->getClientOriginalExtension(),$audExtensions))
+                {
+                    \Session::flash('failed','Audio must be mp3, webm only !! No updates takes place, try again with that extensions please..');
+                    return redirect('setting');
+                }
+                $uniqueid = uniqid();
+                $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
+                if (file_exists($setting->value))
+                {
+                    unlink($setting->value);
+                }
+                $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
+                $check = true ;
+            }
+        }
+      
 
         
         $setting->key = $request->key;

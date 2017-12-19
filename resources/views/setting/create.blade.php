@@ -23,12 +23,14 @@
                     <form action="{{url('setting')}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data"  novalidate>
               			{!! csrf_field() !!}
                         <div class="form-group">
-                            <label for="textfield5" class="col-sm-3 col-lg-2 control-label">setting type</label>
+                            <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Setting type</label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 <select class="form-control chosen-rtl">
                                     <option value="1">Advanced Editor</option>
                                     <option value="2">Normal Editor</option>
                                     <option value="3">Image</option>
+                                    <option value="4">Video</option>
+                                    <option value="5">Audio</option>
                                 </select>
                             </div>
                         </div>
@@ -74,6 +76,27 @@
                                 <span>Only extension supported jpg, png, and jpeg</span>
                             </div>
                         </div>
+                        
+                        <div class="form-group" hidden id="videocont" novalidate>
+                        {!! Form::label('TxtValue4',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                        <div class="col-sm-9 col-lg-10 controls">
+                            {!! Form::file('TxtValue4',["accept"=>"video/*",'class'=>'default']) !!}
+                             <span class='label label-important'>NOTE!</span>
+                             <span>Only extension supported mp4, flv, and 3gp</span>
+                        </div>
+                           
+                        </div>
+
+                        <div class="form-group" hidden id="audiocont" novalidate>
+                            {!! Form::label('TxtValue5',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            <div class="col-sm-9 col-lg-10 controls">
+                                {!! Form::file('TxtValue5',["accept"=>"audio/*",'class'=>'default']) !!}
+                             <span class='label label-important'>NOTE!</span>
+                             <span>Only extension supported mp3 and webm</span>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="myField" id="myField" value="1" />
 
                         <div class="form-group last">
                             <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
@@ -90,22 +113,49 @@
 @section('script')
     <script>
         $('select').on('change', function() {
-            if (this.value==1) {
+            if (this.value == 1) {
                 $('#normal_textarea').hide('slow');
                 $('#image_div').hide('slow') ;
+                $('#videocont').hide('slow');
+                $('#audiocont').hide('slow') ;
                 $('#cktextarea').show(1000);
+                document.getElementById("myField").value = this.value;
             }
-            else if (this.value==2)
+            else if (this.value == 2)
             {
                 $('#normal_textarea').show(1000) ;
                 $('#image_div').hide('slow');
                 $('#cktextarea').hide('slow');
+                $('#videocont').hide('slow');
+                $('#audiocont').hide('slow') ;
+                document.getElementById("myField").value = this.value;
             }
-            else if(this.value==3)
+            else if(this.value == 3)
             {
                 $('#normal_textarea').hide('slow');
                 $('#image_div').show(1000) ;
                 $('#cktextarea').hide('slow');
+                $('#videocont').hide('slow');
+                $('#audiocont').hide('slow') ;
+                document.getElementById("myField").value = this.value;
+            }
+            else if(this.value == 4)
+            { 
+                $('#normal_textarea').hide('slow');
+                $('#videocont').show(1000) ;
+                $('#cktextarea').hide('slow');
+                $('#image_div').hide('slow');
+                $('#audiocont').hide('slow') ;
+                document.getElementById("myField").value = this.value;
+            }
+            else if (this.value == 5)
+            {
+                $('#normal_textarea').hide('slow');
+                $('#audiocont').show(1000) ;
+                $('#cktextarea').hide('slow');
+                $('#image_div').hide('slow');
+                $('#videocont').hide('slow') ;
+                document.getElementById("myField").value = this.value;
             }
         });
 

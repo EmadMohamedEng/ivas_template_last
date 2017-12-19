@@ -42,7 +42,17 @@
 								<td>{{$setting->key}}</td>
 								<td>
 									@if(file_exists($setting->value))
-										<img src="{{url($setting->value)}}" width="120px" height="120px">
+                                     @if($setting->type == "3")
+										<img src="{{url($setting->value)}}" width="300" height="225">
+                                     @elseif($setting->type == "4")
+                                       <iframe width="300" height="225"
+                                        src="{{url($setting->value)}}">
+                                        </iframe>
+                                     @elseif($setting->type == "5")
+                                       <audio controls="">
+                                            <source src="{{url($setting->value)}}" type="audio/mpeg">
+                                        </audio>
+                                     @endif
 									@else
 										{!! $setting->value !!}
 									@endif

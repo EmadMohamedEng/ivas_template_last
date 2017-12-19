@@ -28,9 +28,16 @@
                         </div>
 
                         <div class="form-group">
+                            @if($setting->type == "3" || $setting->type == "2" || $setting->type == "1" )
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Value</label>
+                            @elseif($setting->type == "4")
+                            {!! Form::label('TxtValue4',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            @elseif($setting->type == "5")
+                            {!! Form::label('TxtValue5',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            @endif
                             <div class="col-sm-9 col-lg-10 controls">
                                 @if(file_exists($setting->value))
+                                  @if($setting->type == "3")
                                     <div class='col-sm-9 col-lg-10 controls'>
                                         <div class='fileupload fileupload-new' data-provides='fileupload'>
                                             <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
@@ -47,6 +54,23 @@
                                         <span class='label label-important'>NOTE!</span>
                                         <span>Only extension supported jpg, png, and jpeg</span>
                                     </div>
+                                   @elseif($setting->type == "4")
+                                    <div class="form-group"  id="videocont" novalidate>
+                                    <div class="col-sm-9 col-lg-10 controls">
+                                        {!! Form::file('TxtValue4',["accept"=>"video/*",'class'=>'default']) !!}
+                                         <span class='label label-important'>NOTE!</span>
+                                         <span>Only extension supported mp4, flv, and 3gp</span>
+                                    </div>
+                                    </div>
+                                   @elseif($setting->type == "5")
+                                    <div class="form-group" id="audiocont" novalidate>
+                                        <div class="col-sm-9 col-lg-10 controls">
+                                            {!! Form::file('TxtValue5',["accept"=>"audio/*",'class'=>'default']) !!}
+                                         <span class='label label-important'>NOTE!</span>
+                                         <span>Only extension supported mp3 and webm</span>
+                                        </div>
+                                    </div>
+                                   @endif
                                     <br>
                                 @else
                                     @if($setting->value[0]=="<" || $setting->value[strlen($setting->value)-3]==">")

@@ -56,7 +56,6 @@ class SettingController extends Controller
             'key' => 'required|unique:settings'
         ]);
         $setting = new Setting();
-        dd($request->myField);
         $check = false ;
         if($request['myField'] == '3')
         {

@@ -13,6 +13,5 @@ class MigrationsTableSeeder extends Seeder
     public function run()
     {
         
-        
     }
 }

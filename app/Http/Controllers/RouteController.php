@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\RouteModel ;
 use App\Role ;
+use DB;
 use App\RoleRoute ; 
 use Validator;
 class RouteController extends Controller
@@ -29,6 +30,89 @@ class RouteController extends Controller
     {
     
     }
+    
+      public function buildroutes()
+    {
+        $roles = Role::all();
+        $routes = RouteModel::all();
+        $role_routes = RoleRoute::all();
+        $routegroupArray = array(); // Routes which have auth ..
+        $unauthgroup = array(); // Routes which haven't auth ..
+        $unauthroutes = DB::table('routes')->whereNotIn('id', function($q){
+        $q->select('route_id')->from('role_route');
+        })->get();
+        $singleq = "'";
+        $myfile = fopen("routes.php", "w");
+        $starttext = "<?php \n /*Generated Route File @iVAS*/ \n \n/*
+|--------------------------------------------------------------------------
+
+| Application Routes
+
+|--------------------------------------------------------------------------
+
+|
+
+| Here is where you can register all of the routes for an application.
+
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+
+| and give it the controller to call when that URI is requested.
+
+|
+*/\n \n";
+        fwrite($myfile, $starttext);
+       
+        foreach($roles as $role)
+        {
+            $authtext = 'Route::group(['.$singleq.'middleware'.$singleq.'=>['.$singleq.'auth'.$singleq.','.$singleq.'role:'.$role->name.$singleq.']],'.' function () {';
+            fwrite($myfile, $authtext);
+            $newline = "\n";
+            fwrite($myfile, $newline);
+            
+            $role_routes = RoleRoute::where('role_id','=' ,$role->id)->get();
+            foreach($role_routes as $role_route)
+            {
+                foreach($routes as $route)
+                {
+                    if($route->id == $role_route->route_id)
+                    {
+                        $conroute = 'Routes::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
+                        fwrite($myfile, $conroute."\n");
+                    }
+                }
+            }
+            $authtext = '});';
+            fwrite($myfile, $authtext."\n");
+        }
+        
+        //For unauth Routes 
+        foreach($unauthroutes as $unauthroute)
+        {
+            $conroute = 'Routes::'.$unauthroute->method.'('.$singleq.$unauthroute->route.$singleq.','.$singleq.$unauthroute->controller_name.'@'.$unauthroute->function_name.$singleq.');';
+            $unauthgroup[] = $conroute;
+        }
+        
+        if(count($unauthgroup) > 0)
+        {
+            $newline = "\n";
+            fwrite($myfile, $newline);
+        
+            for($i=0;$i<count($unauthgroup);$i++)
+            {
+                $text = $unauthgroup[$i];
+                fwrite($myfile, $text."\n");
+            }
+        }
+            fclose($myfile);
+            if("routes.php")
+            {
+              header('Content-disposition: attachment; filename=routes.php');
+              header('Content-type: application/php');
+              readfile('routes.php');
+            }
+        
+    }
+
     
     /**
      * Show the form for creating a new resource.

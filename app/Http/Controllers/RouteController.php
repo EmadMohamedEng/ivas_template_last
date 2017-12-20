@@ -76,7 +76,7 @@ class RouteController extends Controller
                 {
                     if($route->id == $role_route->route_id)
                     {
-                        $conroute = 'Routes::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
+                        $conroute = 'Route::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
                         fwrite($myfile, $conroute."\n");
                     }
                 }
@@ -88,7 +88,7 @@ class RouteController extends Controller
         //For unauth Routes 
         foreach($unauthroutes as $unauthroute)
         {
-            $conroute = 'Routes::'.$unauthroute->method.'('.$singleq.$unauthroute->route.$singleq.','.$singleq.$unauthroute->controller_name.'@'.$unauthroute->function_name.$singleq.');';
+            $conroute = 'Route::'.$unauthroute->method.'('.$singleq.$unauthroute->route.$singleq.','.$singleq.$unauthroute->controller_name.'@'.$unauthroute->function_name.$singleq.');';
             $unauthgroup[] = $conroute;
         }
         

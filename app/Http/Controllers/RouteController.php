@@ -31,10 +31,10 @@ class RouteController extends Controller
     
     }
     
-      public function buildroutes()
+    public function buildroutes()
     {
         $roles = Role::all();
-        $routes = RouteModel::all();
+        //$routes = RouteModel::all();
         $role_routes = RoleRoute::all();
         $routegroupArray = array(); // Routes which have auth ..
         $unauthgroup = array(); // Routes which haven't auth ..
@@ -61,7 +61,7 @@ class RouteController extends Controller
 |
 */\n \n";
         fwrite($myfile, $starttext);
-       
+
         foreach($roles as $role)
         {
             $authtext = 'Route::group(['.$singleq.'middleware'.$singleq.'=>['.$singleq.'auth'.$singleq.','.$singleq.'role:'.$role->name.$singleq.']],'.' function () {';
@@ -69,22 +69,22 @@ class RouteController extends Controller
             $newline = "\n";
             fwrite($myfile, $newline);
             
-            $role_routes = RoleRoute::where('role_id','=' ,$role->id)->get();
-            foreach($role_routes as $role_route)
+             $routes = DB::table('routes')
+            ->join('role_route', 'routes.id', '=', 'role_route.route_id')
+            ->join('roles','role_route.role_id','=','roles.id')
+            ->where('role_id',$role->id)
+            ->select('routes.*','role_route.*','roles.*')
+            ->get();
+            foreach($routes as $route)
             {
-                foreach($routes as $route)
-                {
-                    if($route->id == $role_route->route_id)
-                    {
-                        $conroute = 'Route::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
-                        fwrite($myfile, $conroute."\n");
-                    }
-                }
+                $conroute = 'Route::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
+                fwrite($myfile, $conroute."\n");
             }
-            $authtext = '});';
-            fwrite($myfile, $authtext."\n");
-        }
+        $authtext = '});';
+        fwrite($myfile, $authtext."\n \n");
         
+        }
+           
         //For unauth Routes 
         foreach($unauthroutes as $unauthroute)
         {

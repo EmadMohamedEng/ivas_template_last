@@ -99,13 +99,18 @@ class RouteController extends Controller
 */\n \n";
         fwrite($myfile, $starttext);
 
+<<<<<<< HEAD
         foreach($roleroutes as $roleroute)
+=======
+        foreach($roles as $role)
+>>>>>>> cd92dd80dbb05b5e139ed94a54270ea4f9d3d150
         {
             $authtext = 'Route::group(['.$singleq.'middleware'.$singleq.'=>['.$singleq.'auth'.$singleq.','.$singleq.'role:'.$roleroute.$singleq.']],'.' function () {';
             fwrite($myfile, $authtext);
             $newline = "\n";
             fwrite($myfile, $newline);
             
+<<<<<<< HEAD
             foreach($routes as $route)
             {
                 if($roleroute == $route->name)
@@ -114,6 +119,18 @@ class RouteController extends Controller
                 fwrite($myfile, $conroute."\n"); 
                 }
 
+=======
+             $routes = DB::table('routes')
+            ->join('role_route', 'routes.id', '=', 'role_route.route_id')
+            ->join('roles','role_route.role_id','=','roles.id')
+            ->where('role_id',$role->id)
+            ->select('routes.*','role_route.*','roles.*')
+            ->get();
+            foreach($routes as $route)
+            {
+                $conroute = 'Route::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
+                fwrite($myfile, $conroute."\n");
+>>>>>>> cd92dd80dbb05b5e139ed94a54270ea4f9d3d150
             }
         $authtext = '});';
         fwrite($myfile, $authtext."\n \n");

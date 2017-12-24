@@ -22,7 +22,6 @@
  
 Route::group(['middleware'=>['auth','role:super_admin']], function () {
 Route::get('dashboard','DashboardController@index');
-Route::get('users','UserController@index');
 Route::get('user_profile','UserController@profile');
 Route::post('user_profile/updatepassword','UserController@UpdatePassword');
 Route::post('user_profile/updateprofilepic','UserController@UpdateProfilePicture');
@@ -64,11 +63,6 @@ Route::get('routes/{id}/delete','RouteController@destroy');
 Route::get('routes/create','RouteController@create');
 Route::get('routes/index_v2','RouteController@index_v2');
 Route::get('roles/{id}/view_access','RoleController@view_access');
-Route::get('buildroutes','RouteController@buildroutes');
-});
- 
-Route::group(['middleware'=>['auth','role:super_admin|Karim']], function () {
-Route::post('users','UserController@store');
 });
  
 

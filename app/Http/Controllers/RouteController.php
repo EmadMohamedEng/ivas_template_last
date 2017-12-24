@@ -31,19 +31,56 @@ class RouteController extends Controller
     
     }
     
-      public function buildroutes()
+    public function buildroutes()
     {
         $roles = Role::all();
-        $routes = RouteModel::all();
         $role_routes = RoleRoute::all();
         $routegroupArray = array(); // Routes which have auth ..
         $unauthgroup = array(); // Routes which haven't auth ..
+        $roleroutes = array();
         $unauthroutes = DB::table('routes')->whereNotIn('id', function($q){
         $q->select('route_id')->from('role_route');
         })->get();
+        $routes = DB::table('routes')
+            ->join('role_route', 'routes.id', '=', 'role_route.route_id')
+            ->join('roles','role_route.role_id','=','roles.id')
+            ->select('routes.*','role_route.*','roles.*')
+            ->get();
+         $total = "";
+         $isfound = false ;
+         $count = 0 ;
+        
+         //Grouping Roles Based On Routes .. 
+         foreach($routes as $route => $items)
+         { 
+            $count = 0 ; 
+            foreach($routes as $sroute => $items2)
+            {
+               if($items2->route_id == $items->route_id)
+               {
+                   $count = $count + 1 ;
+                   if($count > 1)
+                   {
+                        $total = "|".$items2->name;
+                        $items->name .= $total;
+                        unset($routes[$sroute]);
+                   }
+
+               }
+             
+             }
+         }
+        
+        //Getting All Roles On Array For Writing .. 
+        foreach($routes as $route)
+        {
+            $roleroutes[] = $route->name;
+        }
+        
+        $roleroutes = array_unique($roleroutes); 
         $singleq = "'";
         $myfile = fopen("routes.php", "w");
-        $starttext = "<?php \n /*Generated Route File @iVAS*/ \n \n/*
+        $starttext = "<?php \n /*Generated Route File @iVAS*/ \n Mail : karim.ahmed@ivas.com.eg \n \n/*
 |--------------------------------------------------------------------------
 
 | Application Routes
@@ -61,30 +98,28 @@ class RouteController extends Controller
 |
 */\n \n";
         fwrite($myfile, $starttext);
-       
-        foreach($roles as $role)
+
+        foreach($roleroutes as $roleroute)
         {
-            $authtext = 'Route::group(['.$singleq.'middleware'.$singleq.'=>['.$singleq.'auth'.$singleq.','.$singleq.'role:'.$role->name.$singleq.']],'.' function () {';
+            $authtext = 'Route::group(['.$singleq.'middleware'.$singleq.'=>['.$singleq.'auth'.$singleq.','.$singleq.'role:'.$roleroute.$singleq.']],'.' function () {';
             fwrite($myfile, $authtext);
             $newline = "\n";
             fwrite($myfile, $newline);
             
-            $role_routes = RoleRoute::where('role_id','=' ,$role->id)->get();
-            foreach($role_routes as $role_route)
+            foreach($routes as $route)
             {
-                foreach($routes as $route)
+                if($roleroute == $route->name)
                 {
-                    if($route->id == $role_route->route_id)
-                    {
-                        $conroute = 'Route::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
-                        fwrite($myfile, $conroute."\n");
-                    }
+                                   $conroute = 'Route::'.$route->method.'('.$singleq.$route->route.$singleq.','.$singleq.$route->controller_name.'@'.$route->function_name.$singleq.');';
+                fwrite($myfile, $conroute."\n"); 
                 }
+
             }
-            $authtext = '});';
-            fwrite($myfile, $authtext."\n");
-        }
+        $authtext = '});';
+        fwrite($myfile, $authtext."\n \n");
         
+        }
+           
         //For unauth Routes 
         foreach($unauthroutes as $unauthroute)
         {

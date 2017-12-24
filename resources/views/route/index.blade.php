@@ -16,7 +16,7 @@
 				<div class="box-content">
                     <div class="btn-toolbar pull-right">
                         <div class="btn-group">
-                            <a style="position: relative;left: -10px;" class="btn btn-default btn-sm" title="Download Routes" href="{{url('buildroutes')}}" data-original-title=""><i class="glyphicon glyphicon-download-alt"></i></a>
+                            <a style="position: relative;left: -10px;" class="btn btn-default btn-sm" title="Download Routes" href="{{url('buildroutes')}}" data-original-title=""><i class="glyphicon glyphicon-download-alt"></i> </a>
 							<a  id="delete_button" onclick="delete_selected('routes')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
                         </div>
                     </div>

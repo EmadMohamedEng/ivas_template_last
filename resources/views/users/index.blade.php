@@ -41,9 +41,9 @@
 										<th><input type="checkbox" name="selected_rows[]" value="{{$user->id}}" onclick="collect_selected(this)"></th>
 										<td>{{$user->name}}</td>
 										<td>{{$user->email}}</td>
-										<td>{{$user->roles->first()->name}}</td>
+										<td>{{$user->role}}</td>
 										<td>{{$user->phone}}</td>
-										{{-- <td>{{$user->roles()->first()}}</td> --}}
+										{{-- <td>{{$user->role}}</td> --}}
 										<td class="visible-md visible-lg">
 											<div class="btn-group">
 												<a class="btn btn-sm show-tooltip" title="" href="{{url('users/'.$user->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>

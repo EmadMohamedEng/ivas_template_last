@@ -41,13 +41,14 @@ class RoleController extends Controller
         }
         
             $validator = Validator::make($request->all(),[
-                    'name' => 'required'
+                    'name' => 'required',
+                    'role_priority' => 'required'
                 ]);
             if ($validator->fails()) {
                 return back()->withError($validator)->withInput();
             }
             \Session::flash('success','Role added successfully');
-            Role::create(['name' => $request->name]);
+            Role::create(['name' => $request->name , 'role_priority' => $request->role_priority]);
 
             return redirect('roles');
         
@@ -73,7 +74,8 @@ class RoleController extends Controller
         }
         
             $validator = Validator::make($request->all(),[
-                    'name' => 'required'
+                    'name' => 'required',
+                    'role_priority' => 'required'
                 ]);
             
             if ($validator->fails()) {
@@ -83,6 +85,7 @@ class RoleController extends Controller
             $role = Role::findOrFail($request->role_id);
 
             $role->name = $request->name;
+            $role->role_priority = $request->role_priority;
             \Session::flash('success','Role Updated successfully');
             $role->update();
 

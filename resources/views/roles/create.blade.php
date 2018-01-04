@@ -18,11 +18,24 @@
                     <form class="form-horizontal" action="{{url('roles')}}" method="post">
                     	{{ csrf_field() }}
                     	<div class="form-group">
-                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.roles.role-name')</label>
+                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.roles.role-name') *</label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 {{-- {!! Form::text('category_name',null,['placeholder'=>'Category Name','class'=>'form-control input-lg']) !!} --}}
                                 <input type="text" name="name" placeholder="@lang('messages.roles.role-name')" class="form-control input-lg" required>
                                 {{-- <span class="help-inline">Enter a new Role name</span> --}}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" id="priority-type">
+                            <label class="col-sm-3 col-lg-2 control-label">Priority *</label>
+                            <div class="col-sm-9 col-md-10 controls">
+                                <select class="form-control" id="role_priority" name="role_priority" >
+                                    <option value>Select Priority</option>
+                                    <option value="1">Super Admin</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Normal User</option>
+                                </select>
+                            <br/>
                             </div>
                         </div>
 

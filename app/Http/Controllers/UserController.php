@@ -8,6 +8,7 @@ use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
+use DB;
 use Spatie\Permission\Models\Role;
 use Validator;
 use Auth;
@@ -17,7 +18,53 @@ class UserController extends Controller
     public function index()
     {
 
-            $users = \App\User::all();
+            $role_name = "";
+            $role_prio = "";
+            $userdata = \Auth::user()->roles;
+            foreach($userdata as $key => $value)   
+            {
+                $role_name = $value->name;
+                $role_prio = $value->role_priority;
+            }
+            if(($role_name == 'super_admin') || ($role_prio == '1'))
+            {
+                
+                $users = DB::table('users')
+                ->join('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
+                ->join('roles', 'roles.id', '=', 'user_has_roles.role_id')
+                ->select('users.*','roles.name AS role')
+                ->get();
+            }
+            else if(($role_name == 'admin') || ($role_prio == '2'))
+            {
+                $users = DB::table('users')
+                ->join('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
+                ->join('roles', 'roles.id', '=', 'user_has_roles.role_id')
+                ->where(function($q) {
+                $q->where('roles.name', 'admin')
+                ->orWhere('roles.name', 'user');
+                })
+                ->where(function($q) {
+                $q->where('roles.role_priority', '2')
+                ->orWhere('roles.role_priority', '3');
+                })
+                ->select('users.*','roles.name AS role')
+                ->get();
+            }
+            else if (($role_name == 'user') || ($role_prio == '3'))
+            {
+                $users = DB::table('users')
+                ->join('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
+                ->join('roles', 'roles.id', '=', 'user_has_roles.role_id')
+                ->Where('roles.role_priority', '3')
+                ->Where('roles.name', 'user')
+                ->select('users.*','roles.name AS role')
+                ->get();
+            }
+            else
+            {
+                $users = \App\User::all();
+            }
             return view('users.index', compact('users'));
     }
 

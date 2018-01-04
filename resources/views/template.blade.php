@@ -194,7 +194,7 @@
     <div id="sidebar" class="navbar-collapse collapse">
         <!-- BEGIN Navlist -->
         <ul class="nav nav-list">
-            @if(Auth::user()->hasRole('super_admin'))
+            @if(Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('user   '))
                 <li id="user">
                     <a href="#" class="dropdown-toggle">
                         <i class="glyphicon glyphicon-user"></i>

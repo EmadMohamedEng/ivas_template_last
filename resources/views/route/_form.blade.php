@@ -2,11 +2,9 @@
     <label class="col-sm-3 col-lg-2 control-label">Method Type *</label>
     <div class="col-sm-9 col-lg-10 controls">
         <select class="form-control chosen-rtl" name="method" required>
-            <option value="get" @if($route && $route->method=='get') selected @endif >GET</option>
-            <option value="post" @if($route && $route->method=='post') selected @endif  >POST</option>
-            <option value="put" @if($route && $route->method=='put') selected @endif>PUT</option>
-            <option value="patch" @if($route && $route->method=='patch') selected @endif>PATCH</option>
-            <option value="delete" @if($route && $route->method=='delete') selected @endif>DELETE</option>
+            @foreach($method_types as $index=>$type)
+                <option value="{{$index}}">{{$type}}</option>
+            @endforeach
         </select>
     </div>
 </div>

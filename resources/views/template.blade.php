@@ -193,8 +193,7 @@
     <!-- BEGIN Sidebar -->
     <div id="sidebar" class="navbar-collapse collapse">
         <!-- BEGIN Navlist -->
-        <ul class="nav nav-list">
-            @if(Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('user   '))
+        <ul class="nav nav-list"> 
                 <li id="user">
                     <a href="#" class="dropdown-toggle">
                         <i class="glyphicon glyphicon-user"></i>
@@ -221,13 +220,13 @@
                     <ul class="submenu">
                         <li id="role-create"><a href="{{url('roles/new')}}">@lang('messages.create-role')</a></li>
                         <li id="role-index"><a href="{{url('roles')}}">@lang('messages.role')</a></li>
-                        <li id="route-index"><a href="{{url('routes')}}">Routes</a></li>    
+                        <li id="route-index"><a href="{{url('routes')}}">Routes</a></li>   
+                        <li id="route-v2-index"><a href="{{url('routes_v2')}}">Routes V2</a></li>    
+                         
                     </ul>
                     <!-- END Submenu -->
                 </li>
                  
-            @endif
-
                 <li id="setting">
                     <a href="#" class="dropdown-toggle">
                         <i class="fa fa-gears"></i>

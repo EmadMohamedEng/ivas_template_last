@@ -477,6 +477,26 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2018-01-04 08:03:46',
                 'function_name' => 'create',
             ),
+            46 => 
+            array (
+                'id' => 110,
+                'method' => 'get',
+                'route' => 'routes_v2',
+                'controller_name' => 'RouteController',
+                'created_at' => '2018-01-08 14:39:13',
+                'updated_at' => '2018-01-08 14:39:13',
+                'function_name' => 'create_v2',
+            ),
+            47 => 
+            array (
+                'id' => 111,
+                'method' => 'post',
+                'route' => 'routes/store_v2',
+                'controller_name' => 'RouteController',
+                'created_at' => '2018-01-08 14:42:22',
+                'updated_at' => '2018-01-08 14:42:22',
+                'function_name' => 'store_v2',
+            ),
         ));
         
         

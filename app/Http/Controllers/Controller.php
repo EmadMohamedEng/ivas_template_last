@@ -11,6 +11,14 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
+    public $form_methods = [
+                            "get"=>"GET",
+                            "post"=>"POST",
+                            "patch"=>"PATCH",
+                            "delete"=>"DELETE",
+                            "put"=>"PUT"
+                            ] ;
+
     public function get_methods($filename)
     {
         $path = $this->file_build_path("app","Http","Controllers") ;
@@ -40,6 +48,6 @@ abstract class Controller extends BaseController
     public function file_build_path(...$segments) {
         return join(DIRECTORY_SEPARATOR, $segments);
     }
-    
-    
+
+
 }

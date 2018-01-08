@@ -26,9 +26,14 @@ class RouteController extends Controller
         return view('route.index',compact('routes')) ; 
     }
 
-    public function index_v2()
+    public function index_v2(Request $request)
     {
-    
+        $controller_name = $request['controller_name'] ;  
+        $selected_routes = RouteModel::where('controller_name',$controller_name)->get() ; 
+        $methods = $this->get_controllers()[$controller_name] ;
+        $roles = Role::all() ;  
+        $method_types = $this->form_methods ; 
+        return view('route.index_v2',compact('selected_routes','method_types','methods','controller_name','roles')) ;
     }
     
     public function buildroutes()
@@ -166,8 +171,20 @@ class RouteController extends Controller
             $query = "SELECT * FROM routes JOIN role_route ON routes.id = role_route.route_id JOIN roles ON role_route.role_id = roles.id WHERE roles.id = $id ORDER BY routes.controller_name" ; // order by here to sort them as the file system sorting
             $methods = \DB::select($query) ;       
         } 
-        return view('route.create',compact('roles','route','controllers','methods')) ;
+        $method_types = $this->form_methods; // Array from main controller 
+        return view('route.create',compact('method_types','roles','route','controllers','methods')) ;
     }
+
+
+    public function create_v2(Request $request)
+    {
+        
+        $controllers = $this->get_controllers() ; // in main controller  
+        
+
+        return view('route.create_v2',compact('controllers')) ; 
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -206,6 +223,61 @@ class RouteController extends Controller
         return redirect('routes') ;
     }
 
+    public function store_v2(Request $request)
+    {
+        /*
+            index of route[i][0] holds method name
+            index of route[i][1] holds route url 
+            index of route[i][2] holds method type , GET , POST ... 
+            index of route[i][3]...route[i][count(route)-1] holds the roles assigned
+        */
+        // var_dump($request['route']) ; 
+        $route_size = count($request['route']);   
+        
+        // RouteModel::where('controller_name',$request['controller_name'])->delete() ; 
+        \DB::table('routes')
+        ->where('controller_name',$request['controller_name'])
+        ->where('function_name','<>','store_v2')
+        ->delete() ; 
+        // handle el function deh
+
+        for($i = 0 ; $i < $route_size ; $i++)
+        {
+            if(isset($request['route'][$i][0]) && ! empty($request['route'][$i][0]) && isset($request['route'][$i][2]) && ! empty($request['route'][$i][2]))
+            {
+                $route['function_name'] = $request['route'][$i][0] ;
+                $route['route'] = $request['route'][$i][1] ; 
+                $route['method'] = $request['route'][$i][2] ;
+                $route['controller_name'] = $request['controller_name'] ;
+                if($route['function_name']!="store_v2")
+                {
+                    $added = RouteModel::create($route) ;
+                }
+                else{
+                    $route_id  = \DB::table('routes')
+                    ->where('controller_name',$request['controller_name'])
+                    ->where('function_name','store_v2')
+                    ->get() ;
+                    $route_id = $route_id[0]->id ; 
+                    $old_route = RouteModel::where('id',$route_id)->first() ; 
+                    $old_route->update($route) ; 
+                    RoleRoute::where('route_id',$route_id)->delete() ; 
+                } 
+                for($j = 3 ; $j < $route_size ; $j++ )
+                {
+                    if(isset($request['route'][$i][$j]))
+                    {
+                        $role_route['role_id'] = $request['route'][$i][$j] ;
+                        $role_route['route_id'] = $added->id ; 
+                        RoleRoute::create($role_route) ; 
+                    }
+                }
+            }
+        }
+        $request->session()->flash('success',"Route Added Successfully");
+        return back() ; 
+    }
+
     /**
      * Display the specified resource.
      *
@@ -228,7 +300,8 @@ class RouteController extends Controller
         $roles = Role::all() ; 
         $route = RouteModel::findOrFail($id) ; 
         $controllers = $this->get_controllers() ;
-        return view('route.create',compact('roles','route','controllers')) ;
+        $method_types = $this->form_methods; // Array from main controller 
+        return view('route.create',compact('method_types','roles','route','controllers')) ;
     }
 
     /**

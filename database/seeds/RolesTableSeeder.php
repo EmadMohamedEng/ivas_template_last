@@ -23,6 +23,15 @@ class RolesTableSeeder extends Seeder
                 'name' => 'super_admin',
                 'created_at' => '0000-00-00 00:00:00',
                 'updated_at' => '0000-00-00 00:00:00',
+                'role_priority' => 0,
+            ),
+            1 => 
+            array (
+                'id' => 6,
+                'name' => 'admin',
+                'created_at' => '2018-01-08 14:40:19',
+                'updated_at' => '2018-01-08 14:40:19',
+                'role_priority' => 2,
             ),
         ));
         

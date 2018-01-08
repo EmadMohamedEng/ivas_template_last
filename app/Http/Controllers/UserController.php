@@ -16,138 +16,101 @@ class UserController extends Controller
 {
 
     public function index()
-    {
-
-            $role_name = "";
-            $role_prio = "";
-            $userdata = \Auth::user()->roles;
-            foreach($userdata as $key => $value)   
-            {
-                $role_name = $value->name;
-                $role_prio = $value->role_priority;
-            }
-            if(($role_name == 'super_admin') || ($role_prio == '1'))
-            {
-                
-                $users = DB::table('users')
-                ->join('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
-                ->join('roles', 'roles.id', '=', 'user_has_roles.role_id')
-                ->select('users.*','roles.name AS role')
-                ->get();
-            }
-            else if(($role_name == 'admin') || ($role_prio == '2'))
-            {
-                $users = DB::table('users')
-                ->join('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
-                ->join('roles', 'roles.id', '=', 'user_has_roles.role_id')
-                ->where(function($q) {
-                $q->where('roles.name', 'admin')
-                ->orWhere('roles.name', 'user');
-                })
-                ->where(function($q) {
-                $q->where('roles.role_priority', '2')
-                ->orWhere('roles.role_priority', '3');
-                })
-                ->select('users.*','roles.name AS role')
-                ->get();
-            }
-            else if (($role_name == 'user') || ($role_prio == '3'))
-            {
-                $users = DB::table('users')
-                ->join('user_has_roles', 'users.id', '=', 'user_has_roles.user_id')
-                ->join('roles', 'roles.id', '=', 'user_has_roles.role_id')
-                ->Where('roles.role_priority', '3')
-                ->Where('roles.name', 'user')
-                ->select('users.*','roles.name AS role')
-                ->get();
-            }
-            else
-            {
-                $users = \App\User::all();
-            }
-            return view('users.index', compact('users'));
+    { 
+        $userdata = \Auth::user() ;
+        $userRole = $userdata->roles()->first() ; 
+        $userPiriority = 999 ; 
+        if($userRole)
+            $userPiriority = $userRole->role_priority ; 
+        $users = User::join('user_has_roles','user_has_roles.user_id','=','users.id')
+        ->join('roles','user_has_roles.role_id','=','roles.id')
+        ->where('roles.role_priority','<=',$userPiriority)
+        ->select('roles.name AS role','users.*')
+        ->get() ; 
+ 
+        return view('users.index', compact('users'));
     }
 
 
     public function create()
     {
-            $roles = Role::all();
-            return view('users.create',compact('roles'));
+        $roles = Role::all();
+        return view('users.create',compact('roles'));
     }
 
 
     public function store(Request $request)
-    {
+    {        
+        # code...
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'role' => 'required',
+            'phone' => 'numeric|unique:users,phone'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
-            # code...
-            $validator = Validator::make($request->all(),[
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required',
-                'role' => 'required',
-                'phone' => 'required|numeric'
-            ]);
-            if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
-            }
 
-            $user = new \App\User();
+        $user = new \App\User();
 
-            $user->email = $request->email;
-            $user->name = $request->name;
-            $user->password = Hash::make($request->password);
-            $user->phone = $request->phone ;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->password = Hash::make($request->password);
+        $user->phone = $request->phone ;
 
-            $user->save();
+        $user->save();
 
-            $user->assignRole($request->role);
+        $user->assignRole($request->role);
 
-            $request->session()->flash('success','User Added Successfully');
-            return redirect('users');
+        $request->session()->flash('success','User Added Successfully');
+        return redirect('users');
     }
 
 
     public function edit($id)
     {
 
-            $user = \App\User::findOrfail($id);
-            $roles = Role::all();
+        $user = \App\User::findOrfail($id);
+        $roles = Role::all();
 
-            return view('users.edit', compact('user', 'roles', 'permissions', 'userRoles', 'userPermissions'));
+        return view('users.edit', compact('user', 'roles', 'permissions', 'userRoles', 'userPermissions'));
     }
 
 
     public function update($id,Request $request)
     {
 
-            # code...
-            $validator = Validator::make($request->all(),[
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email,'.$id,
-                'role' => 'required',
-                'phone' => 'required|numeric|unique:users,phone,'.$id
-            ]);
-            if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
-            }
+        # code...
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required',
+            'phone' => 'numeric|unique:users,phone,'.$id
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
-            $user = \App\User::findOrfail($id);
+        $user = \App\User::findOrfail($id);
 
-            $user->email = $request->email;
-            $user->name = $request->name;
-            $user->phone = $request->phone ;
-            if(isset($request->password) && !empty($request->password))
-            {
-                $user->password = Hash::make($request->password);
-            }
-            \Session::flash('success','User updated successfully');
-            $user->save();
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->phone = $request->phone ;
+        if(isset($request->password) && !empty($request->password))
+        {
+            $user->password = Hash::make($request->password);
+        }
+        \Session::flash('success','User updated successfully');
+        $user->save();
 
-            $user->syncRoles([$request->role]);
+        $user->syncRoles([$request->role]);
 
-            // dd($user->hasAnyRole(['admin']));
+        // dd($user->hasAnyRole(['admin']));
 
-            return redirect('users');
+        return redirect('users');
     }
 
 
@@ -171,22 +134,22 @@ class UserController extends Controller
     {
 
             # code...
-            $user = \App\User::findOrfail($request->user_id);
-            $user->assignRole($request->role_name);
-             \Session::flash('success','Role Added successfully');
-            return redirect('users/edit/'.$request->user_id);
+        $user = \App\User::findOrfail($request->user_id);
+        $user->assignRole($request->role_name);
+            \Session::flash('success','Role Added successfully');
+        return redirect('users/edit/'.$request->user_id);
     }
 
 
     public function revokeRole($role, $user_id)
     {
 
-            # code...
-            $user = \App\User::findorfail($user_id);
+        # code...
+        $user = \App\User::findorfail($user_id);
 
-            $user->removeRole(str_slug($role, ' '));
+        $user->removeRole(str_slug($role, ' '));
 
-            return redirect('users/edit/'.$user_id);
+        return redirect('users/edit/'.$user_id);
     }
 
     public function profile()

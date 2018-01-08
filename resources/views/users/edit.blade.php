@@ -44,9 +44,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.phone') *</label>
+                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.phone') (optional)</label>
                             <div class="col-sm-9 col-lg-10 controls">
-                                <input type="text" name="phone" placeholder="@lang('messages.users.phone')" value="{{$user->phone}}" class="form-control input-lg" required>
+                                <input type="text" name="phone" placeholder="@lang('messages.users.phone')" value="{{$user->phone}}" class="form-control input-lg" >
                             </div>
                         </div>
                         <div class="form-group">

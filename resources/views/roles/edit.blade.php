@@ -30,12 +30,13 @@
                         <div class="form-group" id="priority-type">
                             <label class="col-sm-3 col-lg-2 control-label">Priority *</label>
                             <div class="col-sm-9 col-md-10 controls">
-                                <select class="form-control" id="role_priority" name="role_priority" >
+                                <select class="form-control chosen" id="role_priority" name="role_priority" >
                                     <option value>Select Priority</option>
-                                    <option value="1" @if ($role !=null && $role->role_priority == 1) selected @endif>Super Admin</option>
-                                    <option value="2" @if ($role !=null && $role->role_priority == 2) selected @endif>Admin</option>
-                                    <option value="3" @if ($role !=null && $role->role_priority == 3) selected @endif>Normal User</option>
+                                    <option value="1" @if ($role !=null && $role->role_priority == 1) selected @endif>1</option>
+                                    <option value="2" @if ($role !=null && $role->role_priority == 2) selected @endif>2</option>
+                                    <option value="3" @if ($role !=null && $role->role_priority == 3) selected @endif>3</option>
                                 </select>
+                                <span class="help-inline">1 is the lowest</span>
                             <br/>
                             </div>
                         </div>

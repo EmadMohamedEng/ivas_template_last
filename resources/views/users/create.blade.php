@@ -19,8 +19,7 @@
                     	{{ csrf_field() }}
                     	<div class="form-group">
                             <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.user_name') *</label>
-                            <div class="col-sm-9 col-lg-10 controls">
-                                {{-- {!! Form::text('category_name',null,['placeholder'=>'Category Name','class'=>'form-control input-lg']) !!} --}}
+                            <div class="col-sm-9 col-lg-10 controls"> 
                                 <input type="text" name="name" placeholder="@lang('messages.users.user_name')" class="form-control input-lg" required>
                                 <span class="help-inline">@lang('messages.users.add_user')</span>
                             </div>
@@ -28,24 +27,21 @@
 
                         <div class="form-group">
                             <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.email') *</label>
-                            <div class="col-sm-9 col-lg-10 controls">
-                                {{-- {!! Form::text('category_name',null,['placeholder'=>'Category Name','class'=>'form-control input-lg']) !!} --}}
-                                <input type="email" name="email" placeholder="@lang('messages.users.email')" class="form-control input-lg" required>
-                                {{-- <span class="help-inline">Enter a new Email</span> --}}
+                            <div class="col-sm-9 col-lg-10 controls"> 
+                                <input type="email" name="email" placeholder="@lang('messages.users.email')" class="form-control input-lg" required> 
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.password') *</label>
-                            <div class="col-sm-9 col-lg-10 controls">
-                                {{-- {!! Form::text('category_name',null,['placeholder'=>'Category Name','class'=>'form-control input-lg']) !!} --}}
+                            <div class="col-sm-9 col-lg-10 controls"> 
                                 <input type="password" name="password" placeholder="@lang('messages.users.password')" class="form-control input-lg" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.phone') *</label>
+                            <label class="col-sm-3 col-lg-2 control-label">@lang('messages.users.phone') (optional)</label>
                             <div class="col-sm-9 col-lg-10 controls">
-                                <input type="text" name="phone" placeholder="@lang('messages.users.phone')" class="form-control input-lg" required>
+                                <input type="text" name="phone" placeholder="@lang('messages.users.phone')" class="form-control input-lg">
                             </div>
                         </div>
                         <div class="form-group">

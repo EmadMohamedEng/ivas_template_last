@@ -235,42 +235,53 @@ class RouteController extends Controller
         $route_size = count($request['route']);   
         
         // RouteModel::where('controller_name',$request['controller_name'])->delete() ; 
-        \DB::table('routes')
-        ->where('controller_name',$request['controller_name'])
-        ->where('function_name','<>','store_v2')
-        ->delete() ; 
+        // \DB::table('routes')
+        // ->where('controller_name',$request['controller_name'])
+        // ->where('function_name','<>','store_v2')
+        // ->delete() ; 
         // handle el function deh
 
         for($i = 0 ; $i < $route_size ; $i++)
         {
-            if(isset($request['route'][$i][0]) && ! empty($request['route'][$i][0]) && isset($request['route'][$i][2]) && ! empty($request['route'][$i][2]))
+            if(isset($request['route'][$i][0]) && ! empty($request['route'][$i][0]) 
+                && isset($request['route'][$i][1]) && ! empty($request['route'][$i][1])
+                && isset($request['route'][$i][2]) && ! empty($request['route'][$i][2]))
             {
                 $route['function_name'] = $request['route'][$i][0] ;
                 $route['route'] = $request['route'][$i][1] ; 
                 $route['method'] = $request['route'][$i][2] ;
                 $route['controller_name'] = $request['controller_name'] ;
-                if($route['function_name']!="store_v2")
+
+                $check_route = RouteModel::where('controller_name',$route['controller_name'])
+                ->where('function_name',$route['function_name'])
+                ->first() ; 
+
+                $checker = false ; 
+                if($check_route)
                 {
-                    $added = RouteModel::create($route) ;
+                    $check_route->update($route) ; 
+                    $checker = true ; 
                 }
-                else{
-                    $route_id  = \DB::table('routes')
-                    ->where('controller_name',$request['controller_name'])
-                    ->where('function_name','store_v2')
-                    ->get() ;
-                    $route_id = $route_id[0]->id ; 
-                    $old_route = RouteModel::where('id',$route_id)->first() ; 
-                    $old_route->update($route) ; 
-                    RoleRoute::where('route_id',$route_id)->delete() ; 
-                } 
+                else {
+                    $check_route = RouteModel::create($route) ; 
+                }
+                $check_route->roles_routes()->delete() ; 
+
+                $pivot = array() ; 
                 for($j = 3 ; $j < $route_size ; $j++ )
                 {
                     if(isset($request['route'][$i][$j]))
                     {
-                        $role_route['role_id'] = $request['route'][$i][$j] ;
-                        $role_route['route_id'] = $added->id ; 
-                        RoleRoute::create($role_route) ; 
+                        $role_route = new RoleRoute() ; 
+                        $role_route->role_id = $request['route'][$i][$j] ;
+                        $role_route->route_id = $check_route->id ;  
+                        array_push($pivot,$role_route) ;  
                     }
+                }
+
+                if(sizeof($pivot)>0)
+                {
+                    $check_route->roles_routes()->saveMany($pivot) ; 
                 }
             }
         }

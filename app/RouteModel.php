@@ -9,6 +9,11 @@ class RouteModel extends Model
     protected $table = "routes" ; 
     protected $fillable = ['method','route','controller_name','function_name'] ; 
     
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role','role_route','route_id','id') ; 
+    }
+
     public function roles_routes()
     {
         return $this->hasMany('App\RoleRoute','route_id','id') ; 

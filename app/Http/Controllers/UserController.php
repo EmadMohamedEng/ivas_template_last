@@ -100,11 +100,14 @@ class UserController extends Controller
 
         $user->email = $request->email;
         $user->name = $request->name;
-        $user->phone = $request->phone ;
         if(isset($request->password) && !empty($request->password))
         {
             $user->password = Hash::make($request->password);
         }
+
+        if(isset($request->phone)&&!empty($request->phone))
+            $user->phone = $request->phone ;
+
         \Session::flash('success','User updated successfully');
         $user->save();
 

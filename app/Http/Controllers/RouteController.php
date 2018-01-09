@@ -265,24 +265,22 @@ class RouteController extends Controller
                 else {
                     $check_route = RouteModel::create($route) ; 
                 }
-                $check_route->roles_routes()->delete() ; 
+                
+                $IDs = [] ; 
 
-                $pivot = array() ; 
                 for($j = 3 ; $j < $route_size ; $j++ )
                 {
                     if(isset($request['route'][$i][$j]))
                     {
-                        $role_route = new RoleRoute() ; 
-                        $role_route->role_id = $request['route'][$i][$j] ;
-                        $role_route->route_id = $check_route->id ;  
-                        array_push($pivot,$role_route) ;  
+                        $holder = 
+                        [
+                            'role_id'  => $request['route'][$i][$j],
+                            'route_id' => $check_route->id
+                        ]  ;
+                        array_push($IDs,$holder) ; 
                     }
                 }
-
-                if(sizeof($pivot)>0)
-                {
-                    $check_route->roles_routes()->saveMany($pivot) ; 
-                }
+                $check_route->roles()->sync($IDs) ; 
             }
         }
         $request->session()->flash('success',"Route Added Successfully");

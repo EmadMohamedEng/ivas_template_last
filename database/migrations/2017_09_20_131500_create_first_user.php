@@ -21,6 +21,7 @@ class CreateFirstUser extends Migration
         \DB::table('users')->insert([$user]) ;
 
         $role['name'] = "super_admin" ;
+        $role['role_priority'] = 3 ;
         \DB::table('roles')->insert([$role]) ;
 
         $user_has_role['role_id'] = 1 ;

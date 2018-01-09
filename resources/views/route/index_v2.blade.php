@@ -25,7 +25,12 @@
                                                 <th>method name</th>
                                                 
                                                 @foreach($roles as $role)
-                                                    <th>{{$role->name}}</th>
+                                                    <th>
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" onchange="check_all({{$role->id}})"/>
+                                                        {{$role->name}}
+                                                    </label>
+                                                    </th>
                                                 @endforeach 
                                             </tr>
                                         </thead>
@@ -63,7 +68,8 @@
                                                             <label class="checkbox-inline">
                                                                 <input type="checkbox" 
                                                                         name="route[{{$i}}][{{$j++}}]" 
-                                                                        value="{{$role->id}}" 
+                                                                        value="{{$role->id}}"
+                                                                        class = "check_role_{{$role->id}}" 
                                                                         @foreach($selected_routes as $route) @if($route->function_name == $function_name) @foreach($route->roles_routes as $role_route) @if($role_route->role_id == $role->id) checked @endif @endforeach @endif @endforeach
                                                                         />
                                                             </label>
@@ -88,6 +94,23 @@
 @stop
 
 @section('script')
+    <script>
+        var checked_roles = [] ; 
+        function check_all(role_id)
+        {
+            var index = checked_roles.indexOf(role_id) ;
+            if(index!=-1)
+            { 
+                checked_roles.splice(index,1) ; 
+                $('.check_role_'+role_id).prop('checked', false);
+            }
+            else{ 
+                checked_roles.push(role_id) ; 
+                $('.check_role_'+role_id).prop('checked', true);
+            } 
+        }
+    </script>
+
     <script>
         $('#role').addClass('active');
         $('#route-v2-index').addClass('active');

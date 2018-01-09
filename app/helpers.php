@@ -44,6 +44,13 @@ function get_static_routes()
     Route::resource('static_translation','\App\Http\Controllers\StaticTranslationController');
     });
 
+    Route::group(['middleware' =>['auth',"role:super_admin"]],function(){
+        Route::get('routes_v2','RouteController@create_v2') ;
+        Route::get('routes/index_v2','RouteController@index_v2') ;
+        Route::post('routes/store_v2','RouteController@store_v2') ; 
+    });
+
+
     Route::post('delete_multiselect',function (Request $request){
         if (strlen($request['selected_list'])==0)
         {

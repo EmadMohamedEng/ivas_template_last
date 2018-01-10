@@ -9,11 +9,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
 use Adldap\Laravel\Facades\Adldap;
+use Adldap\AdldapInterface;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+    protected $ldap  ; 
+    protected $databases_base_path ; 
+    public function __construct(AdldapInterface $ldap)
     {
+        $this->ldap = $ldap ; 
+        $this->databases_base_path = base_path()."/database/backups/"  ; 
         $this->middleware('auth');
     }
 
@@ -150,11 +155,83 @@ class DashboardController extends Controller
     }
 
     public function ldap()
-    {
-        $user = Adldap::search()->where('samaccountname', '=', 'abubakr.sokarno@ivas.com')->get();
+    {  
+
+        $users = $this->ldap->search()->users()->get(); 
         
-        return $user ;
+        return $users ;
     }
+
+
+    public function export_DB_backup()
+    {
+        // $this->backup_tables('localhost',env('DB_USERNAME'),env('DB_PASSWORD'),env('DB_DATABASE'));
+        $database_name = env('DB_DATABASE') ;
+        $database_password = env('DB_PASSWORD') ;
+        $database_username = env('DB_USERNAME') ;
+        if($database_password)
+            $database_password = "-p ".$database_password ; 
+        else 
+            $database_password = "" ; 
+
+        $mysqldump_command = "E:/XAMPP/mysql/bin/mysqldump" ; 
+        $command = "$mysqldump_command -u $database_username $database_password $database_name > ".$this->databases_base_path.date("Y-m-d_H-i-s").'.sql' ;
+        $command = str_replace("\\","/",$command) ;  
+
+
+        exec($command) ;
+        \Session::flash('success','Database Exported Successfully') ; 
+        return back() ; 
+    }
+
+    public function list_backups()
+    {
+        $path      = $this->file_build_path("database","backups") ;
+        $files     = scandir($path);  
+        $databases = array() ; 
+        foreach($files as $file)
+            if(strpos($file,".sql"))
+                array_push($databases,$file) ;  
+
+        return view('dashboard.list_backups',compact('databases')) ; 
+    }
+    
+    public function delete_backup(Request $request)
+    {
+        $path = $this->databases_base_path.$request['path'] ;  
+        if(file_exists($path))
+            unlink($path) ; 
+        \Session::flash('success','Back up deleted') ; 
+        return back() ;
+    }
+
+    public function import_DB_backup(Request $request)
+    {
+        
+        $imported_path = $this->databases_base_path.$request['path'] ; 
+        if(! file_exists($imported_path))
+        {
+            \Session::flash('success','Database not found') ; 
+            return back() ;
+        }
+
+        $database_name = env('DB_DATABASE') ;
+        $database_password = env('DB_PASSWORD') ;
+        $database_username = env('DB_USERNAME') ;
+        if($database_password)
+            $database_password = "-p ".$database_password ; 
+        else 
+            $database_password = "" ; 
+
+        $mysqldump_command = "E:/XAMPP/mysql/bin/mysql" ; 
+        $command = "$mysqldump_command -u $database_username $database_password $database_name < ".$imported_path ;
+        $command = str_replace("\\","/",$command) ;   
+        exec($command) ;
+        \Session::flash('success','Database Imported Successfully') ; 
+        return back() ; 
+    }
+
+
 
 }
 

@@ -238,6 +238,8 @@
                     <ul class="submenu">
                         <li id="setting-create"><a href="{{url('setting/new')}}">Add Settings</a></li>
                         <li id="setting-index"><a href="{{url('setting')}}">Settings</a></li>
+                        <li id="setting-import-DB"><a href="{{url('database_backups')}}">Database Backups</a></li>
+                        
                     </ul>
                     <!-- END Submenu -->
                 </li>

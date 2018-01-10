@@ -155,6 +155,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Felixkiss\UniqueWithValidator\ServiceProvider::class,
         Adldap\Laravel\AdldapServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
     ],
 
     /*

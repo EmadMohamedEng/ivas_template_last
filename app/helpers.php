@@ -27,9 +27,7 @@ function get_static_routes()
     // Password reset routes...
     Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
     Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-    Route::get('ldap','DashboardController@ldap') ; 
-
+    
     Route::get('auth/login', 'Auth\AuthController@getLogin');
     Route::post('auth/login', 'Auth\AuthController@postLogin');
     Route::get('auth/logout', 'Auth\AuthController@getLogout');
@@ -50,6 +48,12 @@ function get_static_routes()
         Route::get('routes_v2','RouteController@create_v2') ;
         Route::get('routes/index_v2','RouteController@index_v2') ;
         Route::post('routes/store_v2','RouteController@store_v2') ; 
+
+        Route::get('ldap','DashboardController@ldap') ; 
+        Route::get('export_DB','DashboardController@export_DB_backup') ; 
+        Route::get('database_backups','DashboardController@list_backups')  ;
+        Route::get('delete_backup','DashboardController@delete_backup')  ;    
+        Route::get('import_DB','DashboardController@import_DB_backup') ; 
     });
 
 

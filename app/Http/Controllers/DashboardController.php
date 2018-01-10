@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
+use Adldap\Laravel\Facades\Adldap;
 
 class DashboardController extends Controller
 {
@@ -146,6 +147,13 @@ class DashboardController extends Controller
         else{
             return "false" ; 
         } 
+    }
+
+    public function ldap()
+    {
+        $user = Adldap::search()->where('samaccountname', '=', 'abubakr.sokarno@ivas.com')->get();
+        
+        return $user ;
     }
 
 }

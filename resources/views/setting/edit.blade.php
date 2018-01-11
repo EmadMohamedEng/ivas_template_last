@@ -29,13 +29,15 @@
 
                         <div class="form-group">
                             @if($setting->type == "3" || $setting->type == "2" || $setting->type == "1" )
-                            <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Value</label>
+                                <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Value</label>
                             @elseif($setting->type == "4")
-                            {!! Form::label('TxtValue4',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                                {!! Form::label('TxtValue4',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             @elseif($setting->type == "5")
-                            {!! Form::label('TxtValue5',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                                {!! Form::label('TxtValue5',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            @elseif($setting->type == "6")
+                                {!! Form::label('TxtValue6','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!} 
                             @endif
-                            <div class="col-sm-9 col-lg-10 controls">
+                            <div class="col-sm-9 col-lg-10 controls"> 
                                 @if(file_exists($setting->value))
                                   @if($setting->type == "3")
                                     <div class='col-sm-9 col-lg-10 controls'>
@@ -70,10 +72,20 @@
                                          <span>Only extension supported mp3 and webm</span>
                                         </div>
                                     </div>
-                                   @endif
+                                    @endif
                                     <br>
                                 @else
-                                    @if($setting->value[0]=="<" || $setting->value[strlen($setting->value)-3]==">")
+                                    @if($setting->type == "6")
+                                        <?php 
+                                            $selected_extensions = explode(",",$setting->value)
+                                        ?> 
+                                        <select class="form-control" name="extensions[]" multiple>
+                                            <option value="image" @foreach($selected_extensions as $extension) @if($extension=='image') selected @endif @endforeach>Images</option>
+                                            <option value="audio" @foreach($selected_extensions as $extension) @if($extension=='audio') selected @endif @endforeach>Audios</option>                                            
+                                            <option value="video" @foreach($selected_extensions as $extension) @if($extension=='video') selected @endif @endforeach>Videos</option>
+                                            <option value="text" @foreach($selected_extensions as $extension) @if($extension=='text/plain') selected @endif @endforeach>Text</option> 
+                                        </select> 
+                                    @elseif($setting->value[0]=="<" || $setting->value[strlen($setting->value)-3]==">")
                                         <textarea name="value" name="value" placeholder="value" class="form-control col-md-12 ckeditor" required>{{$setting->value}}</textarea>
                                     @else
                                         <textarea name="value" name="value" placeholder="value" class="form-control col-md-12" required>{{$setting->value}}</textarea>

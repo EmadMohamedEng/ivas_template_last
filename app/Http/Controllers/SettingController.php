@@ -62,7 +62,7 @@ class SettingController extends Controller
            if ($request->hasFile('TxtValue3'))
             {
                 $imgExtensions = array("png","jpeg","jpg");
-                $destinationFolder = "settings_images/";
+                $destinationFolder = "uploads/settings_images/";
                 $file = $request->file("TxtValue3");
                 if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
                 {
@@ -80,7 +80,7 @@ class SettingController extends Controller
            if ($request->hasFile('TxtValue4'))
             {
                 $vidExtensions = array("mp4","flv","3gp");
-                $destinationFolder = "settings_videos/";
+                $destinationFolder = "uploads/settings_videos/";
                 $file = $request->file("TxtValue4");
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
@@ -99,7 +99,7 @@ class SettingController extends Controller
            if ($request->hasFile('TxtValue5'))
             {
                 $audExtensions = array("mp3","webm");
-                $destinationFolder = "settings_sounds/";
+                $destinationFolder = "uploads/settings_sounds/";
                 $file = $request->file("TxtValue5");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
@@ -112,6 +112,15 @@ class SettingController extends Controller
                 $check = true ;
            } 
         }
+        else if($request['myField']==6)
+        {
+            if(count($request['extensions']) > 0 )
+            {
+                $setting->value = implode(",",$request['extensions']) ; 
+                $check = true  ;
+            }
+        }
+
         $setting->key = $request->key;
         if(!$check)
         {
@@ -167,7 +176,7 @@ class SettingController extends Controller
             {
 
                 $imgExtensions = array("png","jpeg","jpg");
-                $destinationFolder = "settings_images/";
+                $destinationFolder = "uploads/settings_images/";
                 $file = $request->file("value");
                 if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
                 {
@@ -190,7 +199,7 @@ class SettingController extends Controller
             {
 
                 $vidExtensions = array("mp4","flv","3gp");
-                $destinationFolder = "settings_videos/";
+                $destinationFolder = "uploads/settings_videos/";
                 $file = $request->file("TxtValue4");
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
@@ -213,7 +222,7 @@ class SettingController extends Controller
             {
 
                 $audExtensions = array("mp3","webm");
-                $destinationFolder = "settings_sounds/";
+                $destinationFolder = "uploads/settings_sounds/";
                 $file = $request->file("TxtValue5");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
@@ -230,7 +239,14 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-      
+        else if($setting->type == 6)
+        {
+            if(count($request['extensions']) > 0 )
+            {
+                $setting->value = implode(",",$request['extensions']) ; 
+                $check = true  ;
+            }
+        }
 
         
         $setting->key = $request->key;

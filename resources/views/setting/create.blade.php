@@ -31,6 +31,7 @@
                                     <option value="3">Image</option>
                                     <option value="4">Video</option>
                                     <option value="5">Audio</option>
+                                    <option value="6">File Manager Uploads Extensions</option>
                                 </select>
                             </div>
                         </div>
@@ -95,6 +96,19 @@
                              <span>Only extension supported mp3 and webm</span>
                             </div>
                         </div>
+
+                        <div class="form-group" hidden id="fileManCont" novalidate>
+                            {!! Form::label('TxtValue6','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            <div class="col-sm-9 col-lg-10 controls">
+                                <select class="form-control" name="extensions[]" multiple>
+                                    <option value="image">Images</option>
+                                    <option value="video">Videos</option>
+                                    <option value="audio">Audios</option>  
+                                    <option value="text">Text</option> 
+                                </select>
+                            </div>
+                        </div>
+
                         
                         <input type="hidden" name="myField" id="myField" value="1" />
 
@@ -113,12 +127,14 @@
 @section('script')
     <script>
         $('select').on('change', function() {
+            $('#key').prop('disabled', false);
             if (this.value == 1) {
                 $('#normal_textarea').hide('slow');
                 $('#image_div').hide('slow') ;
                 $('#videocont').hide('slow');
                 $('#audiocont').hide('slow') ;
                 $('#cktextarea').show(1000);
+                $('#fileManCont').hide('slow') ; 
                 document.getElementById("myField").value = this.value;
             }
             else if (this.value == 2)
@@ -128,6 +144,7 @@
                 $('#cktextarea').hide('slow');
                 $('#videocont').hide('slow');
                 $('#audiocont').hide('slow') ;
+                $('#fileManCont').hide('slow') ; 
                 document.getElementById("myField").value = this.value;
             }
             else if(this.value == 3)
@@ -137,6 +154,7 @@
                 $('#cktextarea').hide('slow');
                 $('#videocont').hide('slow');
                 $('#audiocont').hide('slow') ;
+                $('#fileManCont').hide('slow') ; 
                 document.getElementById("myField").value = this.value;
             }
             else if(this.value == 4)
@@ -146,6 +164,7 @@
                 $('#cktextarea').hide('slow');
                 $('#image_div').hide('slow');
                 $('#audiocont').hide('slow') ;
+                $('#fileManCont').hide('slow') ; 
                 document.getElementById("myField").value = this.value;
             }
             else if (this.value == 5)
@@ -155,8 +174,22 @@
                 $('#cktextarea').hide('slow');
                 $('#image_div').hide('slow');
                 $('#videocont').hide('slow') ;
+                $('#fileManCont').hide('slow') ; 
                 document.getElementById("myField").value = this.value;
             }
+            else if (this.value == 6)
+            {
+                $('#normal_textarea').hide('slow');
+                $('#audiocont').hide('slow') ;
+                $('#cktextarea').hide('slow');
+                $('#image_div').hide('slow');
+                $('#videocont').hide('slow') ;
+                $('#fileManCont').show(1000) ; 
+                $('#key').prop('value',"uploadAllow");  
+                $('#key').prop('disabled', true);
+                document.getElementById("myField").value = this.value;
+            }
+
         });
 
         $('#setting').addClass('active');

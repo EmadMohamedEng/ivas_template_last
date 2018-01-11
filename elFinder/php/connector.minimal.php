@@ -89,7 +89,7 @@ function access($attr, $path, $data, $volume, $isDir, $relpath) {
 		:  null;                                 // else elFinder decide it itself
 }
 
-$allowUploadsExtensions = "all" ; 
+$allowUploadsExtensions = array("all") ; 
 
 $method= "aes-128-cbc";
 $ENCRYPTION_KEY = '!@#$$%~##!@' ; 
@@ -113,6 +113,7 @@ if($run)
 	if($row)
 	{
 		$allowUploadsExtensions = $row[0] ; 
+		$allowUploadsExtensions = explode(",",$allowUploadsExtensions);
 	}
 }
 
@@ -129,7 +130,7 @@ $opts = array(
 			'trashHash'     => 't1_Lw',                     // elFinder's hash of trash folder
 			'winHashFix'    => DIRECTORY_SEPARATOR !== '/', // to make hash same to Linux one on windows too
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
-			'uploadAllow'   => array($allowUploadsExtensions),				// Mimetype `image` and `text/plain` allowed to upload
+			'uploadAllow'   => $allowUploadsExtensions,				// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
 			'accessControl' => 'access'                     // disable and hide dot starting files (OPTIONAL)
 		),

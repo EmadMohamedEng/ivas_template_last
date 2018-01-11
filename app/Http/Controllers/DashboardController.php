@@ -195,11 +195,13 @@ class DashboardController extends Controller
         $database_password = env('DB_PASSWORD') ;
         $database_username = env('DB_USERNAME') ;
         if($database_password)
-            $database_password = "-p ".$database_password ; 
+            $database_password = "-p".$database_password ; 
         else 
             $database_password = "" ; 
 
-        $mysqldump_command = "E:/XAMPP/mysql/bin/mysqldump" ; 
+        // $mysqldump_command = "E:/XAMPP/mysql/bin/mysqldump" ; // for windows 
+        $mysqldump_command = "mysqldump" ; // for linux server 
+    
         $command = "$mysqldump_command -u $database_username $database_password $database_name > ".$this->databases_base_path.date("Y-m-d_H-i-s").'.sql' ;
         $command = str_replace("\\","/",$command) ;  
 
@@ -244,11 +246,13 @@ class DashboardController extends Controller
         $database_password = env('DB_PASSWORD') ;
         $database_username = env('DB_USERNAME') ;
         if($database_password)
-            $database_password = "-p ".$database_password ; 
+            $database_password = "-p".$database_password ; 
         else 
             $database_password = "" ; 
 
-        $mysqldump_command = "E:/XAMPP/mysql/bin/mysql" ; 
+        // $mysqldump_command = "E:/XAMPP/mysql/bin/mysql" ;  // for windows
+        $mysqldump_command = "mysql" ;    // for linux server 
+        
         $command = "$mysqldump_command -u $database_username $database_password $database_name < ".$imported_path ;
         $command = str_replace("\\","/",$command) ;   
         exec($command) ;

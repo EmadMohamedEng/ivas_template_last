@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="box-content">
-                {!! Form::open(["url"=>"routes/index_v2","class"=>"form-horizontal","method"=>"GET"]) !!}
+                {!! Form::open(["url"=>"routes/index_v2","class"=>"form-horizontal","method"=>"GET","id"=>"form_body"]) !!}
                     <div class="form-group">
                         <label class="col-sm-3 col-lg-2 control-label">Select Controller</label>
                         <div class="col-sm-9 col-md-10 controls">
@@ -31,12 +31,7 @@
                         <br/>
                         </div>
                     </div> 
-
-                    <div class="form-group">
-                        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-                            <input type="submit" class="btn btn-primary" value="GO">
-                        </div>
-                    </div>
+ 
                     <div class="form-group">
                         <label class="col-sm-3 col-lg-2 control-label" id="methods_word"></label>
                         <div class="col-sm-9 col-md-10 controls">
@@ -61,13 +56,15 @@
     <script>
         function get_controller_methods(element)
         {
-            $.get('get_controller_methods?controller='+element.value,function(result){
-                $('#methods_word').html("<strong>Methods</strong>");
-                 result.methods.forEach(function(item){
-                     if(item.length>1)
-                        $('#methods').append("<li><strong>"+item+"</strong></li>") ;
-                 });
-            });
+
+            $('#form_body').submit();
+            // $.get('get_controller_methods?controller='+element.value,function(result){
+            //     $('#methods_word').html("<strong>Methods</strong>");
+            //      result.methods.forEach(function(item){
+            //          if(item.length>1)
+            //             $('#methods').append("<li><strong>"+item+"</strong></li>") ;
+            //      });
+            // });
         }
  
 

@@ -89,6 +89,32 @@ function access($attr, $path, $data, $volume, $isDir, $relpath) {
 		:  null;                                 // else elFinder decide it itself
 }
 
+$allowUploadsExtensions = "all" ; 
+
+$method= "aes-128-cbc";
+$ENCRYPTION_KEY = '!@#$$%~##!@' ; 
+$iv = str_repeat(chr(0), 16); 
+$decrypted_username = openssl_decrypt($_COOKIE['nn'], $method, $ENCRYPTION_KEY, 0, $iv); // database username 
+$decrypted_password = openssl_decrypt($_COOKIE['pp'], $method, $ENCRYPTION_KEY, 0, $iv); // database password 
+$decrypted_database = openssl_decrypt($_COOKIE['dd'], $method, $ENCRYPTION_KEY, 0, $iv); // database name 
+
+
+$host = "localhost"  ;  
+
+$conn = mysqli_connect($host,$decrypted_username,$decrypted_password,$decrypted_database) ; 
+
+$query = "SELECT value FROM settings WHERE settings.key LIKE '%uploadAllow%' " ; 
+
+$run = mysqli_query($conn,$query) ;
+
+if($run)
+{
+	$row = mysqli_fetch_row($run) ; 
+	if($row)
+	{
+		$allowUploadsExtensions = $row[0] ; 
+	}
+}
 
 // Documentation for connector options:
 // https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options
@@ -98,12 +124,12 @@ $opts = array(
 		// Items volume
 		array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
-			'path'          => '../../uploads/',             // path to files (REQUIRED)
+			'path'          => '../../uploads/',            // path to files (REQUIRED)
 			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../../uploads/', // URL to files (REQUIRED)
 			'trashHash'     => 't1_Lw',                     // elFinder's hash of trash folder
 			'winHashFix'    => DIRECTORY_SEPARATOR !== '/', // to make hash same to Linux one on windows too
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
-			'uploadAllow'   => array('all'),// Mimetype `image` and `text/plain` allowed to upload
+			'uploadAllow'   => array($allowUploadsExtensions),				// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
 			'accessControl' => 'access'                     // disable and hide dot starting files (OPTIONAL)
 		),
@@ -115,7 +141,7 @@ $opts = array(
 			'tmbURL'        => dirname($_SERVER['PHP_SELF']) . '/../files/.trash/.tmb/',
 			'winHashFix'    => DIRECTORY_SEPARATOR !== '/', // to make hash same to Linux one on windows too
 			'uploadDeny'    => array('all'),                // Recomend the same settings as the original volume that uses the trash
-			'uploadAllow'   => array('all'),				// Same as above
+			'uploadAllow'   => array($allowUploadsExtensions),				// Same as above
 			'uploadOrder'   => array('deny', 'allow'),      // Same as above
 			'accessControl' => 'access',                    // Same as above
 		)

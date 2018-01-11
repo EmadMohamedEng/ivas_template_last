@@ -99,8 +99,33 @@ class DashboardController extends Controller
         //
     }
 
+
     public function file_manager()
     {
+    
+        $iv = str_repeat(chr(0), 16); 
+        $cookie_name = "nn"; // username 
+        $method= "aes-128-cbc";
+        $cookie_value = env('DB_USERNAME') ;
+        $ENCRYPTION_KEY = '!@#$$%~##!@' ; 
+        $cookie_value = openssl_encrypt($cookie_value, $method, $ENCRYPTION_KEY, 0, $iv);
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/"); // 86400 = 1 day 
+         
+        $cookie_name = "pp"; // password  
+        $method= "aes-128-cbc";
+        $cookie_value = env('DB_PASSWORD') ;
+        $ENCRYPTION_KEY = '!@#$$%~##!@' ; 
+        $cookie_value = openssl_encrypt($cookie_value, $method, $ENCRYPTION_KEY, 0, $iv);
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/"); // 86400 = 1 day 
+
+
+        $cookie_name = "dd"; // database name
+        $method= "aes-128-cbc";
+        $cookie_value = env('DB_DATABASE') ;
+        $ENCRYPTION_KEY = '!@#$$%~##!@' ; 
+        $cookie_value = openssl_encrypt($cookie_value, $method, $ENCRYPTION_KEY, 0, $iv);
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 2), "/"); // 86400 = 1 day 
+
         return view('dashboard.file_manager');
     }
     

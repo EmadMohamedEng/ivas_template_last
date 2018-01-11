@@ -22,7 +22,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 col-lg-2 control-label">Select Controller</label>
                         <div class="col-sm-9 col-md-10 controls">
-                            <select class="form-control chosen" name="controller_name" required>
+                            <select class="form-control chosen-rtl" onchange="get_controller_methods(this)" name="controller_name" required>
                                 <option value>Select Priority</option>
                                 @foreach($controllers as $controller_name=>$item)
                                     <option value="{{$controller_name}}">{{$controller_name}}</option>
@@ -37,7 +37,18 @@
                             <input type="submit" class="btn btn-primary" value="GO">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-lg-2 control-label" id="methods_word"></label>
+                        <div class="col-sm-9 col-md-10 controls">
+                            <ul id="methods">
+                            
+                            </ul>
+                        </div>
+                    </div>
                 {!! Form::close() !!}
+
+
+                      
                 </div>
             </div>
         </div>
@@ -47,6 +58,20 @@
 @stop
 
 @section('script')
+    <script>
+        function get_controller_methods(element)
+        {
+            $.get('get_controller_methods?controller='+element.value,function(result){
+                $('#methods_word').html("<strong>Methods</strong>");
+                 result.methods.forEach(function(item){
+                     if(item.length>1)
+                        $('#methods').append("<li><strong>"+item+"</strong></li>") ;
+                 });
+            });
+        }
+ 
+
+    </script>
     <script>
         $('#role').addClass('active');
         $('#route-v2-index').addClass('active');

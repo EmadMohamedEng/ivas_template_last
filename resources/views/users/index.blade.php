@@ -25,12 +25,11 @@
 						<table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
 							<thead>
 							<tr>
-								<th style="width:18px"><input type="checkbox"></th>
+								<th style="width:18px"><input type="checkbox" onclick="select_all()"></th>
 								<th>@lang('messages.users.user_name')</th>
 								<th>@lang('messages.users.email')</th>
 								<th>@lang('messages.users.role')</th>
-								<th>@lang('messages.users.phone')</th>
-								{{-- <th>Role</th> --}}
+								<th>@lang('messages.users.phone')</th> 
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
 							</tr>
 							</thead>
@@ -38,12 +37,11 @@
 							@foreach($users as $user)
 								@if($user->email!=\Auth::user()->email)
 									<tr class="table-flag-blue">
-										<th><input type="checkbox" name="selected_rows[]" value="{{$user->id}}" onclick="collect_selected(this)"></th>
+										<th><input type="checkbox" name="selected_rows[]" class="users" value="{{$user->id}}" onclick="collect_selected(this)"></th>
 										<td>{{$user->name}}</td>
 										<td>{{$user->email}}</td>
 										<td>{{$user->role}}</td>
-										<td>{{$user->phone}}</td>
-										{{-- <td>{{$user->role}}</td> --}}
+										<td>{{$user->phone}}</td> 
 										<td class="visible-md visible-lg">
 											<div class="btn-group">
 												<a class="btn btn-sm show-tooltip" title="" href="{{url('users/'.$user->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>
@@ -63,6 +61,33 @@
 @stop
 
 @section('script')
+	<script>
+	var check = false ; 
+		function select_all()
+		{
+			if(!check)
+			{
+				$('.users').prop("checked",!check);
+				<?php
+				foreach($users as $user)
+				{
+					if($user->email!=\Auth::user()->email){
+				?>
+						collect_selected("{{$user->id}}") ;
+				<?php 
+						}
+					}	
+				?>
+				check = true ; 
+			}
+			else
+			{
+				$('.users').prop("checked",!check);
+				check = false ;
+				clear_selected() ; 
+			}
+		}
+	</script>
 	<script>
 		$('#user').addClass('active');
 		$('#user-index').addClass('active');

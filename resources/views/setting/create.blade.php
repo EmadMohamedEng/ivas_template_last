@@ -22,10 +22,12 @@
 
                     <form action="{{url('setting')}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data"  novalidate>
               			{!! csrf_field() !!}
+                          <input id="hidden_key" name="key" type="hidden" />
+                          
                         <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Setting type</label>
                             <div class="col-sm-9 col-lg-10 controls">
-                                <select class="form-control chosen-rtl">
+                                <select id="first_select" class="form-control chosen-rtl">
                                     <option value="1">Advanced Editor</option>
                                     <option value="2">Normal Editor</option>
                                     <option value="3">Image</option>
@@ -93,7 +95,7 @@
                             <div class="col-sm-9 col-lg-10 controls">
                                 {!! Form::file('TxtValue5',["accept"=>"audio/*",'class'=>'default']) !!}
                              <span class='label label-important'>NOTE!</span>
-                             <span>Only extension supported mp3 and webm</span>
+                             <span>Only extension supported mp3, webm, and wav</span>
                             </div>
                         </div>
 
@@ -104,7 +106,8 @@
                                     <option value="image">Images</option>
                                     <option value="video">Videos</option>
                                     <option value="audio">Audios</option>  
-                                    <option value="text">Text</option> 
+                                    <option value="text">Text</option>
+                                    <option value="all">All Extensions</option>  
                                 </select>
                             </div>
                         </div>
@@ -126,8 +129,9 @@
 @stop
 @section('script')
     <script>
-        $('select').on('change', function() {
+        $('#first_select').on('change', function() {
             $('#key').prop('disabled', false);
+            $('#hidden_key').val('') ; 
             if (this.value == 1) {
                 $('#normal_textarea').hide('slow');
                 $('#image_div').hide('slow') ;
@@ -174,7 +178,8 @@
                 $('#cktextarea').hide('slow');
                 $('#image_div').hide('slow');
                 $('#videocont').hide('slow') ;
-                $('#fileManCont').hide('slow') ; 
+                $('#fileManCont').hide('slow') ;
+                 
                 document.getElementById("myField").value = this.value;
             }
             else if (this.value == 6)
@@ -185,8 +190,9 @@
                 $('#image_div').hide('slow');
                 $('#videocont').hide('slow') ;
                 $('#fileManCont').show(1000) ; 
-                $('#key').prop('value',"uploadAllow");  
                 $('#key').prop('disabled', true);
+                $('#key').prop('value',"uploadAllow");   
+                $('#hidden_key').val('uploadAllow') ; 
                 document.getElementById("myField").value = this.value;
             }
 

@@ -34,8 +34,9 @@
                                     <tr>
                                         <td>{{$database}}</td> 
                                         <td>
-                                            <a class="btn btn-circle show-tooltip" title="" href="{{url('import_DB?path='.$database)}}" data-original-title="Import This DB"><i class="fa fa-upload"></i></a>                                            
-                                            <a class="btn btn-circle show-tooltip btn-danger" title="" href="{{url('delete_backup?path='.$database)}}" data-original-title="Delete This DB"><i class="fa fa-trash"></i></a>                                             
+                                            <a class="btn btn-circle show-tooltip" title="Import This DB" href="{{url('import_DB?path='.$database)}}"><i class="fa fa-upload"></i></a>
+                                            <a class="btn btn-circle show-tooltip btn-danger" href="{{url('delete_backup?path='.$database)}}" title="Delete This DB"><i class="fa fa-trash"></i></a>        
+                                            <a class="btn btn-circle show-tooltip btn-success" target="_blank" href="{{url('download_backup?path='.$database)}}"  title="Download This Backup"><i class="fa fa-save"></i></a>
                                         </td>
                                     </tr>
                                     
@@ -47,11 +48,11 @@
             </div>
         </div>
     </div>
-
+     
 
 @stop 
 
-@section('script')
+@section('script') 
     <script> 
         $('#setting').addClass('active');
         $('#setting-import-DB').addClass('active');

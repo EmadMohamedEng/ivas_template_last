@@ -22,18 +22,17 @@
                     </div>
                     <br><br>
 					<div class="table-responsive">
-					    <table class="table table-advance">
-					        <thead>
-					            <tr>
-									<th style="width:18px"><input type="checkbox"></th>
-					                <th>@lang('messages.roles.role-name')</th>
-					                <th class="visible-md visible-lg" style="width:130px">@lang('messages.action')</th>
-					            </tr>
-					        </thead>
-					        <tbody>
+						<table class="table table-advance">
+							<thead>
+								<tr>
+									<th style="width:18px"><input type="checkbox" onclick="select_all()"></th>
+									<th>Role name</th> 
+									<th class="visible-md visible-lg" style="width:130px">Action</th>
+								</tr>
+							</thead>
 						        @foreach($roles as $role)
 						            <tr class="table-flag-blue">
-										<th><input type="checkbox" name="selected_rows[]" value="{{$role->id}}" onclick="collect_selected(this)"></th>
+										<th><input type="checkbox" name="selected_rows[]" value="{{$role->id}}" class="roles" onclick="collect_selected(this)"></th>
 						                <td>{{$role->name}}</td>
 						                <td class="visible-md visible-lg">
 						                    <div class="btn-group">
@@ -56,6 +55,32 @@
 
 @stop
 @section('script')
+<script>
+	var check = false ; 
+		function select_all()
+		{
+			if(!check)
+			{
+				$('.roles').prop("checked",!check);
+				<?php
+				foreach($roles as $role)
+				{ 
+				?>
+					collect_selected("{{$role->id}}") ;
+				<?php 
+					 
+				}	
+				?>
+				check = true ; 
+			}
+			else
+			{
+				$('.roles').prop("checked",!check);
+				check = false ;
+				clear_selected() ; 
+			}
+		}
+	</script>
 	<script>
 		$('#role').addClass('active');
 		$('#role-index').addClass('active');

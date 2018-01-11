@@ -67,7 +67,7 @@ class SettingController extends Controller
                 if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
                 {
                     \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
-                    return redirect('setting');
+                    return back();
                 }
                 $uniqueid = uniqid();
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
@@ -85,7 +85,7 @@ class SettingController extends Controller
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
                     \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
-                    return redirect('setting');
+                    return back();
                 }
                 $uniqueid = uniqid();
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
@@ -98,13 +98,13 @@ class SettingController extends Controller
         {
            if ($request->hasFile('TxtValue5'))
             {
-                $audExtensions = array("mp3","webm");
+                $audExtensions = array("mp3","webm","wav");
                 $destinationFolder = "uploads/settings_sounds/";
                 $file = $request->file("TxtValue5");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
-                    \Session::flash('failed','Audio must be mp3, webm only !! No updates takes place, try again with that extensions please..');
-                    return redirect('setting');
+                    \Session::flash('failed','Audio must be mp3, webm and wav only !! No updates takes place, try again with that extensions please..');
+                    return back() ;
                 }
                 $uniqueid = uniqid();
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
@@ -117,6 +117,16 @@ class SettingController extends Controller
             if(count($request['extensions']) > 0 )
             {
                 $setting->value = implode(",",$request['extensions']) ; 
+
+                foreach($request['extensions'] as $extension)
+                {
+                    if($extension=="all")
+                    {
+                        $setting->value = "all" ; 
+                        break ; 
+                    }
+                }
+
                 $check = true  ;
             }
         }
@@ -181,7 +191,7 @@ class SettingController extends Controller
                 if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
                 {
                     \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
-                    return redirect('setting');
+                    return back();
                 }
                 $uniqueid = uniqid();
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
@@ -204,7 +214,7 @@ class SettingController extends Controller
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
                     \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
-                    return redirect('setting');
+                    return back();
                 }
                 $uniqueid = uniqid();
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
@@ -221,13 +231,13 @@ class SettingController extends Controller
             if ($request->hasFile('TxtValue5'))
             {
 
-                $audExtensions = array("mp3","webm");
+                $audExtensions = array("mp3","webm","wav");
                 $destinationFolder = "uploads/settings_sounds/";
                 $file = $request->file("TxtValue5");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
-                    \Session::flash('failed','Audio must be mp3, webm only !! No updates takes place, try again with that extensions please..');
-                    return redirect('setting');
+                    \Session::flash('failed','Audio must be mp3, webm, and wav !! No updates takes place, try again with that extensions please..');
+                    return back();
                 }
                 $uniqueid = uniqid();
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
@@ -244,6 +254,16 @@ class SettingController extends Controller
             if(count($request['extensions']) > 0 )
             {
                 $setting->value = implode(",",$request['extensions']) ; 
+                
+                foreach($request['extensions'] as $extension)
+                {
+                    if($extension=="all")
+                    {
+                        $setting->value = "all" ; 
+                        break ; 
+                    }
+                }
+                
                 $check = true  ;
             }
         }

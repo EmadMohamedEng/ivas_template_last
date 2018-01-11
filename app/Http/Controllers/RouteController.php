@@ -25,16 +25,6 @@ class RouteController extends Controller
         $routes = RouteModel::all() ;  
         return view('route.index',compact('routes')) ; 
     }
-
-    public function index_v2(Request $request)
-    {
-        $controller_name = $request['controller_name'] ;  
-        $selected_routes = RouteModel::where('controller_name',$controller_name)->get() ; 
-        $methods = $this->get_controllers()[$controller_name] ;
-        $roles = Role::all() ;  
-        $method_types = $this->form_methods ; 
-        return view('route.index_v2',compact('selected_routes','method_types','methods','controller_name','roles')) ;
-    }
     
     public function buildroutes()
     {
@@ -176,16 +166,6 @@ class RouteController extends Controller
     }
 
 
-    public function create_v2(Request $request)
-    {
-        
-        $controllers = $this->get_controllers() ; // in main controller  
-        
-
-        return view('route.create_v2',compact('controllers')) ; 
-    }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -223,24 +203,35 @@ class RouteController extends Controller
         return redirect('routes') ;
     }
 
+
+    public function index_v2(Request $request)
+    {
+        $controller_name = $request['controller_name'] ;  
+        $selected_routes = RouteModel::where('controller_name',$controller_name)->get() ; 
+        $methods = $this->get_controllers()[$controller_name] ;
+        $roles = Role::all() ;  
+        $method_types = $this->form_methods ; 
+        return view('route.index_v2',compact('selected_routes','method_types','methods','controller_name','roles')) ;
+    }
+
+    public function create_v2(Request $request)
+    {
+        
+        $controllers = $this->get_controllers() ; // in main controller  
+    
+        return view('route.create_v2',compact('controllers')) ; 
+    }
+
+    public function get_methods_for_selected_controller(Request $request)
+    {
+        $controller = $request['controller'] ; 
+        $methods = $this->get_controllers()[$controller] ; 
+        return response()->json(["methods"=>$methods]) ; 
+    }
+
     public function store_v2(Request $request)
     {
-        /*
-            index of route[i][0] holds method name
-            index of route[i][1] holds route url 
-            index of route[i][2] holds method type , GET , POST ... 
-            index of route[i][3]...route[i][count(route)-1] holds the roles assigned
-        */
-        // var_dump($request['route']) ; 
         $route_size = count($request['route']);   
-        
-        // RouteModel::where('controller_name',$request['controller_name'])->delete() ; 
-        // \DB::table('routes')
-        // ->where('controller_name',$request['controller_name'])
-        // ->where('function_name','<>','store_v2')
-        // ->delete() ; 
-        // handle el function deh
-
         for($i = 0 ; $i < $route_size ; $i++)
         {
             if(isset($request['route'][$i][0]) && ! empty($request['route'][$i][0]) 

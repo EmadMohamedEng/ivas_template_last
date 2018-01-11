@@ -28,7 +28,7 @@
 						<table class="table table-advance">
 						<thead>
 							<tr>
-								<th style="width:18px"><input type="checkbox"></th>
+								<th style="width:18px"><input type="checkbox" onclick="select_all()"></th>
 								<th>Key</th>
 								<th>Value</th>
 								{{-- <th>Created at</th> --}}
@@ -45,12 +45,12 @@
                                      @if($setting->type == "3")
 										<img src="{{url($setting->value)}}" width="300" height="225">
                                      @elseif($setting->type == "4")
-                                       <iframe width="300" height="225"
-                                        src="{{url($setting->value)}}">
-                                        </iframe>
+                                       <video controls="" width="300" height="225">
+                                        	<source src="{{url($setting->value)}}" preload="none">
+                                        </video>
                                      @elseif($setting->type == "5")
                                        <audio controls="">
-                                            <source src="{{url($setting->value)}}" type="audio/mpeg">
+                                            <source src="{{url($setting->value)}}" type="audio/mpeg" preload="none">
                                         </audio>
                                      @endif
 									@else
@@ -77,6 +77,21 @@
 
 @stop
 @section('script')
+
+	<script>
+		function select_all()
+		{
+			<?php
+				foreach($settings as $setting)
+				{
+			?>
+					collect_selected("{{$setting->id}}") ;
+			<?php 
+				}	
+			?>
+		}
+	</script>
+
 	<script>
 		$('#setting').addClass('active');
 		$('#setting-index').addClass('active');

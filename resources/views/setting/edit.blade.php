@@ -69,7 +69,7 @@
                                         <div class="col-sm-9 col-lg-10 controls">
                                             {!! Form::file('TxtValue5',["accept"=>"audio/*",'class'=>'default']) !!}
                                          <span class='label label-important'>NOTE!</span>
-                                         <span>Only extension supported mp3 and webm</span>
+                                         <span>Only extension supported mp3, webm, and wav</span>
                                         </div>
                                     </div>
                                     @endif
@@ -83,7 +83,8 @@
                                             <option value="image" @foreach($selected_extensions as $extension) @if($extension=='image') selected @endif @endforeach>Images</option>
                                             <option value="audio" @foreach($selected_extensions as $extension) @if($extension=='audio') selected @endif @endforeach>Audios</option>                                            
                                             <option value="video" @foreach($selected_extensions as $extension) @if($extension=='video') selected @endif @endforeach>Videos</option>
-                                            <option value="text" @foreach($selected_extensions as $extension) @if($extension=='text/plain') selected @endif @endforeach>Text</option> 
+                                            <option value="text" @foreach($selected_extensions as $extension) @if($extension=='text') selected @endif @endforeach>Text</option> 
+                                            <option value="all" @foreach($selected_extensions as $extension) @if($extension=='all') selected @endif @endforeach>All Extensions</option> 
                                         </select> 
                                     @elseif($setting->value[0]=="<" || $setting->value[strlen($setting->value)-3]==">")
                                         <textarea name="value" name="value" placeholder="value" class="form-control col-md-12 ckeditor" required>{{$setting->value}}</textarea>

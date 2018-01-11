@@ -9,15 +9,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
 use Adldap\Laravel\Facades\Adldap;
-use Adldap\AdldapInterface;
+//use Adldap\AdldapInterface;
 
 class DashboardController extends Controller
 {
     protected $ldap  ; 
     protected $databases_base_path ; 
-    public function __construct(AdldapInterface $ldap)
+    public function __construct(/*AdldapInterface $ldap*/)
     {
-        $this->ldap = $ldap ; 
+        //$this->ldap = $ldap ; 
         $this->databases_base_path = base_path()."/database/backups/"  ; 
         $this->middleware('auth');
     }
@@ -182,11 +182,26 @@ class DashboardController extends Controller
     public function ldap()
     {  
 
-        $users = $this->ldap->search()->users()->get(); 
+        // $users = $this->ldap->search()->users()->get(); 
         
-        return $users ;
+        // return $users ;
     }
 
+    public function download_backup(Request $request)
+    {
+        $file = $this->databases_base_path.$request['path'] ; 
+        if (file_exists($file)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="'.basename($file).'"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            readfile($file);
+            exit;
+        }
+    }
 
     public function export_DB_backup()
     {
@@ -220,7 +235,9 @@ class DashboardController extends Controller
             if(strpos($file,".sql"))
                 array_push($databases,$file) ;  
 
-        return view('dashboard.list_backups',compact('databases')) ; 
+        $full_path = $this->databases_base_path  ; 
+        $full_path = str_replace("\\","/",$full_path);
+        return view('dashboard.list_backups',compact('databases','full_path')) ; 
     }
     
     public function delete_backup(Request $request)

@@ -407,6 +407,18 @@
             $("audio").not(this).each(function(index, audio) {
                 audio.pause();
             });
+            $("video").each(function(index,video){
+                video.pause();
+            });
+        });
+
+        $("video").on("play", function() {
+            $("video").not(this).each(function(index, video) {
+                video.pause();
+            });
+            $("audio").each(function(index,audio){
+                audio.pause();
+            });
         });
     });
 </script>
@@ -432,19 +444,34 @@
     var selected_list = [] ;
     var checker_list = [] ;
     function collect_selected(element) {
-        if (checker_list[element.value])
+        var id ; 
+        if(! element.value)
         {
-            var index = selected_list.indexOf(element.value);
+            id = element ;  
+        }
+        else { 
+            id = element.value ; 
+        }
+         
+        if (checker_list[id])
+        {
+            var index = selected_list.indexOf(id);
             selected_list.splice(index,1) ;
-            checker_list[element.value] = false ;
+            checker_list[id] = false ;
         }
         else{
-            if (! selected_list.includes(element.value))
+            if (! selected_list.includes(id))
             {
-                selected_list.push(element.value) ;
-                checker_list[element.value] = true ;
+                selected_list.push(id) ;
+                checker_list[id] = true ;
             }
         }
+    }
+
+    function clear_selected()
+    {
+        selected_list = [] ;
+        checker_list = [] ;
     }
 
 </script>

@@ -47,13 +47,16 @@ function get_static_routes()
     Route::group(['middleware' =>['auth',"role:super_admin"]],function(){
         Route::get('routes_v2','RouteController@create_v2') ;
         Route::get('routes/index_v2','RouteController@index_v2') ;
+        Route::get('get_controller_methods','RouteController@get_methods_for_selected_controller') ; 
         Route::post('routes/store_v2','RouteController@store_v2') ; 
+
 
         Route::get('ldap','DashboardController@ldap') ; 
         Route::get('export_DB','DashboardController@export_DB_backup') ; 
         Route::get('database_backups','DashboardController@list_backups')  ;
         Route::get('delete_backup','DashboardController@delete_backup')  ;    
         Route::get('import_DB','DashboardController@import_DB_backup') ; 
+        Route::get('download_backup','DashboardController@download_backup') ; 
     });
 
 

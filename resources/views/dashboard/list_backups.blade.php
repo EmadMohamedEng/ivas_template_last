@@ -17,7 +17,7 @@
                 <div class="box-content">
                     <div class="btn-toolbar pull-right">
                         <div class="btn-group">
-                            <a class="btn btn-circle show-tooltip" title="" href="{{url('export_DB')}}" data-original-title="Export current DB"><i class="fa fa-download"></i></a>
+                            <!-- <a class="btn btn-circle show-tooltip" title="" href="{{url('export_DB')}}" data-original-title="Export current DB"><i class="fa fa-download"></i></a> -->
                         </div>
                     </div>
                     <br><br>
@@ -34,8 +34,8 @@
                                     <tr>
                                         <td>{{$database}}</td> 
                                         <td>
-                                            <a class="btn btn-circle show-tooltip" title="Import This DB" href="{{url('import_DB?path='.$database)}}"><i class="fa fa-upload"></i></a>
-                                            <a class="btn btn-circle show-tooltip btn-danger" href="{{url('delete_backup?path='.$database)}}" title="Delete This DB"><i class="fa fa-trash"></i></a>        
+                                            <!-- <a class="btn btn-circle show-tooltip" title="Import This DB" href="{{url('import_DB?path='.$database)}}"><i class="fa fa-upload"></i></a> -->
+                                            <a class="btn btn-circle show-tooltip btn-danger" href="{{url('delete_backup?path='.$database)}}" onclick="return confirm('Are you sure you want to delete this backup ?');" title="Delete This DB"><i class="fa fa-trash"></i></a>        
                                             <a class="btn btn-circle show-tooltip btn-success" target="_blank" href="{{url('download_backup?path='.$database)}}"  title="Download This Backup"><i class="fa fa-save"></i></a>
                                         </td>
                                     </tr>

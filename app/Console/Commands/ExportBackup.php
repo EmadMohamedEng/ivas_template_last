@@ -38,6 +38,9 @@ class ExportBackup extends Command
     public function handle()
     {
         $database_base_path =  base_path()."/database/backups/" ; 
+        if(!file_exists($database_base_path))
+            mkdir($database_base_path, 0777, true) ;
+     
         $database_name = env('DB_DATABASE') ;
         $database_password = env('DB_PASSWORD') ;
         $database_username = env('DB_USERNAME') ;

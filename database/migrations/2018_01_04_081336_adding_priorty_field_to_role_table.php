@@ -12,9 +12,9 @@ class AddingPriortyFieldToRoleTable extends Migration
      */
     public function up()
     {
-         Schema::table('roles', function($table) {
-             $table->integer('role_priority');
-         });
+         // Schema::table('roles', function($table) {
+         //     $table->integer('role_priority');
+         // });
     }
 
     /**
@@ -24,8 +24,8 @@ class AddingPriortyFieldToRoleTable extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function($table) {
-        $table->dropColumn('role_priority');
-        });
+        // Schema::table('roles', function($table) {
+        // $table->dropColumn('role_priority');
+        // });
     }
 }

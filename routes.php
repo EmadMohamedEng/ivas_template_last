@@ -21,21 +21,41 @@
 */
  
 Route::group(['middleware'=>['auth','role:super_admin']], function () {
-Route::get('dashboard','DashboardController@index');
+Route::get('types/index','TypeController@index');
+Route::get('types/create','TypeController@create');
+Route::post('types','TypeController@store');
+Route::get('types/{id}/edit','TypeController@edit');
+Route::patch('types/{id}','TypeController@update');
+Route::get('types/{id}/delete','TypeController@destroy');
+Route::get('setting','SettingController@index');
+Route::get('setting/new','SettingController@create');
+Route::post('setting','SettingController@store');
+Route::get('setting/{id}/edit','SettingController@edit');
+Route::post('setting/{id}/update','SettingController@update');
+Route::get('setting/{id}/delete','SettingController@destroy');
+Route::post('sortabledatatable','SettingController@updateOrder');
+Route::get('routes','RouteController@index');
+Route::get('buildroutes','RouteController@buildroutes');
+Route::get('routes/create','RouteController@create');
+Route::post('routes','RouteController@store');
+Route::get('routes/index_v2','RouteController@index_v2');
+Route::get('routes/{id}/edit','RouteController@edit');
+});
+ 
+
+Route::get('users','UserController@index');
+Route::get('users/new','UserController @create');
+Route::post('users','UserController@store');
+Route::get('dashboard','DashboardController@ index');
+Route::get('/','DashboardController@index');
 Route::get('user_profile','UserController@profile');
 Route::post('user_profile/updatepassword','UserController@UpdatePassword');
 Route::post('user_profile/updateprofilepic','UserController@UpdateProfilePicture');
-Route::get('users/{id}/delete','UserController@destroy');
 Route::post('user_profile/updateuserdata','UserController@UpdateNameAndEmail');
+Route::get('users/{id}/delete','UserController@destroy');
 Route::get('users/{id}/edit','UserController@edit');
 Route::post('users/{id}/update','UserController@update');
 Route::get('static_translation','StaticTranslationController@index');
-Route::get('setting','SettingController@index');
-Route::get('setting/new','SettingController@create');
-Route::get('setting/{id}/delete','SettingController@destroy');
-Route::get('setting/{id}/edit','SettingController@edit');
-Route::post('setting/{id}/update','SettingController@update');
-Route::post('setting','SettingController@store');
 Route::get('file_manager','DashboardController@file_manager');
 Route::get('upload_items','DashboardController@multi_upload');
 Route::post('save_items','DashboardController@save_uploaded');
@@ -55,15 +75,6 @@ Route::get('language','LanguageController@index');
 Route::get('language/create','LanguageController@create');
 Route::post('language','LanguageController@store');
 Route::get('language/{id}/edit','LanguageController@edit');
-Route::get('routes','RouteController@index');
-Route::post('routes','RouteController@store');
-Route::get('routes/{id}/edit','RouteController@edit');
 Route::post('routes/{id}/update','RouteController@update');
 Route::get('routes/{id}/delete','RouteController@destroy');
-Route::get('routes/create','RouteController@create');
-Route::get('routes/index_v2','RouteController@index_v2');
 Route::get('roles/{id}/view_access','RoleController@view_access');
-});
- 
-
-Route::get('users/new','UserController @create');

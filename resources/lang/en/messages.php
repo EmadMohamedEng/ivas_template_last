@@ -124,6 +124,16 @@ return [
         'contact_name' => 'Contact Name',
         'group_name' => 'Group Name',
     ],
+    'type' => [
+        'type' => 'Type',
+        'type-action' => 'Action',
+        'types' => 'Types',
+        'add-type' => 'Add Type',
+        'create-type' => 'Create Type',
+        'update-type' => 'Update Type',
+        'list-types' => 'List Types',
+        'name-type' => 'Type Name',
+    ],
     'users' => [
         'users' => 'users',
         'add_user' => 'Add new User',

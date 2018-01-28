@@ -23,20 +23,18 @@
                     <form action="{{url('setting')}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data"  novalidate>
               			{!! csrf_field() !!}
                           <input id="hidden_key" name="key" type="hidden" />
-                          
+                       
                         <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Setting type</label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 <select id="first_select" class="form-control chosen-rtl">
-                                    <option value="1">Advanced Editor</option>
-                                    <option value="2">Normal Editor</option>
-                                    <option value="3">Image</option>
-                                    <option value="4">Video</option>
-                                    <option value="5">Audio</option>
-                                    <option value="6">File Manager Uploads Extensions</option>
+                                   @foreach ($types as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
+                        
                          <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Key *</label>
                             <div class="col-sm-9 col-lg-10 controls">

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Setting;
+use App\Type;
 use Amranidev\Ajaxis\Ajaxis;
 use Illuminate\Support\Facades\Storage;
 use URL;
@@ -28,7 +29,7 @@ class SettingController extends Controller
     public function index()
     {
         $title = 'Index - setting';
-        $settings = Setting::all();
+        $settings = Setting::with('type')->orderBy('order','ASC')->get();
         return view('setting.index',compact('settings','title'));
     }
 
@@ -40,8 +41,8 @@ class SettingController extends Controller
     public function create()
     {
         $title = 'Create - setting';
-        
-        return view('setting.create',compact('title'));
+        $types = Type::lists('title','id');
+        return view('setting.create',compact('title','types'));
     }
 
     /**
@@ -53,7 +54,8 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'key' => 'required|unique:settings'
+            'key' => 'required|unique:settings',
+            'myField' =>'required'
         ]);
         $setting = new Setting();
         $check = false ;
@@ -144,7 +146,7 @@ class SettingController extends Controller
                 return back()->withInput();
             }
         }
-        $setting->type = $request->myField;
+        $setting->type_id = $request->myField;
         $setting->save();
         $request->session()->flash('success', 'Setting created successfull');
 
@@ -160,9 +162,8 @@ class SettingController extends Controller
     public function edit($id)
     {
         $title = 'Edit - setting';
-        
-        $setting = Setting::findOrfail($id);
-        return view('setting.edit',compact('title','setting'  ));
+        $setting = Setting::with(['type'])->findOrfail($id);
+        return view('setting.edit',compact('title','setting'));
     }
 
     /**
@@ -180,7 +181,7 @@ class SettingController extends Controller
         $setting = Setting::findOrfail($id);
         $check = false ;
         
-        if($setting->type == "3")
+        if($setting->type_id == "3")
         {
             if ($request->hasFile('value'))
             {
@@ -203,7 +204,7 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-        else if($setting->type == "4")
+        else if($setting->type_id == "4")
         {
             if ($request->hasFile('TxtValue4'))
             {
@@ -226,7 +227,7 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-        else if($setting->type == "5")
+        else if($setting->type_id == "5")
         {
             if ($request->hasFile('TxtValue5'))
             {
@@ -249,7 +250,7 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-        else if($setting->type == 6)
+        else if($setting->type_id == 6)
         {
             if(count($request['extensions']) > 0 )
             {
@@ -303,5 +304,27 @@ class SettingController extends Controller
         $setting->delete();
         \Session::flash('success', 'deleted successfully');
         return back();
+    }
+    
+    //Function To Order Settings Tables
+    public function updateOrder(Request $request)
+    {
+        $settings = Setting::all();
+        
+        foreach($settings as $setting)
+        {
+            $setting->timestamps = false; //To Disable Updated At
+            
+            $id = $setting->id; // Get The ID Of Content
+            
+            foreach($request->order as $order)
+            {
+                if($order['id'] == $id) //Update When ID = Content ID
+                {
+                    $setting->update(['order' => $order['position']]);
+                }
+            }
+        }
+        return response('Update Successfully.', 200); // Return Json Response "Success"
     }
 }

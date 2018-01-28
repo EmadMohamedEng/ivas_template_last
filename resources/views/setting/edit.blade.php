@@ -31,11 +31,11 @@
                             @if($setting->type->title == "Image" || $setting->type->title == "Normal Editor" || $setting->type->title == "Advanced Editor" )
                                 <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Value</label>
                             @elseif($setting->type->title == "Video")
-                                {!! Form::label('TxtValue4',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                                {!! Form::label('Video',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             @elseif($setting->type->title == "Audio")
-                                {!! Form::label('TxtValue5',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                                {!! Form::label('Audio',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             @elseif($setting->type->title == "File Manager Uploads Extensions")
-                                {!! Form::label('TxtValue6','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!} 
+                                {!! Form::label('File','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!} 
                             @endif
                             <div class="col-sm-9 col-lg-10 controls"> 
                                 @if(file_exists($setting->value))
@@ -59,7 +59,7 @@
                                    @elseif($setting->type->title == "Video")
                                     <div class="form-group"  id="videocont" novalidate>
                                     <div class="col-sm-9 col-lg-10 controls">
-                                        {!! Form::file('TxtValue4',["accept"=>"video/*",'class'=>'default']) !!}
+                                        {!! Form::file('Video',["accept"=>"video/*",'class'=>'default']) !!}
                                          <span class='label label-important'>NOTE!</span>
                                          <span>Only extension supported mp4, flv, and 3gp</span>
                                     </div>
@@ -67,7 +67,7 @@
                                    @elseif($setting->type->title == "Audio")
                                     <div class="form-group" id="audiocont" novalidate>
                                         <div class="col-sm-9 col-lg-10 controls">
-                                            {!! Form::file('TxtValue5',["accept"=>"audio/*",'class'=>'default']) !!}
+                                            {!! Form::file('Audio',["accept"=>"audio/*",'class'=>'default']) !!}
                                          <span class='label label-important'>NOTE!</span>
                                          <span>Only extension supported mp3, webm, and wav</span>
                                         </div>

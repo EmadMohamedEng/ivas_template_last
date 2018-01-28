@@ -61,11 +61,11 @@ class SettingController extends Controller
         $check = false ;
         if($request['myField'] == '3')
         {
-           if ($request->hasFile('TxtValue3'))
+           if ($request->hasFile('Image'))
             {
                 $imgExtensions = array("png","jpeg","jpg");
                 $destinationFolder = "uploads/settings_images/";
-                $file = $request->file("TxtValue3");
+                $file = $request->file("Image");
                 if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
                 {
                     \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
@@ -79,11 +79,11 @@ class SettingController extends Controller
         }
         else if($request['myField'] == '4')
         {
-           if ($request->hasFile('TxtValue4'))
+           if ($request->hasFile('Video'))
             {
                 $vidExtensions = array("mp4","flv","3gp");
                 $destinationFolder = "uploads/settings_videos/";
-                $file = $request->file("TxtValue4");
+                $file = $request->file("Video");
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
                     \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
@@ -98,11 +98,11 @@ class SettingController extends Controller
         
         else if($request['myField'] == '5')
         {
-           if ($request->hasFile('TxtValue5'))
+           if ($request->hasFile('Audio'))
             {
                 $audExtensions = array("mp3","webm","wav");
                 $destinationFolder = "uploads/settings_sounds/";
-                $file = $request->file("TxtValue5");
+                $file = $request->file("Audio");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
                     \Session::flash('failed','Audio must be mp3, webm and wav only !! No updates takes place, try again with that extensions please..');
@@ -136,10 +136,10 @@ class SettingController extends Controller
         $setting->key = $request->key;
         if(!$check)
         {
-            if (!empty($request->TxtValue1))
-                $setting->value = $request->TxtValue1;
-            elseif (!empty($request->TxtValue2))
-                $setting->value = $request->TxtValue2;
+            if (!empty($request->Advanced_Text))
+                $setting->value = $request->Advanced_Text;
+            elseif (!empty($request->Normal_Text))
+                $setting->value = $request->Normal_Text;
             else
             {
                 \Session::flash('failed','Value is Required');
@@ -206,12 +206,12 @@ class SettingController extends Controller
         }
         else if($setting->type_id == "4")
         {
-            if ($request->hasFile('TxtValue4'))
+            if ($request->hasFile('Video'))
             {
 
                 $vidExtensions = array("mp4","flv","3gp");
                 $destinationFolder = "uploads/settings_videos/";
-                $file = $request->file("TxtValue4");
+                $file = $request->file("Video");
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
                     \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
@@ -229,12 +229,12 @@ class SettingController extends Controller
         }
         else if($setting->type_id == "5")
         {
-            if ($request->hasFile('TxtValue5'))
+            if ($request->hasFile('Audio'))
             {
 
                 $audExtensions = array("mp3","webm","wav");
                 $destinationFolder = "uploads/settings_sounds/";
-                $file = $request->file("TxtValue5");
+                $file = $request->file("Audio");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
                     \Session::flash('failed','Audio must be mp3, webm, and wav !! No updates takes place, try again with that extensions please..');

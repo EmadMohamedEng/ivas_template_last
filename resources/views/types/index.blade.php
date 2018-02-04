@@ -18,8 +18,10 @@
                         <div class="btn-group">
                             
                             <a class="btn btn-circle show-tooltip" title="" href="{{url('types/create')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
-							<a  id="delete_button" onclick="delete_selected('types')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
-                            
+							<?php 
+								$table_name = "types" ;
+							?>
+							@include('partial.delete_all')                            
                         </div>
                     </div>
                     <br><br>
@@ -27,8 +29,8 @@
 						<table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
 							<thead>
 							<tr>
-                                <th style="width:18px"><input type="checkbox"></th>
-                                <th>@lang('messages.type.name-type')</th>
+							<th style="width:18px"><input type="checkbox" onclick="select_all('{{$table_name}}')"></th>
+							<th>@lang('messages.type.name-type')</th>
                             
 								<th class="visible-md visible-lg" style="width:130px">@lang('messages.type.type-action')</th>
                             
@@ -39,7 +41,7 @@
                           @if($types !=null)
 							@foreach($types as $type)
 								<tr class="table-flag-blue">
-                                    <th><input type="checkbox" name="selected_rows[]" value="{{$type->id}}" onclick="collect_selected(this)"></th>
+                                    <th><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$type->id}}" onclick="collect_selected(this)"></th>
                                     <td>{{$type->title}}</td> 
                                     
                                     <td class="visible-md visible-lg">

@@ -557,6 +557,26 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2018-01-28 09:23:55',
                 'function_name' => 'buildroutes',
             ),
+            54 => 
+            array (
+                'id' => 69,
+                'method' => 'get',
+                'route' => 'delete_all',
+                'controller_name' => 'DashboardController',
+                'created_at' => '2018-02-04 12:01:23',
+                'updated_at' => '2018-02-04 12:01:23',
+                'function_name' => 'delete_all_index',
+            ),
+            55 => 
+            array (
+                'id' => 70,
+                'method' => 'post',
+                'route' => 'delete_all',
+                'controller_name' => 'DashboardController',
+                'created_at' => '2018-02-04 12:01:23',
+                'updated_at' => '2018-02-04 12:01:23',
+                'function_name' => 'delete_all_store',
+            ),
         ));
         
         

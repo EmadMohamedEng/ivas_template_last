@@ -30,6 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call('RoutesTableSeeder');
         $this->call('RoleRouteTableSeeder');
         $this->call('TypesTableSeeder');
-        $this->call('SettingsTableSeeder');
+        $this->call('SettingsTableSeeder'); 
     }
 }

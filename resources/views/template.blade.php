@@ -282,6 +282,7 @@
                     <!-- BEGIN Submenu -->
                     <ul class="submenu">
                         <li id="upload_resize"><a href="{{url('upload_resize')}}">Upload/Resize Image</a></li> 
+                        <li id="upload_resize_v2"><a href="{{url('upload_resize_v2')}}">Upload/Resize Image V2</a></li>                         
                     </ul>
                     <!-- END Submenu -->                    
                 </li>                

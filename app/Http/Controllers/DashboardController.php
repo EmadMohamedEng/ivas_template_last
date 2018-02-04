@@ -164,6 +164,11 @@ class DashboardController extends Controller
         return view('dashboard.upload_resize');
     }
     
+    public function upload_resize_v2()
+    {
+        return view('dashboard.upload_resize_v2') ; 
+    }
+
     public function save_image(Request $request)
     {
         if($request->hasFile('image'))
@@ -290,11 +295,7 @@ class DashboardController extends Controller
         return view('delete_all_flags.index',compact('delete_alls','routes')) ; 
     }
 
-    public function delete_all_create()
-    {
-        $routes  = RouteModel::where('function_name','LIKE','%index%')->get() ;         
-        return view('delete_all_flags.create',compact('routes')) ; 
-    }
+ 
 
     public function delete_all_store(Request $request)
     {
@@ -311,12 +312,7 @@ class DashboardController extends Controller
         $request->session()->flash('success','Flags saved successfully') ; 
         return back() ; 
     }
-
-    public function delete_all_delete($id)
-    {
-        
-    }
-
+ 
     public function get_table_ids_list(Request $request)
     {
         $table_name = $request['table_name'] ; 

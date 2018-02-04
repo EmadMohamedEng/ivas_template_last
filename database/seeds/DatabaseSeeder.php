@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call('PasswordResetsTableSeeder');
         $this->call('RoutesTableSeeder');
         $this->call('RoleRouteTableSeeder');
+        $this->call('TypesTableSeeder');
+        $this->call('SettingsTableSeeder');
     }
 }

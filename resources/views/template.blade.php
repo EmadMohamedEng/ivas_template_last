@@ -244,6 +244,19 @@
                     <!-- END Submenu -->
                 </li>
 
+                <ul class="nav nav-list">
+                    <li id="type">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="glyphicon glyphicon-tag"></i>
+                            <span>Settings Types</span>
+                            <b class="arrow fa fa-angle-right"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li id="type-create"><a href="{{url('types/create')}}">Add Type</a></li>
+                            <li id="type-index"><a href="{{url('types/index')}}">List Types</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <li id="file_manager"> 
                     <a href="#" class="dropdown-toggle">
                         <i class="fa fa-file"></i>

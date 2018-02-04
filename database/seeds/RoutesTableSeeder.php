@@ -29,6 +29,16 @@ class RoutesTableSeeder extends Seeder
             ),
             1 => 
             array (
+                'id' => 2,
+                'method' => 'get',
+                'route' => 'users/new',
+                'controller_name' => 'UserController',
+                'created_at' => '0000-00-00 00:00:00',
+                'updated_at' => '2018-01-28 09:27:15',
+                'function_name' => 'create',
+            ),
+            2 => 
+            array (
                 'id' => 3,
                 'method' => 'post',
                 'route' => 'users',
@@ -37,17 +47,27 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            2 => 
+            3 => 
             array (
                 'id' => 4,
                 'method' => 'get',
                 'route' => 'dashboard',
                 'controller_name' => 'DashboardController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '2017-12-20 10:18:50',
+                'updated_at' => '2017-11-15 08:28:55',
+                'function_name' => ' index',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'method' => 'get',
+                'route' => '/',
+                'controller_name' => 'DashboardController',
+                'created_at' => '0000-00-00 00:00:00',
+                'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            3 => 
+            5 => 
             array (
                 'id' => 6,
                 'method' => 'get',
@@ -57,7 +77,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'profile',
             ),
-            4 => 
+            6 => 
             array (
                 'id' => 7,
                 'method' => 'post',
@@ -67,7 +87,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-14 12:29:01',
                 'function_name' => 'UpdatePassword',
             ),
-            5 => 
+            7 => 
             array (
                 'id' => 8,
                 'method' => 'post',
@@ -77,7 +97,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-14 12:29:08',
                 'function_name' => 'UpdateProfilePicture',
             ),
-            6 => 
+            8 => 
             array (
                 'id' => 9,
                 'method' => 'post',
@@ -87,7 +107,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-14 12:29:19',
                 'function_name' => 'UpdateNameAndEmail',
             ),
-            7 => 
+            9 => 
             array (
                 'id' => 10,
                 'method' => 'get',
@@ -97,7 +117,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-15 08:34:32',
                 'function_name' => 'destroy',
             ),
-            8 => 
+            10 => 
             array (
                 'id' => 11,
                 'method' => 'get',
@@ -107,7 +127,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-14 12:29:40',
                 'function_name' => 'edit',
             ),
-            9 => 
+            11 => 
             array (
                 'id' => 12,
                 'method' => 'post',
@@ -117,7 +137,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-14 12:29:49',
                 'function_name' => 'update',
             ),
-            10 => 
+            12 => 
             array (
                 'id' => 14,
                 'method' => 'get',
@@ -127,7 +147,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-14 12:29:57',
                 'function_name' => 'index',
             ),
-            11 => 
+            13 => 
             array (
                 'id' => 15,
                 'method' => 'get',
@@ -137,7 +157,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            12 => 
+            14 => 
             array (
                 'id' => 16,
                 'method' => 'get',
@@ -147,7 +167,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            13 => 
+            15 => 
             array (
                 'id' => 17,
                 'method' => 'get',
@@ -157,7 +177,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            14 => 
+            16 => 
             array (
                 'id' => 18,
                 'method' => 'get',
@@ -167,7 +187,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            15 => 
+            17 => 
             array (
                 'id' => 19,
                 'method' => 'post',
@@ -177,7 +197,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            16 => 
+            18 => 
             array (
                 'id' => 20,
                 'method' => 'post',
@@ -187,7 +207,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            17 => 
+            19 => 
             array (
                 'id' => 21,
                 'method' => 'get',
@@ -197,7 +217,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'file_manager',
             ),
-            18 => 
+            20 => 
             array (
                 'id' => 22,
                 'method' => 'get',
@@ -207,7 +227,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'multi_upload',
             ),
-            19 => 
+            21 => 
             array (
                 'id' => 23,
                 'method' => 'post',
@@ -217,7 +237,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'save_uploaded',
             ),
-            20 => 
+            22 => 
             array (
                 'id' => 24,
                 'method' => 'get',
@@ -227,7 +247,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'upload_resize',
             ),
-            21 => 
+            23 => 
             array (
                 'id' => 25,
                 'method' => 'post',
@@ -237,7 +257,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'save_image',
             ),
-            22 => 
+            24 => 
             array (
                 'id' => 26,
                 'method' => 'post',
@@ -247,7 +267,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-12 12:19:46',
                 'function_name' => 'update',
             ),
-            23 => 
+            25 => 
             array (
                 'id' => 27,
                 'method' => 'get',
@@ -257,7 +277,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            24 => 
+            26 => 
             array (
                 'id' => 28,
                 'method' => 'get',
@@ -267,7 +287,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            25 => 
+            27 => 
             array (
                 'id' => 29,
                 'method' => 'post',
@@ -277,7 +297,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            26 => 
+            28 => 
             array (
                 'id' => 30,
                 'method' => 'get',
@@ -287,7 +307,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            27 => 
+            29 => 
             array (
                 'id' => 31,
                 'method' => 'get',
@@ -297,7 +317,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            28 => 
+            30 => 
             array (
                 'id' => 32,
                 'method' => 'post',
@@ -307,7 +327,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            29 => 
+            31 => 
             array (
                 'id' => 33,
                 'method' => 'get',
@@ -317,7 +337,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            30 => 
+            32 => 
             array (
                 'id' => 34,
                 'method' => 'get',
@@ -327,7 +347,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            31 => 
+            33 => 
             array (
                 'id' => 35,
                 'method' => 'post',
@@ -337,7 +357,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            32 => 
+            34 => 
             array (
                 'id' => 36,
                 'method' => 'get',
@@ -347,7 +367,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            33 => 
+            35 => 
             array (
                 'id' => 37,
                 'method' => 'get',
@@ -357,7 +377,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            34 => 
+            36 => 
             array (
                 'id' => 38,
                 'method' => 'post',
@@ -367,7 +387,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            35 => 
+            37 => 
             array (
                 'id' => 39,
                 'method' => 'get',
@@ -377,7 +397,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            36 => 
+            38 => 
             array (
                 'id' => 40,
                 'method' => 'get',
@@ -387,7 +407,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            37 => 
+            39 => 
             array (
                 'id' => 41,
                 'method' => 'post',
@@ -397,7 +417,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            38 => 
+            40 => 
             array (
                 'id' => 42,
                 'method' => 'get',
@@ -407,17 +427,17 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            39 => 
+            41 => 
             array (
                 'id' => 43,
-                'method' => 'post',
+                'method' => 'get',
                 'route' => 'routes/{id}/update',
                 'controller_name' => 'RouteController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'updated_at' => '2018-01-28 09:25:29',
                 'function_name' => 'update',
             ),
-            40 => 
+            42 => 
             array (
                 'id' => 44,
                 'method' => 'get',
@@ -427,7 +447,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            41 => 
+            43 => 
             array (
                 'id' => 45,
                 'method' => 'get',
@@ -437,7 +457,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            42 => 
+            44 => 
             array (
                 'id' => 57,
                 'method' => 'get',
@@ -447,7 +467,7 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-12 14:04:53',
                 'function_name' => 'index_v2',
             ),
-            43 => 
+            45 => 
             array (
                 'id' => 58,
                 'method' => 'get',
@@ -457,45 +477,85 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2017-11-15 08:14:14',
                 'function_name' => 'view_access',
             ),
-            44 => 
+            46 => 
             array (
                 'id' => 59,
                 'method' => 'get',
-                'route' => 'buildroutes',
-                'controller_name' => 'RouteController',
-                'created_at' => '2017-12-20 10:28:49',
-                'updated_at' => '2017-12-20 10:28:49',
-                'function_name' => 'buildroutes',
-            ),
-            45 => 
-            array (
-                'id' => 60,
-                'method' => 'get',
-                'route' => 'users/new',
-                'controller_name' => 'UserController',
-                'created_at' => '2018-01-04 08:03:46',
-                'updated_at' => '2018-01-04 08:03:46',
-                'function_name' => 'create',
-            ),
-            46 => 
-            array (
-                'id' => 110,
-                'method' => 'get',
-                'route' => 'routes_v2',
-                'controller_name' => 'RouteController',
-                'created_at' => '2018-01-08 14:39:13',
-                'updated_at' => '2018-01-08 14:39:13',
-                'function_name' => 'create_v2',
+                'route' => 'types/index',
+                'controller_name' => 'TypeController',
+                'created_at' => '2018-01-28 08:25:37',
+                'updated_at' => '2018-01-28 08:25:37',
+                'function_name' => 'index',
             ),
             47 => 
             array (
-                'id' => 111,
+                'id' => 60,
+                'method' => 'get',
+                'route' => 'types/create',
+                'controller_name' => 'TypeController',
+                'created_at' => '2018-01-28 08:25:37',
+                'updated_at' => '2018-01-28 08:25:37',
+                'function_name' => 'create',
+            ),
+            48 => 
+            array (
+                'id' => 61,
                 'method' => 'post',
-                'route' => 'routes/store_v2',
+                'route' => 'types',
+                'controller_name' => 'TypeController',
+                'created_at' => '2018-01-28 08:25:38',
+                'updated_at' => '2018-01-28 08:25:38',
+                'function_name' => 'store',
+            ),
+            49 => 
+            array (
+                'id' => 62,
+                'method' => 'get',
+                'route' => 'types/{id}/edit',
+                'controller_name' => 'TypeController',
+                'created_at' => '2018-01-28 08:25:38',
+                'updated_at' => '2018-01-28 08:25:38',
+                'function_name' => 'edit',
+            ),
+            50 => 
+            array (
+                'id' => 63,
+                'method' => 'patch',
+                'route' => 'types/{id}',
+                'controller_name' => 'TypeController',
+                'created_at' => '2018-01-28 08:25:38',
+                'updated_at' => '2018-01-28 08:25:38',
+                'function_name' => 'update',
+            ),
+            51 => 
+            array (
+                'id' => 64,
+                'method' => 'get',
+                'route' => 'types/{id}/delete',
+                'controller_name' => 'TypeController',
+                'created_at' => '2018-01-28 08:25:38',
+                'updated_at' => '2018-01-28 08:25:38',
+                'function_name' => 'destroy',
+            ),
+            52 => 
+            array (
+                'id' => 65,
+                'method' => 'post',
+                'route' => 'sortabledatatable',
+                'controller_name' => 'SettingController',
+                'created_at' => '2018-01-28 09:22:00',
+                'updated_at' => '2018-01-28 09:22:00',
+                'function_name' => 'updateOrder',
+            ),
+            53 => 
+            array (
+                'id' => 66,
+                'method' => 'get',
+                'route' => 'buildroutes',
                 'controller_name' => 'RouteController',
-                'created_at' => '2018-01-08 14:42:22',
-                'updated_at' => '2018-01-08 14:42:22',
-                'function_name' => 'store_v2',
+                'created_at' => '2018-01-28 09:23:55',
+                'updated_at' => '2018-01-28 09:23:55',
+                'function_name' => 'buildroutes',
             ),
         ));
         

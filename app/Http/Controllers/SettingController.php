@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Setting;
+use App\Type;
 use Amranidev\Ajaxis\Ajaxis;
 use Illuminate\Support\Facades\Storage;
 use URL;
@@ -28,7 +29,7 @@ class SettingController extends Controller
     public function index()
     {
         $title = 'Index - setting';
-        $settings = Setting::all();
+        $settings = Setting::with('type')->orderBy('order','ASC')->get();
         return view('setting.index',compact('settings','title'));
     }
 
@@ -40,8 +41,8 @@ class SettingController extends Controller
     public function create()
     {
         $title = 'Create - setting';
-        
-        return view('setting.create',compact('title'));
+        $types = Type::lists('title','id');
+        return view('setting.create',compact('title','types'));
     }
 
     /**
@@ -53,17 +54,18 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'key' => 'required|unique:settings'
+            'key' => 'required|unique:settings',
+            'myField' =>'required'
         ]);
         $setting = new Setting();
         $check = false ;
         if($request['myField'] == '3')
         {
-           if ($request->hasFile('TxtValue3'))
+           if ($request->hasFile('Image'))
             {
                 $imgExtensions = array("png","jpeg","jpg");
                 $destinationFolder = "uploads/settings_images/";
-                $file = $request->file("TxtValue3");
+                $file = $request->file("Image");
                 if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
                 {
                     \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
@@ -77,11 +79,11 @@ class SettingController extends Controller
         }
         else if($request['myField'] == '4')
         {
-           if ($request->hasFile('TxtValue4'))
+           if ($request->hasFile('Video'))
             {
                 $vidExtensions = array("mp4","flv","3gp");
                 $destinationFolder = "uploads/settings_videos/";
-                $file = $request->file("TxtValue4");
+                $file = $request->file("Video");
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
                     \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
@@ -96,11 +98,11 @@ class SettingController extends Controller
         
         else if($request['myField'] == '5')
         {
-           if ($request->hasFile('TxtValue5'))
+           if ($request->hasFile('Audio'))
             {
                 $audExtensions = array("mp3","webm","wav");
                 $destinationFolder = "uploads/settings_sounds/";
-                $file = $request->file("TxtValue5");
+                $file = $request->file("Audio");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
                     \Session::flash('failed','Audio must be mp3, webm and wav only !! No updates takes place, try again with that extensions please..');
@@ -134,17 +136,17 @@ class SettingController extends Controller
         $setting->key = $request->key;
         if(!$check)
         {
-            if (!empty($request->TxtValue1))
-                $setting->value = $request->TxtValue1;
-            elseif (!empty($request->TxtValue2))
-                $setting->value = $request->TxtValue2;
+            if (!empty($request->Advanced_Text))
+                $setting->value = $request->Advanced_Text;
+            elseif (!empty($request->Normal_Text))
+                $setting->value = $request->Normal_Text;
             else
             {
                 \Session::flash('failed','Value is Required');
                 return back()->withInput();
             }
         }
-        $setting->type = $request->myField;
+        $setting->type_id = $request->myField;
         $setting->save();
         $request->session()->flash('success', 'Setting created successfull');
 
@@ -160,9 +162,8 @@ class SettingController extends Controller
     public function edit($id)
     {
         $title = 'Edit - setting';
-        
-        $setting = Setting::findOrfail($id);
-        return view('setting.edit',compact('title','setting'  ));
+        $setting = Setting::with(['type'])->findOrfail($id);
+        return view('setting.edit',compact('title','setting'));
     }
 
     /**
@@ -180,7 +181,7 @@ class SettingController extends Controller
         $setting = Setting::findOrfail($id);
         $check = false ;
         
-        if($setting->type == "3")
+        if($setting->type_id == "3")
         {
             if ($request->hasFile('value'))
             {
@@ -203,14 +204,14 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-        else if($setting->type == "4")
+        else if($setting->type_id == "4")
         {
-            if ($request->hasFile('TxtValue4'))
+            if ($request->hasFile('Video'))
             {
 
                 $vidExtensions = array("mp4","flv","3gp");
                 $destinationFolder = "uploads/settings_videos/";
-                $file = $request->file("TxtValue4");
+                $file = $request->file("Video");
                 if(! in_array($file->getClientOriginalExtension(),$vidExtensions))
                 {
                     \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
@@ -226,14 +227,14 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-        else if($setting->type == "5")
+        else if($setting->type_id == "5")
         {
-            if ($request->hasFile('TxtValue5'))
+            if ($request->hasFile('Audio'))
             {
 
                 $audExtensions = array("mp3","webm","wav");
                 $destinationFolder = "uploads/settings_sounds/";
-                $file = $request->file("TxtValue5");
+                $file = $request->file("Audio");
                 if(! in_array($file->getClientOriginalExtension(),$audExtensions))
                 {
                     \Session::flash('failed','Audio must be mp3, webm, and wav !! No updates takes place, try again with that extensions please..');
@@ -249,7 +250,7 @@ class SettingController extends Controller
                 $check = true ;
             }
         }
-        else if($setting->type == 6)
+        else if($setting->type_id == 6)
         {
             if(count($request['extensions']) > 0 )
             {
@@ -304,7 +305,26 @@ class SettingController extends Controller
         \Session::flash('success', 'deleted successfully');
         return back();
     }
-
-
-
+    
+    //Function To Order Settings Tables
+    public function updateOrder(Request $request)
+    {
+        $settings = Setting::all();
+        
+        foreach($settings as $setting)
+        {
+            $setting->timestamps = false; //To Disable Updated At
+            
+            $id = $setting->id; // Get The ID Of Content
+            
+            foreach($request->order as $order)
+            {
+                if($order['id'] == $id) //Update When ID = Content ID
+                {
+                    $setting->update(['order' => $order['position']]);
+                }
+            }
+        }
+        return response('Update Successfully.', 200); // Return Json Response "Success"
+    }
 }

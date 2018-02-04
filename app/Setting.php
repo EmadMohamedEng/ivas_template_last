@@ -15,6 +15,10 @@ class Setting extends Model
 {
 
     protected $table = 'settings';
-    protected $fillable = ['key','value','type'];
-	
+    protected $fillable = ['key','value','type_id','order'];
+    
+    public function type()
+    {
+        return $this->belongsTo('App\Type');
+    }
 }

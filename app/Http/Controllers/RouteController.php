@@ -75,7 +75,7 @@ class RouteController extends Controller
         $roleroutes = array_unique($roleroutes); 
         $singleq = "'";
         $myfile = fopen("routes.php", "w");
-        $starttext = "<?php \n /*Generated Route File @iVAS*/ \n Mail : karim.ahmed@ivas.com.eg \n \n/*
+        $starttext = "<?php \n /*Generated Route File @iVAS*/ \n Mail : karimahmed181@gmail.com \n \n/*
 |--------------------------------------------------------------------------
 
 | Application Routes

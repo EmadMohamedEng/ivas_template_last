@@ -23,20 +23,18 @@
                     <form action="{{url('setting')}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data"  novalidate>
               			{!! csrf_field() !!}
                           <input id="hidden_key" name="key" type="hidden" />
-                          
+                       
                         <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Setting type</label>
                             <div class="col-sm-9 col-lg-10 controls">
                                 <select id="first_select" class="form-control chosen-rtl">
-                                    <option value="1">Advanced Editor</option>
-                                    <option value="2">Normal Editor</option>
-                                    <option value="3">Image</option>
-                                    <option value="4">Video</option>
-                                    <option value="5">Audio</option>
-                                    <option value="6">File Manager Uploads Extensions</option>
+                                   @foreach ($types as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
+                        
                          <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Key *</label>
                             <div class="col-sm-9 col-lg-10 controls">
@@ -48,14 +46,14 @@
                         <div class="form-group"  id="cktextarea">
                             <label class="col-sm-3 col-lg-2 control-label">Value *</label>
                             <div class="col-sm-9 col-lg-10 controls" >
-                                <textarea class="form-control col-md-12 ckeditor" name="TxtValue1" rows="6"></textarea>
+                                <textarea class="form-control col-md-12 ckeditor" name="Advanced_Text" rows="6"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group" hidden id="normal_textarea">
                             <label class="col-sm-3 col-lg-2 control-label">Value *</label>
                             <div class="col-sm-9 col-lg-10 controls" >
-                                <textarea class="form-control col-md-12" name="TxtValue2" rows="6"></textarea>
+                                <textarea class="form-control col-md-12" name="Normal_Text" rows="6"></textarea>
                             </div>
                         </div>
 
@@ -71,7 +69,7 @@
                                     <div>
                                                 <span class='btn btn-default btn-file'><span class='fileupload-new'>Select image</span>
                                                 <span class='fileupload-exists'>Change</span>
-                                                <input type='file' name='TxtValue3' accept="image/*"></span>
+                                                <input type='file' name='Image' accept="image/*"></span>
                                         <a href='#' class='btn btn-default fileupload-exists' data-dismiss='fileupload'>Remove</a>
                                     </div>
                                 </div>
@@ -81,9 +79,9 @@
                         </div>
                         
                         <div class="form-group" hidden id="videocont" novalidate>
-                        {!! Form::label('TxtValue4',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                        {!! Form::label('Video',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                         <div class="col-sm-9 col-lg-10 controls">
-                            {!! Form::file('TxtValue4',["accept"=>"video/*",'class'=>'default']) !!}
+                            {!! Form::file('Video',["accept"=>"video/*",'class'=>'default']) !!}
                              <span class='label label-important'>NOTE!</span>
                              <span>Only extension supported mp4, flv, and 3gp</span>
                         </div>
@@ -91,16 +89,16 @@
                         </div>
 
                         <div class="form-group" hidden id="audiocont" novalidate>
-                            {!! Form::label('TxtValue5',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            {!! Form::label('Audio',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             <div class="col-sm-9 col-lg-10 controls">
-                                {!! Form::file('TxtValue5',["accept"=>"audio/*",'class'=>'default']) !!}
+                                {!! Form::file('Audio',["accept"=>"audio/*",'class'=>'default']) !!}
                              <span class='label label-important'>NOTE!</span>
                              <span>Only extension supported mp3, webm, and wav</span>
                             </div>
                         </div>
 
                         <div class="form-group" hidden id="fileManCont" novalidate>
-                            {!! Form::label('TxtValue6','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                            {!! Form::label('File','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             <div class="col-sm-9 col-lg-10 controls">
                                 <select class="form-control" name="extensions[]" multiple>
                                     <option value="image">Images</option>

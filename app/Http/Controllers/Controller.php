@@ -24,7 +24,7 @@ abstract class Controller extends BaseController
         $path = $this->file_build_path("app","Http","Controllers") ;
         $txt_file    = file_get_contents($path.'/'.$filename);
         $matches = array() ; 
-        preg_match_all("/function(.*)\(\D*\w*\)/U", $txt_file, $matches);
+        preg_match_all("/ function (.*)\(\D*\w*\)/U", $txt_file, $matches);
         $result = $matches[1] ;
         return $result ;
     }

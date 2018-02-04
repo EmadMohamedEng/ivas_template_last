@@ -9,6 +9,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image;
 use Adldap\Laravel\Facades\Adldap;
+use App\RouteModel ; 
+use App\DeleteAll ; 
+
 //use Adldap\AdldapInterface;
 
 class DashboardController extends Controller
@@ -277,6 +280,54 @@ class DashboardController extends Controller
         return back() ; 
     }
 
+
+    public function delete_all_index(Request $request)
+    {
+        // get all routes that has index 
+        // return this route controller name 
+        $delete_alls = DeleteAll::all() ; 
+        $routes  = RouteModel::where('function_name','LIKE','%index%')->get() ; 
+        return view('delete_all_flags.index',compact('delete_alls','routes')) ; 
+    }
+
+    public function delete_all_create()
+    {
+        $routes  = RouteModel::where('function_name','LIKE','%index%')->get() ;         
+        return view('delete_all_flags.create',compact('routes')) ; 
+    }
+
+    public function delete_all_store(Request $request)
+    {
+        $alls = $request['delete_alls'] ;  
+        DeleteAll::where('id','>',0)->delete() ; 
+        if(count($alls)>0)
+        {
+            foreach($alls as $index=>$all)
+            {
+                $item['route_id'] = $index ; 
+                DeleteAll::create($item) ; 
+            }  
+        } 
+        $request->session()->flash('success','Flags saved successfully') ; 
+        return back() ; 
+    }
+
+    public function delete_all_delete($id)
+    {
+        
+    }
+
+    public function get_table_ids_list(Request $request)
+    {
+        $table_name = $request['table_name'] ; 
+        if(isset($table_name) && ! empty($table_name))
+        {
+            $query = "SELECT id FROM ".$table_name ; 
+            $run = \DB::select($query)  ;
+            return $run ;
+        }
+        return ; 
+    }
 
 
 }

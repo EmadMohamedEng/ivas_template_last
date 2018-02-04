@@ -17,7 +17,10 @@
                     <div class="btn-toolbar pull-right">
                         <div class="btn-group">
                             <a style="position: relative;left: -10px;" class="btn btn-default btn-sm" title="Download Routes" href="{{url('buildroutes')}}" data-original-title=""><i class="glyphicon glyphicon-download-alt"></i> </a>
-							<a  id="delete_button" onclick="delete_selected('routes')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
+							<?php 
+								$table_name = "routes" ;
+							?>
+							@include('partial.delete_all')
                         </div>
                     </div>
                     <br><br>
@@ -25,7 +28,7 @@
 						<table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
 							<thead>
 							<tr>
-								<th style="width:18px"><input type="checkbox"></th>
+								<th style="width:18px"><input type="checkbox" onclick="select_all('{{$table_name}}')"></th>
 								<th>method</th>
 								<th>route</th>
 								<th>controller</th>
@@ -37,7 +40,7 @@
 							<tbody>
 							@foreach($routes as $route)
 								<tr class="table-flag-blue">
-									<th><input type="checkbox" name="selected_rows[]" value="{{$route->id}}" onclick="collect_selected(this)"></th>
+									<th><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$route->id}}" onclick="collect_selected(this)"></th>
 									<td>{{$route->method}}</td>
 									<td>{{$route->route}}</td>
 									<td>{{$route->controller_name}}</td>

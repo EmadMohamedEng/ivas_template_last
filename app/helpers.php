@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route; 
+use App\DeleteAll ; 
+use App\RouteModel ; 
 
 function delete_multiselect(Request $request) // select many contract from index table and delete them
 {
@@ -18,6 +20,15 @@ function restore($table_name,$record_id)
     \DB::table($table_name)->where('id',$record_id)->update(['rectype_id'=>2]);
 }
 
+function get_delete_all_flag()
+{
+    $route = \Route::getCurrentRoute()->getPath() ; 
+    $get_route = RouteModel::where('route',$route)->where('method','get')->first() ; 
+    $flag = $get_route->delete_all_model ; 
+    if(count($flag)>0)
+        return true ;  
+    return false ; 
+}
 
 function get_static_routes()
 {
@@ -69,6 +80,7 @@ function get_static_routes()
         delete_multiselect($request) ;
         return back();
     });
+    Route::get('get_table_ids','DashboardController@get_table_ids_list') ; 
 }
 
 function get_dynamic_routes()

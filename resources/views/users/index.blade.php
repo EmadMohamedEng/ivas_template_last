@@ -17,7 +17,10 @@
 					<div class="btn-toolbar pull-right">
 						<div class="btn-group">
 							<a class="btn btn-circle show-tooltip" title="" href="{{url('users/new')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
-							<a  id="delete_button" onclick="delete_selected('users')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
+							<?php 
+								$table_name = "users" ;
+							?>
+							@include('partial.delete_all')
 						</div>
 					</div>
 					<br><br>

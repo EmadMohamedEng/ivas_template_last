@@ -305,7 +305,22 @@
                 <!-- END Submenu -->
             </li>
         </ul>
-                         
+
+        <ul class="nav nav-list">
+            <li id="delete-all">
+                <a href="#" class="dropdown-toggle">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete All Flag</span>
+                    <b class="arrow fa fa-angle-right"></b>
+                </a>
+
+                <!-- BEGIN Submenu -->
+                <ul class="submenu">
+                    <li id="delete-all-index"><a href="{{url('delete_all')}}">All flags</a></li>
+                </ul>
+                <!-- END Submenu -->
+            </li>
+        </ul>     
                {{--@endif--}}
         </ul>
         <!-- END Navlist -->
@@ -439,6 +454,32 @@
         }
     } );
 </script>
+
+<script>
+    var check = false ; 
+    
+    function select_all(table_name,has_media)
+    {
+        if(!check)
+        {
+            $('.select_all_template').prop("checked",!check);
+            $.get("{{url('get_table_ids?table_name=')}}"+table_name,function(data,status){
+                data.forEach(function(item){
+                    collect_selected(item.id) ;
+                });
+            });
+            check = true ; 
+        }
+        else
+        {
+            $('.select_all_template').prop("checked",!check);
+            check = false ;
+            clear_selected() ; 
+        }
+    } 
+     
+</script>
+
 <script>
 
     var selected_list = [] ;
@@ -483,32 +524,36 @@
 
 
     function delete_selected(table_name) {
-        var form = document.createElement("form");
-        var element = document.createElement("input");
-        var tb_name = document.createElement("input") ;
-        var csrf = document.createElement("input") ;
-        csrf.name = "_token" ;
-        csrf.value= "{{ csrf_token() }}" ;
-        csrf.type = "hidden" ;
+        var confirmation = confirm('Are you sure you want to delete this ?'); 
+        if(confirmation)
+        {
+            var form = document.createElement("form");
+            var element = document.createElement("input");
+            var tb_name = document.createElement("input") ;
+            var csrf = document.createElement("input") ;
+            csrf.name = "_token" ;
+            csrf.value= "{{ csrf_token() }}" ;
+            csrf.type = "hidden" ;
 
-        form.method = "POST";
-        form.action = "{{url('delete_multiselect')}}";
+            form.method = "POST";
+            form.action = "{{url('delete_multiselect')}}";
 
-        element.value= selected_list ;
-        element.name = "selected_list" ;
-        element.type = "hidden" ;
+            element.value= selected_list ;
+            element.name = "selected_list" ;
+            element.type = "hidden" ;
 
-        tb_name.value = table_name ;
-        tb_name.name = "table_name" ;
-        tb_name.type = "hidden" ;
+            tb_name.value = table_name ;
+            tb_name.name = "table_name" ;
+            tb_name.type = "hidden" ;
 
-        form.appendChild(element);
-        form.appendChild(csrf) ;
-        form.appendChild(tb_name);
+            form.appendChild(element);
+            form.appendChild(csrf) ;
+            form.appendChild(tb_name);
 
-        document.body.appendChild(form);
+            document.body.appendChild(form);
 
-        form.submit();
+            form.submit();
+        }
     }
 
     var initChosenWidgets = function(){

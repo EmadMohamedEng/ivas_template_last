@@ -18,4 +18,9 @@ class RouteModel extends Model
     {
         return $this->hasMany('App\RoleRoute','route_id','id') ; 
     }
+
+    public function delete_all_model()
+    {
+        return $this->hasOne('App\DeleteAll','route_id','id') ; 
+    }
 }

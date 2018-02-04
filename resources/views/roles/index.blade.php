@@ -17,7 +17,10 @@
                     <div class="btn-toolbar pull-right">
                         <div class="btn-group">
                             <a class="btn btn-circle show-tooltip" title="" href="{{url('roles/new')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
-							<a  id="delete_button" onclick="delete_selected('roles')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
+							<?php 
+								$table_name = "roles" ;
+							?>
+							@include('partial.delete_all')
                         </div>
                     </div>
                     <br><br>
@@ -25,14 +28,14 @@
 						<table class="table table-advance">
 							<thead>
 								<tr>
-									<th style="width:18px"><input type="checkbox" onclick="select_all()"></th>
+									<th style="width:18px"><input type="checkbox" onclick="select_all('{{$table_name}}')"></th>
 									<th>Role name</th> 
 									<th class="visible-md visible-lg" style="width:130px">Action</th>
 								</tr>
 							</thead>
 						        @foreach($roles as $role)
 						            <tr class="table-flag-blue">
-										<th><input type="checkbox" name="selected_rows[]" value="{{$role->id}}" class="roles" onclick="collect_selected(this)"></th>
+										<th><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$role->id}}" class="roles" onclick="collect_selected(this)"></th>
 						                <td>{{$role->name}}</td>
 						                <td class="visible-md visible-lg">
 						                    <div class="btn-group">
@@ -55,32 +58,6 @@
 
 @stop
 @section('script')
-<script>
-	var check = false ; 
-		function select_all()
-		{
-			if(!check)
-			{
-				$('.roles').prop("checked",!check);
-				<?php
-				foreach($roles as $role)
-				{ 
-				?>
-					collect_selected("{{$role->id}}") ;
-				<?php 
-					 
-				}	
-				?>
-				check = true ; 
-			}
-			else
-			{
-				$('.roles').prop("checked",!check);
-				check = false ;
-				clear_selected() ; 
-			}
-		}
-	</script>
 	<script>
 		$('#role').addClass('active');
 		$('#role-index').addClass('active');

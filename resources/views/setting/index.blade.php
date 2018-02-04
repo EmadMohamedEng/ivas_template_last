@@ -20,7 +20,13 @@
 					<div class="btn-toolbar pull-right">
 						<div class="btn-group">
 							<a class="btn btn-circle show-tooltip" title="" href="{{url('setting/new')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
-							<a  id="delete_button" onclick="delete_selected('settings')" class="btn btn-circle btn-danger show-tooltip" title="@lang('messages.template.delete_many')" href="#"><i class="fa fa-trash-o"></i></a>
+							<?php 
+								$table_name = "settings" ; 
+								// pass table name to delete all function 
+								// if the current route exists in delete all table flags it will appear in view
+								// else it'll not appear
+							?>
+							@include('partial.delete_all') 
 						</div>
 					</div>
 					<br><br>
@@ -28,17 +34,16 @@
 						<table class="table table-advance">
 						<thead>
 							<tr>
-								<th style="width:18px"><input type="checkbox" onclick="select_all()"></th>
+								<th style="width:18px"><input type="checkbox" onclick="select_all('settings')"></th>
 								<th>Key</th>
 								<th>Value</th>
-								{{-- <th>Created at</th> --}}
 								<th class="visible-md visible-lg" style="width:130px">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 						@foreach($settings as $setting)
 							<tr class="table-flag-blue">
-								<td><input type="checkbox" name="selected_rows[]" value="{{$setting->id}}" onclick="collect_selected(this)"></td>
+								<td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$setting->id}}" onclick="collect_selected(this)"></td>
 								<td>{{$setting->key}}</td>
 								<td>
 									@if(file_exists($setting->value))
@@ -57,7 +62,6 @@
 										{!! $setting->value !!}
 									@endif
 								</td>
-								{{-- <td>{{$setting->created_at}}</td> --}}
 								<td class="visible-md visible-lg">
 								    <div class="btn-group">
 								    	<a class="btn btn-sm show-tooltip" title="" href="{{url('setting/'.$setting->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>
@@ -77,21 +81,6 @@
 
 @stop
 @section('script')
-
-	<script>
-		function select_all()
-		{
-			<?php
-				foreach($settings as $setting)
-				{
-			?>
-					collect_selected("{{$setting->id}}") ;
-			<?php 
-				}	
-			?>
-		}
-	</script>
-
 	<script>
 		$('#setting').addClass('active');
 		$('#setting-index').addClass('active');

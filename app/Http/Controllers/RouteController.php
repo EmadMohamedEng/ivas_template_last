@@ -218,7 +218,7 @@ class RouteController extends Controller
     {
         
         $controllers = $this->get_controllers() ; // in main controller  
-    
+        
         return view('route.create_v2',compact('controllers')) ; 
     }
 
@@ -246,36 +246,45 @@ class RouteController extends Controller
                 $check_route = RouteModel::where('controller_name',$route['controller_name'])
                 ->where('function_name',$route['function_name'])
                 ->first() ; 
-
+ 
                 $checker = false ; 
                 if($check_route)
                 {
-                    $check_route->update($route) ; 
+                    $check_route->update($route) ;  
                     $checker = true ; 
                 }
                 else {
                     $check_route = RouteModel::create($route) ; 
                 }
-                
                 $IDs = [] ; 
-
-                for($j = 3 ; $j < $route_size ; $j++ )
+                $holder = [] ; 
+                for($j = 3 ; $j < $route_size ; $j++ )  // 0 function name , 1 route link , 2 method type ... so from 3 to ~ these are the roles 
                 {
                     if(isset($request['route'][$i][$j]))
-                    {
-                        $holder = 
-                        [
-                            'role_id'  => $request['route'][$i][$j],
+                    {            
+                        $tmp =  
+                            [
+                            'role_id'  => (int) $request['route'][$i][$j],
                             'route_id' => $check_route->id
-                        ]  ;
-                        array_push($IDs,$holder) ; 
-                    }
+                            ] ;    
+                        array_push($IDs,$tmp) ;   
+                    }  
+                    // $check_route->roles()->sync($IDs) ;
                 }
-                $check_route->roles()->sync($IDs) ; 
+                $this->sync_role_route($IDs,$check_route->id) ; 
             }
-        }
+        }   
         $request->session()->flash('success',"Route Added Successfully");
         return back() ; 
+    }
+
+    public function sync_role_route($array_of_ids, $route_id)
+    {  
+        RoleRoute::where('route_id',$route_id)->delete() ; 
+        foreach($array_of_ids as $record)
+        {
+            RoleRoute::create($record) ; 
+        }
     }
 
     /**

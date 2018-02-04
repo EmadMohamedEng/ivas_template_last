@@ -14,23 +14,30 @@
 					</div>
 				</div>
 				<div class="box-content">
-
+				<div class="btn-toolbar pull-right">
+                        <div class="btn-group">
+                            <a class="btn btn-circle show-tooltip" title="" href="{{url('static_translation/create')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
+							<?php 
+								$table_name = "static_translations" ;
+							?>
+							@include('partial.delete_all')
+                        </div>
+                    </div>
+                    <br><br>
 					<div class="table-responsive">
 						<table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
 							<thead>
 							<tr>
-								<th style="width:18px"><input type="checkbox"></th>
-								<th>Key Word</th>
-								<th>Translation</th>	
-								{{-- @foreach($languages as $language)
-								@endforeach --}}
+							<th style="width:18px"><input type="checkbox" onclick="select_all('{{$table_name}}')"></th>
+							<th>Key Word</th>
+								<th>Translation</th>	 
 								<th class="visible-md visible-lg" style="width:130px">Action</th>
 							</tr>
 							</thead>
 							<tbody>
 							@foreach($static_translations as $static_translation)
 								<tr class="table-flag-blue">
-									<td><input type="checkbox"></td>
+								<th><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$static_translation->id}}" class="roles" onclick="collect_selected(this)"></th>
 									<td>{{$static_translation->key_word}}</td>
 									<td>
 										@if(strlen($static_translation->getBody()) < 50)

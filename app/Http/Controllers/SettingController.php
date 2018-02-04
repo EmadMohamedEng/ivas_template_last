@@ -304,4 +304,7 @@ class SettingController extends Controller
         \Session::flash('success', 'deleted successfully');
         return back();
     }
+
+
+
 }

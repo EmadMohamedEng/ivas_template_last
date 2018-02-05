@@ -577,6 +577,16 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2018-02-04 12:01:23',
                 'function_name' => 'delete_all_store',
             ),
+            56 => 
+            array (
+                'id' => 71,
+                'method' => 'get',
+                'route' => 'upload_resize_v2',
+                'controller_name' => 'DashboardController',
+                'created_at' => '2018-02-04 13:02:56',
+                'updated_at' => '2018-02-04 13:02:56',
+                'function_name' => 'upload_resize_v2',
+            ),
         ));
         
         

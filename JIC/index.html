@@ -22,16 +22,16 @@
 <body>
 
   <section id="wrapper">
-    
+    <input type="file" name="something" id="FileInput" style="display:none">
     <article id='article'>
       <div class='holder' id="holder">
         <div id='holder_helper'>
           <h2 id="holder_helper_title">Drag & Drop your Image here!</h2>
         </div>
-        <img id="source_image" class='img_container'/>
+        <img id="source_image" class='img_container' />
       </div>
       <div class='holder' id='holder_result'>
-        <img id="result_image" class='img_container' />
+        <img id="result_image" class='img_container' src=""/>
       </div>
       <div class='clear'></div>
       <div class='col' id='left-col'>
@@ -58,4 +58,62 @@
 
   </section>
 </body>
+<script>
+  $("#holder_helper").click(myFunction);
+
+  function myFunction() { 
+    $('#FileInput').trigger("click") ; 
+  } 
+
+  $(function(){
+    $('input:file').change(  function(e) {
+      var input = this ; 
+      this.className = '';
+      e.preventDefault();
+      
+      document.getElementById("holder_helper").removeChild(document.getElementById("holder_helper_title"));
+      
+      var file = input.files[0] , 
+      reader = new FileReader();
+      reader.onload = function(event) {
+          var i = document.getElementById("source_image");
+              i.src = event.target.result;
+              i.onload = function(){
+                image_width=$(i).width(),
+                image_height=$(i).height();
+
+                if(image_width > image_height){
+                  i.style.width="320px";
+                }else{
+                  i.style.height="300px";
+                }
+                i.style.display = "block";
+                console.log("Image loaded");
+
+              }
+              
+      };
+      
+      if(file.type=="image/png"){
+          output_format = "png";
+      }
+
+      console.log("Filename:" + file.name);
+      console.log("Filesize:" + (parseInt(file.size) / 1024) + " Kb");
+      console.log("Type:" + file.type);
+      
+
+      reader.readAsDataURL(file);
+      
+      return false;
+  });
+
+  });
+ 
+
+
+
+
+</script>
+
 </html>

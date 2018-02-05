@@ -17,7 +17,7 @@
                 </div>
                 <div class="box-content">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{url('JIC/index.html')}}"></iframe>
+                        <iframe id="iframe" class="embed-responsive-item" src="{{url('JIC/index.html')}}"></iframe>
                     </div>
                 </div>
             </div>

@@ -291,7 +291,7 @@ class DashboardController extends Controller
         // get all routes that has index 
         // return this route controller name 
         $delete_alls = DeleteAll::all() ; 
-        $routes  = RouteModel::where('function_name','LIKE','%index%')->get() ; 
+        $routes  = RouteModel::where('function_name','LIKE','%index%')->groupBy("controller_name")->get() ; 
         return view('delete_all_flags.index',compact('delete_alls','routes')) ; 
     }
 

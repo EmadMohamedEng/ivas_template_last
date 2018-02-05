@@ -221,7 +221,7 @@
                         <li id="role-create"><a href="{{url('roles/new')}}">@lang('messages.create-role')</a></li>
                         <li id="role-index"><a href="{{url('roles')}}">@lang('messages.role')</a></li>
                         <li id="route-index"><a href="{{url('routes')}}">Routes</a></li>   
-                        <li id="route-v2-index"><a href="{{url('routes_v2')}}">Routes V2</a></li>    
+                        <li id="route-v2-index"><a href="{{url('routes/index_v2')}}">Routes V2</a></li>    
                          
                     </ul>
                     <!-- END Submenu -->

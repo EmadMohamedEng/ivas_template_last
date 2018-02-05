@@ -250,8 +250,7 @@ class RouteController extends Controller
                 $route['function_name'] = $request['route'][$i][0] ;
                 $route['route'] = $request['route'][$i][1] ; 
                 $route['method'] = $request['route'][$i][2] ;
-                $route['controller_name'] = $request['controller_name'] ;
-
+                $route['controller_name'] = $request['controller_name'] ; 
                 $check_route = RouteModel::where('controller_name',$route['controller_name'])
                 ->where('function_name',$route['function_name'])
                 ->first() ; 

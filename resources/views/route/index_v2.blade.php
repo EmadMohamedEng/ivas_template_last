@@ -69,7 +69,7 @@
                                             <tbody>
                                             {!! Form::open(["url"=>"routes/store_v2","class"=>"form-horizontal"]) !!}
                                                 @foreach($methods as $i=>$function_name)
-                                                {!! Form::hidden("controller_name",$controller_name) !!}
+                                                {!! Form::hidden("controller_name",$_GET['controller_name']) !!}
                                                 <?php 
                                                     $function_name = str_replace(' ', '', $function_name); // to remove spaces from function name
                                                     $j = 0 ; 

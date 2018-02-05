@@ -21,30 +21,30 @@ class RoutesTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'method' => 'get',
-                'route' => 'users',
+                'route' => 'setting',
                 'controller_name' => 'UserController',
                 'created_at' => '2017-11-09 06:13:14',
-                'updated_at' => '2017-11-09 06:13:14',
+                'updated_at' => '2018-02-05 13:41:40',
                 'function_name' => 'index',
             ),
             1 => 
             array (
                 'id' => 2,
                 'method' => 'get',
-                'route' => 'users/new',
+                'route' => 'setting/new',
                 'controller_name' => 'UserController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '2018-01-28 09:27:15',
+                'updated_at' => '2018-02-05 13:39:21',
                 'function_name' => 'create',
             ),
             2 => 
             array (
                 'id' => 3,
                 'method' => 'post',
-                'route' => 'users',
+                'route' => 'setting',
                 'controller_name' => 'UserController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'updated_at' => '2018-02-05 13:39:21',
                 'function_name' => 'store',
             ),
             3 => 
@@ -111,30 +111,30 @@ class RoutesTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'method' => 'get',
-                'route' => 'users/{id}/delete',
+                'route' => 'setting/{id}/delete',
                 'controller_name' => 'UserController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '2017-11-15 08:34:32',
+                'updated_at' => '2018-02-05 13:39:22',
                 'function_name' => 'destroy',
             ),
             10 => 
             array (
                 'id' => 11,
                 'method' => 'get',
-                'route' => 'users/{id}/edit',
+                'route' => 'setting/{id}/edit',
                 'controller_name' => 'UserController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '2017-11-14 12:29:40',
+                'updated_at' => '2018-02-05 13:39:21',
                 'function_name' => 'edit',
             ),
             11 => 
             array (
                 'id' => 12,
                 'method' => 'post',
-                'route' => 'users/{id}/update',
+                'route' => 'setting/{id}/update',
                 'controller_name' => 'UserController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '2017-11-14 12:29:49',
+                'updated_at' => '2018-02-05 13:39:22',
                 'function_name' => 'update',
             ),
             12 => 
@@ -154,7 +154,7 @@ class RoutesTableSeeder extends Seeder
                 'route' => 'setting',
                 'controller_name' => 'SettingController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'updated_at' => '2018-02-05 08:28:36',
                 'function_name' => 'index',
             ),
             14 => 
@@ -430,7 +430,7 @@ class RoutesTableSeeder extends Seeder
             41 => 
             array (
                 'id' => 43,
-                'method' => 'get',
+                'method' => 'patch',
                 'route' => 'routes/{id}/update',
                 'controller_name' => 'RouteController',
                 'created_at' => '0000-00-00 00:00:00',
@@ -586,6 +586,16 @@ class RoutesTableSeeder extends Seeder
                 'created_at' => '2018-02-04 13:02:56',
                 'updated_at' => '2018-02-04 13:02:56',
                 'function_name' => 'upload_resize_v2',
+            ),
+            57 => 
+            array (
+                'id' => 72,
+                'method' => 'post',
+                'route' => 'sortabledatatable',
+                'controller_name' => 'UserController',
+                'created_at' => '2018-02-05 13:39:22',
+                'updated_at' => '2018-02-05 13:39:22',
+                'function_name' => 'updateOrder',
             ),
         ));
         

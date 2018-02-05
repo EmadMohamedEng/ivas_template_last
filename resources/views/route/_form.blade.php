@@ -3,7 +3,7 @@
     <div class="col-sm-9 col-lg-10 controls">
         <select class="form-control chosen-rtl" name="method" required>
             @foreach($method_types as $index=>$type)
-                <option value="{{$index}}">{{$type}}</option>
+                <option value="{{$index}}" @if($route->method==$index) selected @endif >{{$type}}</option>
             @endforeach
         </select>
     </div>

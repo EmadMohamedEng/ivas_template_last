@@ -7,20 +7,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Intervention\Image\ImageManagerStatic as Image;
-use Adldap\Laravel\Facades\Adldap;
+use Intervention\Image\ImageManagerStatic as Image; 
 use App\RouteModel ; 
 use App\DeleteAll ; 
-
-//use Adldap\AdldapInterface;
+ 
 
 class DashboardController extends Controller
-{
-    protected $ldap  ; 
+{ 
     protected $databases_base_path ; 
-    public function __construct(/*AdldapInterface $ldap*/)
-    {
-        //$this->ldap = $ldap ; 
+    public function __construct()
+    { 
         $this->databases_base_path = base_path()."/database/backups/"  ; 
         $this->middleware('auth');
     }
@@ -187,14 +183,6 @@ class DashboardController extends Controller
         } 
     }
 
-    public function ldap()
-    {  
-
-        // $users = $this->ldap->search()->users()->get(); 
-        
-        // return $users ;
-    }
-
     public function download_backup(Request $request)
     {
         $file = $this->databases_base_path.$request['path'] ; 
@@ -237,6 +225,10 @@ class DashboardController extends Controller
     public function list_backups()
     {
         $path      = $this->file_build_path("database","backups") ;
+        
+        if(!file_exists($path))
+            mkdir($path) ;  
+
         $files     = scandir($path);  
         $databases = array() ; 
         foreach($files as $file)

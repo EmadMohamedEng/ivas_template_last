@@ -1,0 +1,528 @@
+-- MySQL dump 10.13  Distrib 5.6.26, for Win32 (x86)
+--
+-- Host: localhost    Database: ivas_template_last
+-- ------------------------------------------------------
+-- Server version	5.6.26
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `languages`
+--
+
+DROP TABLE IF EXISTS `languages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `languages` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `short_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rtl` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `languages`
+--
+
+LOCK TABLES `languages` WRITE;
+/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_10_31_162633_scaffoldinterfaces',1),('2017_08_01_141233_create_permission_tables',1),('2017_09_20_131500_create_first_user',1),('2017_10_16_084836_create_settings_table',1),('2017_10_25_094626_create_translatable_table',1),('2017_10_25_095102_create_language_table',1),('2017_10_25_095200_create_translate_body',1),('2017_10_25_113637_add_short_code_and_rtl_to_language',1),('2017_10_31_091358_create_static_translations_table',1),('2017_10_31_091835_create_static_body_table',1),('2017_11_09_081714_create_role_route_table',1),('2017_11_09_081714_create_routes_table',1),('2017_11_09_081715_add_foreign_keys_to_role_route_table',1),('2017_11_14_115606_isolate_controller_from_method',1),('2017_11_15_092424_adding_standards_routes',1),('2017_12_19_092552_add_type_field_to_settings',1),('2018_01_04_081336_adding_priorty_field_to_role_table',1),('2018_01_08_074915_phone_col_null',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `password_resets_email_index` (`email`),
+  KEY `password_resets_token_index` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permissions`
+--
+
+DROP TABLE IF EXISTS `permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permissions_name_unique` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permissions`
+--
+
+LOCK TABLES `permissions` WRITE;
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `relations`
+--
+
+DROP TABLE IF EXISTS `relations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `relations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `scaffoldinterface_id` int(10) unsigned NOT NULL,
+  `to` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `having` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `relations_scaffoldinterface_id_foreign` (`scaffoldinterface_id`),
+  CONSTRAINT `relations_scaffoldinterface_id_foreign` FOREIGN KEY (`scaffoldinterface_id`) REFERENCES `scaffoldinterfaces` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `relations`
+--
+
+LOCK TABLES `relations` WRITE;
+/*!40000 ALTER TABLE `relations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `relations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+DROP TABLE IF EXISTS `role_has_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_has_permissions` (
+  `permission_id` int(10) unsigned NOT NULL,
+  `role_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`role_id`),
+  KEY `role_has_permissions_role_id_foreign` (`role_id`),
+  CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+LOCK TABLES `role_has_permissions` WRITE;
+/*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_route`
+--
+
+DROP TABLE IF EXISTS `role_route`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_route` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(10) unsigned NOT NULL,
+  `route_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `role_id_2` (`role_id`),
+  KEY `route_id_2` (`route_id`),
+  CONSTRAINT `role_route_ibfk_1` FOREIGN KEY (`route_id`) REFERENCES `routes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `role_route_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_route`
+--
+
+LOCK TABLES `role_route` WRITE;
+/*!40000 ALTER TABLE `role_route` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_route` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `role_priority` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `roles_name_unique` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'super_admin','0000-00-00 00:00:00','0000-00-00 00:00:00',0),(6,'admin','2018-01-08 12:40:19','2018-01-08 12:40:19',2);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `routes`
+--
+
+DROP TABLE IF EXISTS `routes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `routes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `method` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `route` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `controller_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `function_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `routes`
+--
+
+LOCK TABLES `routes` WRITE;
+/*!40000 ALTER TABLE `routes` DISABLE KEYS */;
+INSERT INTO `routes` VALUES (1,'get','users','UserController','2017-11-09 04:13:14','2017-11-09 04:13:14','index'),(3,'post','users','UserController','0000-00-00 00:00:00','0000-00-00 00:00:00','store'),(4,'get','dashboard','DashboardController','0000-00-00 00:00:00','2017-12-20 08:18:50','index'),(6,'get','user_profile','UserController','0000-00-00 00:00:00','0000-00-00 00:00:00','profile'),(7,'post','user_profile/updatepassword','UserController','0000-00-00 00:00:00','2017-11-14 10:29:01','UpdatePassword'),(8,'post','user_profile/updateprofilepic','UserController','0000-00-00 00:00:00','2017-11-14 10:29:08','UpdateProfilePicture'),(9,'post','user_profile/updateuserdata','UserController','0000-00-00 00:00:00','2017-11-14 10:29:19','UpdateNameAndEmail'),(10,'get','users/{id}/delete','UserController','0000-00-00 00:00:00','2017-11-15 06:34:32','destroy'),(11,'get','users/{id}/edit','UserController','0000-00-00 00:00:00','2017-11-14 10:29:40','edit'),(12,'post','users/{id}/update','UserController','0000-00-00 00:00:00','2017-11-14 10:29:49','update'),(14,'get','static_translation','StaticTranslationController','0000-00-00 00:00:00','2017-11-14 10:29:57','index'),(15,'get','setting','SettingController','0000-00-00 00:00:00','0000-00-00 00:00:00','index'),(16,'get','setting/new','SettingController','0000-00-00 00:00:00','0000-00-00 00:00:00','create'),(17,'get','setting/{id}/delete','SettingController','0000-00-00 00:00:00','0000-00-00 00:00:00','destroy'),(18,'get','setting/{id}/edit','SettingController','0000-00-00 00:00:00','0000-00-00 00:00:00','edit'),(19,'post','setting/{id}/update','SettingController','0000-00-00 00:00:00','0000-00-00 00:00:00','update'),(20,'post','setting','SettingController','0000-00-00 00:00:00','0000-00-00 00:00:00','store'),(21,'get','file_manager','DashboardController','0000-00-00 00:00:00','0000-00-00 00:00:00','file_manager'),(22,'get','upload_items','DashboardController','0000-00-00 00:00:00','0000-00-00 00:00:00','multi_upload'),(23,'post','save_items','DashboardController','0000-00-00 00:00:00','0000-00-00 00:00:00','save_uploaded'),(24,'get','upload_resize','DashboardController','0000-00-00 00:00:00','0000-00-00 00:00:00','upload_resize'),(25,'post','save_image','DashboardController','0000-00-00 00:00:00','0000-00-00 00:00:00','save_image'),(26,'post','static_translation/{id}/update','StaticTranslationController','0000-00-00 00:00:00','2017-11-12 10:19:46','update'),(27,'get','static_translation/{id}/delete','StaticTranslationController','0000-00-00 00:00:00','0000-00-00 00:00:00','destroy'),(28,'get','language/{id}/delete','LanguageController','0000-00-00 00:00:00','0000-00-00 00:00:00','destroy'),(29,'post','language/{id}/update','LanguageController','0000-00-00 00:00:00','0000-00-00 00:00:00','update'),(30,'get','roles','RoleController','0000-00-00 00:00:00','0000-00-00 00:00:00','index'),(31,'get','roles/new','RoleController','0000-00-00 00:00:00','0000-00-00 00:00:00','create'),(32,'post','roles','RoleController','0000-00-00 00:00:00','0000-00-00 00:00:00','store'),(33,'get','roles/{id}/delete','RoleController','0000-00-00 00:00:00','0000-00-00 00:00:00','destroy'),(34,'get','roles/{id}/edit','RoleController','0000-00-00 00:00:00','0000-00-00 00:00:00','edit'),(35,'post','roles/{id}/update','RoleController','0000-00-00 00:00:00','0000-00-00 00:00:00','update'),(36,'get','language','LanguageController','0000-00-00 00:00:00','0000-00-00 00:00:00','index'),(37,'get','language/create','LanguageController','0000-00-00 00:00:00','0000-00-00 00:00:00','create'),(38,'post','language','LanguageController','0000-00-00 00:00:00','0000-00-00 00:00:00','store'),(39,'get','language/{id}/edit','LanguageController','0000-00-00 00:00:00','0000-00-00 00:00:00','edit'),(40,'get','routes','RouteController','0000-00-00 00:00:00','0000-00-00 00:00:00','index'),(41,'post','routes','RouteController','0000-00-00 00:00:00','0000-00-00 00:00:00','store'),(42,'get','routes/{id}/edit','RouteController','0000-00-00 00:00:00','0000-00-00 00:00:00','edit'),(43,'post','routes/{id}/update','RouteController','0000-00-00 00:00:00','0000-00-00 00:00:00','update'),(44,'get','routes/{id}/delete','RouteController','0000-00-00 00:00:00','0000-00-00 00:00:00','destroy'),(45,'get','routes/create','RouteController','0000-00-00 00:00:00','0000-00-00 00:00:00','create'),(57,'get','routes/index_v2','RouteController','2017-11-12 11:45:15','2017-11-12 12:04:53','index_v2'),(58,'get','roles/{id}/view_access','RoleController','2017-11-14 08:56:14','2017-11-15 06:14:14','view_access'),(59,'get','buildroutes','RouteController','2017-12-20 08:28:49','2017-12-20 08:28:49','buildroutes'),(60,'get','users/new','UserController','2018-01-04 06:03:46','2018-01-04 06:03:46','create'),(110,'get','routes_v2','RouteController','2018-01-08 12:39:13','2018-01-08 12:39:13','create_v2'),(111,'post','routes/store_v2','RouteController','2018-01-08 12:42:22','2018-01-08 12:42:22','store_v2');
+/*!40000 ALTER TABLE `routes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `scaffoldinterfaces`
+--
+
+DROP TABLE IF EXISTS `scaffoldinterfaces`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `scaffoldinterfaces` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `package` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `model` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `controller` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `views` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tablename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `scaffoldinterfaces`
+--
+
+LOCK TABLES `scaffoldinterfaces` WRITE;
+/*!40000 ALTER TABLE `scaffoldinterfaces` DISABLE KEYS */;
+/*!40000 ALTER TABLE `scaffoldinterfaces` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `type` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `settings`
+--
+
+LOCK TABLES `settings` WRITE;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO `settings` VALUES (5,'dd','<p><strong>ddd</strong></p>\r\n','2018-01-11 13:06:38','2018-01-11 13:06:38',1);
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `static_bodies`
+--
+
+DROP TABLE IF EXISTS `static_bodies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `static_bodies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `language_id` int(10) unsigned NOT NULL,
+  `static_translation_id` int(10) unsigned NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `static_bodies_language_id_foreign` (`language_id`),
+  KEY `static_bodies_static_translation_id_foreign` (`static_translation_id`),
+  CONSTRAINT `static_bodies_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `static_bodies_static_translation_id_foreign` FOREIGN KEY (`static_translation_id`) REFERENCES `static_translations` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `static_bodies`
+--
+
+LOCK TABLES `static_bodies` WRITE;
+/*!40000 ALTER TABLE `static_bodies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `static_bodies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `static_translations`
+--
+
+DROP TABLE IF EXISTS `static_translations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `static_translations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `key_word` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `static_translations`
+--
+
+LOCK TABLES `static_translations` WRITE;
+/*!40000 ALTER TABLE `static_translations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `static_translations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tans_bodies`
+--
+
+DROP TABLE IF EXISTS `tans_bodies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tans_bodies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `language_id` int(10) unsigned NOT NULL,
+  `translatable_id` int(10) unsigned NOT NULL,
+  `body` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  KEY `tans_bodies_language_id_foreign` (`language_id`),
+  KEY `tans_bodies_translatable_id_foreign` (`translatable_id`),
+  CONSTRAINT `tans_bodies_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `tans_bodies_translatable_id_foreign` FOREIGN KEY (`translatable_id`) REFERENCES `translatables` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tans_bodies`
+--
+
+LOCK TABLES `tans_bodies` WRITE;
+/*!40000 ALTER TABLE `tans_bodies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tans_bodies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `translatables`
+--
+
+DROP TABLE IF EXISTS `translatables`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `translatables` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `table_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `record_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `column_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `translatables`
+--
+
+LOCK TABLES `translatables` WRITE;
+/*!40000 ALTER TABLE `translatables` DISABLE KEYS */;
+/*!40000 ALTER TABLE `translatables` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_has_permissions`
+--
+
+DROP TABLE IF EXISTS `user_has_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_has_permissions` (
+  `user_id` int(10) unsigned NOT NULL,
+  `permission_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`,`permission_id`),
+  KEY `user_has_permissions_permission_id_foreign` (`permission_id`),
+  CONSTRAINT `user_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `user_has_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_has_permissions`
+--
+
+LOCK TABLES `user_has_permissions` WRITE;
+/*!40000 ALTER TABLE `user_has_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_has_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_has_roles`
+--
+
+DROP TABLE IF EXISTS `user_has_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_has_roles` (
+  `role_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`role_id`,`user_id`),
+  KEY `user_has_roles_user_id_foreign` (`user_id`),
+  CONSTRAINT `user_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `user_has_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_has_roles`
+--
+
+LOCK TABLES `user_has_roles` WRITE;
+/*!40000 ALTER TABLE `user_has_roles` DISABLE KEYS */;
+INSERT INTO `user_has_roles` VALUES (1,1);
+/*!40000 ALTER TABLE `user_has_roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_phone_unique` (`phone`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'super admin','super_admin@ivas.com','$2y$10$u2evAW530miwgUb2jcXkTuqIGswxnSQ3DSmX1Ji5rtO3Tx.MtVcX2','','01234567890',NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-01-11 17:07:40

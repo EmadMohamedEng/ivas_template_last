@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/font-awesome/css/font-awesome.min.css')}}">
     <!--page specific css styles-->
-    <link rel="stylesheet" href="{{url('assets/data-tables/bootstrap3/dataTables.bootstrap.css')}}" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
     <!--flaty css styles-->
     <link rel="stylesheet" href="{{url('css/flaty.css')}}">
     <link rel="stylesheet" href="{{url('css/flaty-responsive.css')}}">
@@ -412,8 +412,7 @@
 <script type="text/javascript" src="{{url('assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js')}}"></script>
 <script type="text/javascript" src="{{url('assets/ckeditor/ckeditor.js')}}"></script>
 
-<script type="text/javascript" src="{{url('assets/data-tables/jquery.dataTables.js')}}"></script>
-<script type="text/javascript" src="{{url('assets/data-tables/bootstrap3/dataTables.bootstrap.js')}}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 <!--flaty scripts-->
 <script src="{{url('js/flaty.js')}}"></script>
 <script src="{{url('js/flaty-demo-codes.js')}}"></script>
@@ -453,7 +452,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+       // $('#example').DataTable();
         var el = $('.chosen-rtl') ;
         if ("<?php echo App::getLocale(); ?>" == "ar") {
             el.chosen({
@@ -533,7 +532,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+       // $('#example').DataTable();
     } );
 
 
@@ -576,8 +575,10 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
-    } );
+        $('#example').DataTable({
+            'lengthMenu': [5, 10, 15, 20, 25, 50, 'All']
+        });
+    });
 </script>
 
 @yield('script')

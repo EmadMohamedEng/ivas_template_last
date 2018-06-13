@@ -537,6 +537,56 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2018-02-05 14:10:10',
                 'function_name' => 'index',
             ),
+            52 => 
+            array (
+                'id' => 80,
+                'method' => 'get',
+                'route' => 'users',
+                'controller_name' => 'UserController',
+                'created_at' => '2018-05-31 09:42:21',
+                'updated_at' => '2018-05-31 09:42:21',
+                'function_name' => 'index',
+            ),
+            53 => 
+            array (
+                'id' => 81,
+                'method' => 'get',
+                'route' => 'users/new',
+                'controller_name' => 'UserController',
+                'created_at' => '2018-05-31 09:42:21',
+                'updated_at' => '2018-05-31 09:42:21',
+                'function_name' => 'create',
+            ),
+            54 => 
+            array (
+                'id' => 82,
+                'method' => 'post',
+                'route' => 'users',
+                'controller_name' => 'UserController',
+                'created_at' => '2018-05-31 09:42:21',
+                'updated_at' => '2018-05-31 09:42:21',
+                'function_name' => 'store',
+            ),
+            55 => 
+            array (
+                'id' => 83,
+                'method' => 'get',
+                'route' => 'users/{id}/edit',
+                'controller_name' => 'UserController',
+                'created_at' => '2018-05-31 09:42:21',
+                'updated_at' => '2018-05-31 09:42:21',
+                'function_name' => 'edit',
+            ),
+            56 => 
+            array (
+                'id' => 84,
+                'method' => 'post',
+                'route' => 'users/{id}/update',
+                'controller_name' => 'UserController',
+                'created_at' => '2018-05-31 09:42:21',
+                'updated_at' => '2018-05-31 09:42:21',
+                'function_name' => 'update',
+            ),
         ));
         
         

@@ -316,6 +316,12 @@ class DashboardController extends Controller
         }
         return ; 
     }
+    public function clear_cache() {
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        \Session::flash('success', 'Cashe Cleared successfully');
+        return redirect('dashboard');
+    }
 
 
 }

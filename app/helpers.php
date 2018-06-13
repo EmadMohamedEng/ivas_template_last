@@ -68,6 +68,7 @@ function get_static_routes()
         Route::get('delete_backup','DashboardController@delete_backup')  ;    
         Route::get('import_DB','DashboardController@import_DB_backup') ; 
         Route::get('download_backup','DashboardController@download_backup') ; 
+        Route::get('/clear-cache','DashboardController@clear_cache' );
     });
 
 

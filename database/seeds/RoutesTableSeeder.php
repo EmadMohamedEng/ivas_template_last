@@ -44,8 +44,8 @@ class RoutesTableSeeder extends Seeder
                 'route' => 'dashboard',
                 'controller_name' => 'DashboardController',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '2017-11-15 08:28:55',
-                'function_name' => ' index',
+                'updated_at' => '2018-07-24 13:47:45',
+                'function_name' => 'index',
             ),
             3 => 
             array (

@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image; 
 use App\RouteModel ; 
 use App\DeleteAll ; 
- 
+use Artisan ;  
 
 class DashboardController extends Controller
 { 

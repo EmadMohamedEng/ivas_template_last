@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Image; 
 use App\RouteModel ; 
 use App\DeleteAll ; 
- 
+use Artisan ;  
 
 class DashboardController extends Controller
 { 
@@ -315,6 +315,12 @@ class DashboardController extends Controller
             return $run ;
         }
         return ; 
+    }
+    public function clear_cache() {
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        \Session::flash('success', 'Cashe Cleared successfully');
+        return redirect('dashboard');
     }
 
 

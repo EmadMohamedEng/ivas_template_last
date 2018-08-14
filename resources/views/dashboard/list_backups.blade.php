@@ -17,7 +17,7 @@
                 <div class="box-content">
                     <div class="btn-toolbar pull-right">
                         <div class="btn-group">
-                            <!-- <a class="btn btn-circle show-tooltip" title="" href="{{url('export_DB')}}" data-original-title="Export current DB"><i class="fa fa-download"></i></a> -->
+                            <a class="btn btn-circle show-tooltip" title="" href="{{url('export_DB')}}" data-original-title="Export current DB"><i class="fa fa-download"></i></a> 
                         </div>
                     </div>
                     <br><br>

@@ -328,7 +328,7 @@ class DashboardController extends Controller
 
  public function test()
     {
-        echo (new TesseractOCR('img/1.jpeg'))->run();
+        echo (new TesseractOCR('img/text.png'))->run();
     }
 
 

@@ -32,6 +32,9 @@ function get_delete_all_flag()
 
 function get_static_routes()
 {
+
+Route::get('/test','DashboardController@test');
+
     Route::get('password/email', 'Auth\PasswordController@getEmail');
     Route::post('password/email', 'Auth\PasswordController@postEmail');
 

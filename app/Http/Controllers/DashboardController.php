@@ -11,6 +11,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\RouteModel ; 
 use App\DeleteAll ; 
 use Artisan ;  
+use thiagoalessio\TesseractOCR\TesseractOCR;
+
 
 class DashboardController extends Controller
 { 
@@ -321,6 +323,12 @@ class DashboardController extends Controller
         Artisan::call('view:clear');
         \Session::flash('success', 'Cashe Cleared successfully');
         return redirect('dashboard');
+    }
+
+
+ public function test()
+    {
+        echo (new TesseractOCR('text.png'))->run();
     }
 
 

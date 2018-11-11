@@ -245,7 +245,7 @@
                         <li id="setting-create"><a href="<?php echo e(url('setting/new')); ?>">Add Settings</a></li>
                         <li id="setting-index"><a href="<?php echo e(url('setting')); ?>">Settings</a></li>
                         <li id="setting-import-DB"><a href="<?php echo e(url('database_backups')); ?>">Database Backups</a></li>
-                        
+                        <li id="setting-index"><a href="<?php echo e(url('clear-cache')); ?>">Clear Cashe</a></li>
                     </ul>
                     <!-- END Submenu -->
                 </li>

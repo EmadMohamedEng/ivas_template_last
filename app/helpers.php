@@ -69,6 +69,8 @@ function get_static_routes()
         Route::get('import_DB','DashboardController@import_DB_backup') ; 
         Route::get('download_backup','DashboardController@download_backup') ; 
         Route::get('/clear-cache','DashboardController@clear_cache' );
+        Route::get('admin/elfinder', 'ElfinderController@getIndex');
+        Route::post('admin/elfinder', 'ElfinderController@getIndex');       
     });
 
 

@@ -245,6 +245,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             <li id="setting-index"><a href="{{url('setting')}}">Settings</a></li>
                             <li id="setting-import-DB"><a href="{{url('database_backups')}}">Database Backups</a></li>
                             <li id="setting-index"><a href="{{url('clear-cache')}}">Clear Cashe</a></li>
+                            <li id="setting-seed"><a href="{{url('admin/seed_manager')}}">Create Seed Files</a></li>
                         </ul>
                         <!-- END Submenu -->
                     </li>

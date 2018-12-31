@@ -72,6 +72,10 @@ Route::get('/test','DashboardController@test');
         Route::get('import_DB','DashboardController@import_DB_backup') ; 
         Route::get('download_backup','DashboardController@download_backup') ; 
         Route::get('/clear-cache','DashboardController@clear_cache' );
+        Route::get('admin/elfinder', 'ElfinderController@getIndex');
+        Route::post('admin/elfinder', 'ElfinderController@getIndex'); 
+         Route::get('admin/seed_manager', 'DashboardController@seed_manager');       
+        Route::post('admin/seed_tables', 'DashboardController@seed_tables');
     });
 
 

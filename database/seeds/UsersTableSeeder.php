@@ -25,9 +25,9 @@ class UsersTableSeeder extends Seeder
                 'password' => '$2y$10$u2evAW530miwgUb2jcXkTuqIGswxnSQ3DSmX1Ji5rtO3Tx.MtVcX2',
                 'image' => '',
                 'phone' => '01234567890',
-                'remember_token' => NULL,
+                'remember_token' => 'rZuEmD6bPlK8lMdaoIC1jRvzlLs17XOy5r6MTsGWA1ggFfMGCVaw7bYG3hBQ',
                 'created_at' => '0000-00-00 00:00:00',
-                'updated_at' => '0000-00-00 00:00:00',
+                'updated_at' => '2018-11-26 08:11:50',
             ),
         ));
         

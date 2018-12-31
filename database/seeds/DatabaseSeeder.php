@@ -31,5 +31,11 @@ class DatabaseSeeder extends Seeder
         $this->call('RoleRouteTableSeeder');
         $this->call('TypesTableSeeder');
         $this->call('SettingsTableSeeder'); 
+        $this->call('DeleteAllFlagsTableSeeder');
+        $this->call('LanguagesTableSeeder');
+        $this->call('StaticBodiesTableSeeder');
+        $this->call('StaticTranslationsTableSeeder');
+        $this->call('TansBodiesTableSeeder');
+        $this->call('TranslatablesTableSeeder');
     }
 }

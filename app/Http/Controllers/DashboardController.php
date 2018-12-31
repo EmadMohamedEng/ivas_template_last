@@ -12,7 +12,7 @@ use App\RouteModel ;
 use App\DeleteAll ; 
 use Artisan ;  
 use thiagoalessio\TesseractOCR\TesseractOCR;
-
+use DB;
 
 class DashboardController extends Controller
 { 
@@ -323,6 +323,34 @@ class DashboardController extends Controller
         Artisan::call('view:clear');
         \Session::flash('success', 'Cashe Cleared successfully');
         return redirect('dashboard');
+    }
+public function seed_manager() {
+        $tables = array_map('reset', \DB::select('SHOW TABLES'));        
+
+         return view('dashboard.seed_manager', compact('tables'));
+
+    }
+    public function seed_tables(Request $request) {
+        
+        $tables = $request->tables; 
+        if($tables){
+            ini_set('max_execution_time', 300);
+            foreach ($tables as $table) {
+                $command = "php artisan iseed $table --force";
+                $ex = exec($command);
+                if(empty($ex)){
+                    \Session::flash('failed', 'Please Add orangehill/iseed Package First');
+                    return redirect('dashboard');
+                }   
+            }            
+            \Session::flash('success', 'Created a seed file from tables successfully');
+            return redirect('dashboard');
+        }
+        else{
+             \Session::flash('failed', 'Please Choose Table to Seed');
+                    return back();
+        }
+        
     }
 
 

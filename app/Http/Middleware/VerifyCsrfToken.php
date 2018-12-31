@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         'save_items',
-        'save_image'
+        'save_image',
+        'admin/elfinder'
     ];
 }

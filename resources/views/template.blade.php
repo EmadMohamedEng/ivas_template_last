@@ -64,7 +64,7 @@ function ConfirmDelete()
     else
         return false;
 }
-        </script> 
+        </script>
 
 
     </head>
@@ -198,7 +198,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
             <!-- BEGIN Sidebar -->
             <div id="sidebar" class="navbar-collapse collapse">
                 <!-- BEGIN Navlist -->
-                <ul class="nav nav-list"> 
+                <ul class="nav nav-list">
                     <li id="user">
                         <a href="#" class="dropdown-toggle">
                             <i class="glyphicon glyphicon-user"></i>
@@ -225,8 +225,8 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                         <ul class="submenu">
                             <li id="role-create"><a href="{{url('roles/new')}}">@lang('messages.create-role')</a></li>
                             <li id="role-index"><a href="{{url('roles')}}">@lang('messages.role')</a></li>
-                            <li id="route-index"><a href="{{url('routes')}}">Routes</a></li>   
-                            <li id="route-v2-index"><a href="{{url('routes/index_v2')}}">Routes V2</a></li>    
+                            <li id="route-index"><a href="{{url('routes')}}">Routes</a></li>
+                            <li id="route-v2-index"><a href="{{url('routes/index_v2')}}">Routes V2</a></li>
 
                         </ul>
                         <!-- END Submenu -->
@@ -263,7 +263,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul>
-                    <li id="file_manager"> 
+                    <li id="file_manager">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-file"></i>
                             <span>File Manager</span>
@@ -276,10 +276,10 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             <li id="file_elfinder"><a href="{{url('admin/elfinder')}}">UI File Manager</a></li>
                             <li id="uploader"><a href="{{url('upload_items')}}">file uploader</a></li>
                         </ul>
-                        <!-- END Submenu -->                    
+                        <!-- END Submenu -->
                     </li>
 
-                    <li id="images"> 
+                    <li id="images">
                         <a href="#" class="dropdown-toggle">
                             <i class="glyphicon glyphicon-fullscreen"></i>
                             <span>Image</span>
@@ -288,11 +288,11 @@ if (Config::get('languages')[App::getLocale()] == "English") {
 
                         <!-- BEGIN Submenu -->
                         <ul class="submenu">
-                            <li id="upload_resize"><a href="{{url('upload_resize')}}">Upload/Resize Image</a></li> 
-                            <li id="upload_resize_v2"><a href="{{url('upload_resize_v2')}}">Upload/Resize Image V2</a></li>                         
+                            <li id="upload_resize"><a href="{{url('upload_resize')}}">Upload/Resize Image</a></li>
+                            <li id="upload_resize_v2"><a href="{{url('upload_resize_v2')}}">Upload/Resize Image V2</a></li>
                         </ul>
-                        <!-- END Submenu -->                    
-                    </li>                
+                        <!-- END Submenu -->
+                    </li>
                     <ul class="nav nav-list">
                         <li id="static">
                             <a href="#" class="dropdown-toggle">
@@ -308,7 +308,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                             <!-- END Submenu -->
                         </li>
-                    </ul>    
+                    </ul>
 
                     <ul class="nav nav-list">
                         <li id="language">
@@ -341,7 +341,39 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                             <!-- END Submenu -->
                         </li>
-                    </ul>     
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="country">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-globe"></i>
+                                <span>Country</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="country_index"><a href="{{url('country')}}">List Country</a></li>
+                                <li id="country_create"><a href="{{url('country/create')}}">Create Country</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="operator">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Operator</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="operator_index"><a href="{{url('operator')}}">List operator</a></li>
+                                <li id="operator_create"><a href="{{url('operator/create')}}">Create Operator</a></li>
+                            </ul>
+                        </li>
+                    </ul>   
                     {{--@endif--}}
                 </ul>
                 <!-- END Navlist -->
@@ -427,7 +459,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
         <script type="text/javascript" src="{{url('assets_/data-tables/bootstrap3/dataTables.bootstrap.js')}}"></script>
 
 
-        <!--flaty scripts-->        
+        <!--flaty scripts-->
 
         <script>
     $('#mySwitch').on('switch-change', function (e, data) {
@@ -601,7 +633,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
             $(function () {
                 $("#resizable").resizable();
             });
-        </script> 
+        </script>
         <script src="{{url('js/flaty-demo-codes.js')}}"></script>
     <?php } ?>
     @yield('script')

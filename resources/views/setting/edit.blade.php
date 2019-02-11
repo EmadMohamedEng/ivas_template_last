@@ -18,7 +18,7 @@
                 </div>
                 <div class="box-content">
 
-                    <form action="{{url('setting/'.$setting->id.'/update')}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data">
+                    <form action="{{url('setting/'.$setting->id)}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data">
               			{!! csrf_field() !!}
                         <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Key</label>
@@ -28,16 +28,16 @@
                         </div>
 
                         <div class="form-group">
-                            @if($setting->type->title == "Image" || $setting->type->title == "Normal Editor" || $setting->type->title == "Advanced Editor" )
+                            @if($setting->type->title == "Image" || $setting->type->title == "Normal Editor" || $setting->type->title == "Advanced Editor" || $setting->type->title == "selector")
                                 <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Value</label>
                             @elseif($setting->type->title == "Video")
                                 {!! Form::label('Video',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             @elseif($setting->type->title == "Audio")
                                 {!! Form::label('Audio',\Lang::get('messages.audio').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             @elseif($setting->type->title == "File Manager Uploads Extensions")
-                                {!! Form::label('File','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!} 
+                                {!! Form::label('File','Extensions Allowed *',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
                             @endif
-                            <div class="col-sm-9 col-lg-10 controls"> 
+                            <div class="col-sm-9 col-lg-10 controls">
                                 @if(file_exists($setting->value))
                                   @if($setting->type->title == "Image")
                                     <div class='col-sm-9 col-lg-10 controls'>
@@ -64,6 +64,7 @@
                                          <span>Only extension supported mp4, flv, and 3gp</span>
                                     </div>
                                     </div>
+
                                    @elseif($setting->type->title == "Audio")
                                     <div class="form-group" id="audiocont" novalidate>
                                         <div class="col-sm-9 col-lg-10 controls">
@@ -74,18 +75,23 @@
                                     </div>
                                     @endif
                                     <br>
+                                @elseif($setting->type->title == "selector")
+                                    <select class="form-control" name="value">
+                                      <option value="1" @if($setting->value) selected @endif> True </option>
+                                      <option value="0"  @if(!$setting->value) selected @endif> False</option>
+                                    </select>
                                 @else
                                     @if($setting->type->title == "File Manager Uploads Extensions")
-                                        <?php 
+                                        <?php
                                             $selected_extensions = explode(",",$setting->value)
-                                        ?> 
+                                        ?>
                                         <select class="form-control" name="extensions[]" multiple>
                                             <option value="image" @foreach($selected_extensions as $extension) @if($extension=='image') selected @endif @endforeach>Images</option>
-                                            <option value="audio" @foreach($selected_extensions as $extension) @if($extension=='audio') selected @endif @endforeach>Audios</option>                                            
+                                            <option value="audio" @foreach($selected_extensions as $extension) @if($extension=='audio') selected @endif @endforeach>Audios</option>
                                             <option value="video" @foreach($selected_extensions as $extension) @if($extension=='video') selected @endif @endforeach>Videos</option>
-                                            <option value="text" @foreach($selected_extensions as $extension) @if($extension=='text') selected @endif @endforeach>Text</option> 
-                                            <option value="all" @foreach($selected_extensions as $extension) @if($extension=='all') selected @endif @endforeach>All Extensions</option> 
-                                        </select> 
+                                            <option value="text" @foreach($selected_extensions as $extension) @if($extension=='text') selected @endif @endforeach>Text</option>
+                                            <option value="all" @foreach($selected_extensions as $extension) @if($extension=='all') selected @endif @endforeach>All Extensions</option>
+                                        </select>
                                     @elseif($setting->value[0]=="<")
                                         <textarea name="value" name="value" placeholder="value" class="form-control col-md-12 ckeditor" required>{{$setting->value}}</textarea>
                                     @else

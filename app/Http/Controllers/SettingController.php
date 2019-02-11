@@ -75,7 +75,7 @@ class SettingController extends Controller
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
                 $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
                 $check = true ;
-           } 
+           }
         }
         else if($request['myField'] == '4')
         {
@@ -93,9 +93,9 @@ class SettingController extends Controller
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
                 $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
                 $check = true ;
-           } 
+           }
         }
-        
+
         else if($request['myField'] == '5')
         {
            if ($request->hasFile('Audio'))
@@ -112,20 +112,20 @@ class SettingController extends Controller
                 $file->move($destinationFolder,$uniqueid.".".$file->getClientOriginalExtension());
                 $setting->value = $destinationFolder.$uniqueid.".".$file->getClientOriginalExtension();
                 $check = true ;
-           } 
+           }
         }
         else if($request['myField']==6)
         {
             if(count($request['extensions']) > 0 )
             {
-                $setting->value = implode(",",$request['extensions']) ; 
+                $setting->value = implode(",",$request['extensions']) ;
 
                 foreach($request['extensions'] as $extension)
                 {
                     if($extension=="all")
                     {
-                        $setting->value = "all" ; 
-                        break ; 
+                        $setting->value = "all" ;
+                        break ;
                     }
                 }
 
@@ -136,10 +136,13 @@ class SettingController extends Controller
         $setting->key = $request->key;
         if(!$check)
         {
-            if (!empty($request->Advanced_Text))
-                $setting->value = $request->Advanced_Text;
-            elseif (!empty($request->Normal_Text))
-                $setting->value = $request->Normal_Text;
+          //dd($request->selector);
+            if (!empty($request->Advanced_Text)){
+                $setting->value = $request->Advanced_Text;}
+            elseif (!empty($request->Normal_Text)){
+                $setting->value = $request->Normal_Text;}
+            elseif (!empty($request->selector)){
+                $setting->value = $request->selector;}
             else
             {
                 \Session::flash('failed','Value is Required');
@@ -180,7 +183,7 @@ class SettingController extends Controller
         ]);
         $setting = Setting::findOrfail($id);
         $check = false ;
-        
+
         if($setting->type_id == "3")
         {
             if ($request->hasFile('value'))
@@ -254,27 +257,27 @@ class SettingController extends Controller
         {
             if(count($request['extensions']) > 0 )
             {
-                $setting->value = implode(",",$request['extensions']) ; 
-                
+                $setting->value = implode(",",$request['extensions']) ;
+
                 foreach($request['extensions'] as $extension)
                 {
                     if($extension=="all")
                     {
-                        $setting->value = "all" ; 
-                        break ; 
+                        $setting->value = "all" ;
+                        break ;
                     }
                 }
-                
+
                 $check = true  ;
             }
         }
 
-        
         $setting->key = $request->key;
         if (!$check)
         {
-            if (!empty($request->value))
-                $setting->value = $request->value;
+
+            if (!empty($request->value) || $request->value == 0){
+                $setting->value = $request->value;}
             else{
                 \Session::flash('failed','No changes takes place');
                 return redirect('setting');
@@ -305,18 +308,18 @@ class SettingController extends Controller
         \Session::flash('success', 'deleted successfully');
         return back();
     }
-    
+
     //Function To Order Settings Tables
     public function updateOrder(Request $request)
     {
         $settings = Setting::all();
-        
+
         foreach($settings as $setting)
         {
             $setting->timestamps = false; //To Disable Updated At
-            
+
             $id = $setting->id; // Get The ID Of Content
-            
+
             foreach($request->order as $order)
             {
                 if($order['id'] == $id) //Update When ID = Content ID

@@ -58,7 +58,12 @@
                                             <source src="{{url($setting->value)}}" type="audio/mpeg" preload="none">
                                         </audio>
                                      @endif
-									@elseif($setting->value) Active @elseif(!$setting->value) Not Active					
+									@elseif($setting->type->title == 'selector')
+										@if($setting->value)
+										 True
+										@else
+										 False
+										@endif
 									@else
 										{!! $setting->value !!}
 									@endif
@@ -87,46 +92,46 @@
 
     <script type="text/javascript">
 
-    $(function () {
-    $("#example").DataTable();
-
-    $( "#tablecontents" ).sortable({
-      items: "tr",
-      cursor: 'move',
-      opacity: 0.6,
-      update: function() {
-          sendOrderToServer();
-      }
-    });
-
-    function sendOrderToServer() {
-      var order = [];
-      $('tr.table-flag-blue').each(function(index,element) {
-        order.push({
-          id: $(this).attr('data-id'),
-          position: index+1
-        });
-      });
-
-      $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "{{ url('sortabledatatable') }}",
-        data: {
-          order:order,
-          _token: '{{csrf_token()}}'
-        },
-        success: function(response) {
-            if (response.status == "success") {
-              console.log(response);
-            } else {
-              console.log(response);
-            }
-        }
-      });
-
-    }
-    });
+    // $(function () {
+    // $("#example").DataTable();
+		//
+    // $( "#tablecontents" ).sortable({
+    //   items: "tr",
+    //   cursor: 'move',
+    //   opacity: 0.6,
+    //   update: function() {
+    //       sendOrderToServer();
+    //   }
+    // });
+		//
+    // function sendOrderToServer() {
+    //   var order = [];
+    //   $('tr.table-flag-blue').each(function(index,element) {
+    //     order.push({
+    //       id: $(this).attr('data-id'),
+    //       position: index+1
+    //     });
+    //   });
+		//
+    //   $.ajax({
+    //     type: "POST",
+    //     dataType: "json",
+    //     url: "{{ url('sortabledatatable') }}",
+    //     data: {
+    //       order:order,
+    //       _token: '{{csrf_token()}}'
+    //     },
+    //     success: function(response) {
+    //         if (response.status == "success") {
+    //           console.log(response);
+    //         } else {
+    //           console.log(response);
+    //         }
+    //     }
+    //   });
+		//
+    // }
+    // });
 
     </script>
 	<script>

@@ -43,8 +43,8 @@ class OperatorController extends Controller
     {
       $validator = Validator::make($request->all(), [
                   'name' => 'required|string|unique:operators',
-                  'rbt_sms_code' => 'required|unique:operators',
-                  'rbt_ussd_code' => 'required|unique:operators',
+                  'rbt_sms_code' => 'required',
+                  'rbt_ussd_code' => '',
                   'country_id' => 'required',
                   'image' => 'required'
           ]);

@@ -587,6 +587,146 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2018-05-31 09:42:21',
                 'function_name' => 'update',
             ),
+            57 => 
+            array (
+                'id' => 106,
+                'method' => 'get',
+                'route' => 'country',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:36',
+                'updated_at' => '2019-02-10 08:09:36',
+                'function_name' => 'index',
+            ),
+            58 => 
+            array (
+                'id' => 107,
+                'method' => 'get',
+                'route' => 'country/create',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:36',
+                'updated_at' => '2019-02-10 08:09:36',
+                'function_name' => 'create',
+            ),
+            59 => 
+            array (
+                'id' => 108,
+                'method' => 'post',
+                'route' => 'country',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:36',
+                'updated_at' => '2019-02-10 08:09:36',
+                'function_name' => 'store',
+            ),
+            60 => 
+            array (
+                'id' => 109,
+                'method' => 'get',
+                'route' => 'country/{id}',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:36',
+                'updated_at' => '2019-02-10 08:09:36',
+                'function_name' => 'show',
+            ),
+            61 => 
+            array (
+                'id' => 110,
+                'method' => 'get',
+                'route' => 'country/{id}/edit',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:37',
+                'updated_at' => '2019-02-10 08:09:37',
+                'function_name' => 'edit',
+            ),
+            62 => 
+            array (
+                'id' => 111,
+                'method' => 'patch',
+                'route' => 'country/{id}',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:37',
+                'updated_at' => '2019-02-10 08:10:42',
+                'function_name' => 'update',
+            ),
+            63 => 
+            array (
+                'id' => 112,
+                'method' => 'get',
+                'route' => 'country/{id}/delete',
+                'controller_name' => 'CountryController',
+                'created_at' => '2019-02-10 08:09:37',
+                'updated_at' => '2019-02-10 08:09:37',
+                'function_name' => 'delete',
+            ),
+            64 => 
+            array (
+                'id' => 113,
+                'method' => 'get',
+                'route' => 'operator',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'index',
+            ),
+            65 => 
+            array (
+                'id' => 114,
+                'method' => 'get',
+                'route' => 'operator/create',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'create',
+            ),
+            66 => 
+            array (
+                'id' => 115,
+                'method' => 'post',
+                'route' => 'operator',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'store',
+            ),
+            67 => 
+            array (
+                'id' => 116,
+                'method' => 'get',
+                'route' => 'operator/{id}',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'show',
+            ),
+            68 => 
+            array (
+                'id' => 117,
+                'method' => 'get',
+                'route' => 'operator/{id}/edit',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'edit',
+            ),
+            69 => 
+            array (
+                'id' => 118,
+                'method' => 'patch',
+                'route' => 'operator/{id}',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'update',
+            ),
+            70 => 
+            array (
+                'id' => 119,
+                'method' => 'get',
+                'route' => 'operator/{id}/delete',
+                'controller_name' => 'OperatorController',
+                'created_at' => '2019-02-10 08:10:27',
+                'updated_at' => '2019-02-10 08:10:27',
+                'function_name' => 'destroy',
+            ),
         ));
         
         

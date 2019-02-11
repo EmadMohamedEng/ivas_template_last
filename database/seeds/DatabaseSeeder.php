@@ -37,5 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call('StaticTranslationsTableSeeder');
         $this->call('TansBodiesTableSeeder');
         $this->call('TranslatablesTableSeeder');
+        $this->call('CountriesTableSeeder');
+        $this->call('OperatorsTableSeeder');
     }
 }

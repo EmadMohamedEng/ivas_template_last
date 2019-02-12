@@ -127,9 +127,9 @@ class OperatorController extends Controller
 
       $operator->delete();
 
-      if($operator->operator_image){
-        $this->delete_main_image_if_exists(base_path('/uploads/operator/'.$operator->operator_image));
-      }
+      // if($operator->operator_image){
+      //   $this->delete_main_image_if_exists(base_path('/uploads/operator/'.$operator->operator_image));
+      // }
 
       \Session::flash('success', 'Operator Delete Successfully');
       return back();

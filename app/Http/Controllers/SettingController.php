@@ -132,17 +132,19 @@ class SettingController extends Controller
                 $check = true  ;
             }
         }
+        else if($request['myField']=='7')
+        {
+          $setting->value = $request->selector;
+          $check = true ;
+        }
 
         $setting->key = $request->key;
         if(!$check)
         {
-          //dd($request->selector);
             if (!empty($request->Advanced_Text)){
                 $setting->value = $request->Advanced_Text;}
             elseif (!empty($request->Normal_Text)){
                 $setting->value = $request->Normal_Text;}
-            elseif (!empty($request->selector)){
-                $setting->value = $request->selector;}
             else
             {
                 \Session::flash('failed','Value is Required');
@@ -271,12 +273,17 @@ class SettingController extends Controller
                 $check = true  ;
             }
         }
+        else if($setting->type_id =='7')
+        {
+          $setting->value = $request->value;
+          $check = true ;
+        }
 
         $setting->key = $request->key;
         if (!$check)
         {
 
-            if (!empty($request->value) || $request->value == 0){
+            if (!empty($request->value)){
                 $setting->value = $request->value;}
             else{
                 \Session::flash('failed','No changes takes place');

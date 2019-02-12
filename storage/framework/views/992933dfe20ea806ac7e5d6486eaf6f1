@@ -45,8 +45,9 @@
 								<td><?php echo e($country->title); ?></td>
 								<td class="visible-md visible-lg">
 								    <div class="btn-group">
+											<a class="btn btn-sm btn-success show-tooltip" title="Add Operator" href="<?php echo e(url("operator/create?country_id=".$country->id."&title=".$country->title)); ?>" data-original-title="Add Operator"><i class="fa fa-plus"></i></a>
 								    	<a class="btn btn-sm show-tooltip" title="" href="<?php echo e(url('country/'.$country->id.'/edit')); ?>" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-								        <a class="btn btn-sm btn-danger show-tooltip" title="" onclick = 'return ConfirmDelete()' href="<?php echo e(url('country/'.$country->id.'/delete')); ?>" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+								      <a class="btn btn-sm btn-danger show-tooltip" title="" onclick = 'return ConfirmDelete()' href="<?php echo e(url('country/'.$country->id.'/delete')); ?>" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
 								    </div>
 								</td>
 							</tr>

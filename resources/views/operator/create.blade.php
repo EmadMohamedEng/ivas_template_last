@@ -23,7 +23,16 @@
                     <form action="{{url('operator')}}" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data"  novalidate>
               			     {!! csrf_field() !!}
                           <input id="hidden_key" name="key" type="hidden" />
-
+                        @if(isset($_REQUEST['country_id']))
+                        <div class="form-group">
+                            <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Country</label>
+                            <div class="col-sm-9 col-lg-10 controls">
+                                <select id="first_select" name="country_id" class="form-control chosen-rtl" readonly>
+                                    <option value="{{ $_REQUEST['country_id'] }}">{{ $_REQUEST['title'] }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        @else
                         <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Country</label>
                             <div class="col-sm-9 col-lg-10 controls">
@@ -34,7 +43,7 @@
                                 </select>
                             </div>
                         </div>
-
+                        @endif
                          <div class="form-group">
                             <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Operator Name</label>
                             <div class="col-sm-9 col-lg-10 controls">
@@ -52,7 +61,7 @@
                            <div class="form-group">
                               <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Ussd Code</label>
                               <div class="col-sm-9 col-lg-10 controls">
-                                  <input type="number" min="0" name="rbt_ussd_code" id="key" placeholder="Ussd Code" class="form-control" required>
+                                  <input type="number" min="0" name="rbt_ussd_code" id="key" placeholder="Ussd Code" class="form-control">
                               </div>
                             </div>
 

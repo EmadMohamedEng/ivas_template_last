@@ -1,0 +1,54 @@
+<!-- <div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Title <span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <?php echo Form::text('title',null,['placeholder'=>'Title','class'=>'form-control input-lg']); ?>
+
+    </div>
+</div> -->
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Content<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <?php echo Form::select('content_id',$contents->pluck('title','id'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required']); ?>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Operator<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <?php echo Form::select('operator_id[]',$operators->pluck('name','id'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required' ,'multiple']); ?>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Published Date <span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <?php echo Form::date('published_date',null,['placeholder'=>'Title','class'=>'form-control' ]); ?>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Status<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <?php echo Form::select('active',array('1' => 'Active' , '0' => 'Not Active'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required']); ?>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Patch Number <span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <?php echo Form::number('patch_number',null,['placeholder'=>'Patch Number','class'=>'form-control','min'=>0,'required']); ?>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+        <?php echo Form::submit($buttonAction,['class'=>'btn btn-primary']); ?>
+
+    </div>
+</div>

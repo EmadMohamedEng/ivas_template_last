@@ -60,8 +60,8 @@ class Content extends Model
 
   public function operators()
   {
-    return $this->belongsToMany('App\Operator','posts','operator_id','content_id')
-    ->withPivot('published_date','active','patch_number','url')->withTimestamps();
+    return $this->belongsToMany('App\Operator','posts','content_id','operator_id')
+    ->withPivot('id','published_date','active','patch_number','url')->withTimestamps();
   }
 
   public function posts()

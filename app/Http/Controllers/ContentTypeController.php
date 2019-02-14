@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Country;
+
+use App\ContentType;
 use Validator;
-class CountryController extends Controller
+class ContentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countrys = Country::all();
-        return view('country.index',compact('countrys'));
+        $content_types = ContentType::all();
+        return view('content_type.index',compact('content_types'));
     }
 
     /**
@@ -28,8 +29,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        $country = NULL;
-        return view('country.form',compact('country'));
+        $content_type = null;
+        return view('content_type.form',compact('content_type'));
     }
 
     /**
@@ -40,17 +41,18 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-                    'title' => 'required|string|unique:countries',
-            ]);
+      $validator = Validator::make($request->all(), [
+                  'title' => 'required|string'
+          ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
+      if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+      }
 
-        $country = Country::create($request->all());
-        \Session::flash('success', 'Country Created Successfully');
-        return redirect('/country');
+      $content_type = ContentType::create($request->all());
+
+      \Session::flash('success', 'ContentType Created Successfully');
+      return redirect('/content_type');
     }
 
     /**
@@ -72,8 +74,8 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $country = Country::findOrFail($id);
-        return view('country.form',compact('country'));
+        $content_type = ContentType::findOrFail($id);
+        return view('content_type.form',compact('content_type'));
     }
 
     /**
@@ -86,17 +88,17 @@ class CountryController extends Controller
     public function update(Request $request, $id)
     {
       $validator = Validator::make($request->all(), [
-                  'title' => 'required|string|unique:countries,title,'.$id,
+                  'title' => 'required|string'
           ]);
 
       if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
       }
+      $content_type = ContentType::findOrFail($id);
+      $content_type->update($request->all());
 
-      $country = Country::findOrFail($id)->update($request->all());
-
-      \Session::flash('success', 'Country Update Successfully');
-      return redirect('/country');
+      \Session::flash('success', 'ContentType Updated Successfully');
+      return redirect('/content_type');
     }
 
     /**
@@ -105,10 +107,14 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-      $country = Country::findOrFail($id)->delete();
-      \Session::flash('success', 'Country Delete Successfully');
+      $content_type = ContentType::findOrFail($id);
+
+
+      $content_type->delete();
+
+      \Session::flash('success', 'ContentType Delete Successfully');
       return back();
     }
 }

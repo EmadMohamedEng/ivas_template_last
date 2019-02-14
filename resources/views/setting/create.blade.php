@@ -79,12 +79,12 @@
                         </div>
 
                         <div class="form-group" hidden id="videocont" novalidate>
-                        {!! Form::label('Video',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
-                        <div class="col-sm-9 col-lg-10 controls">
-                            {!! Form::file('Video',["accept"=>"video/*",'class'=>'default']) !!}
-                             <span class='label label-important'>NOTE!</span>
-                             <span>Only extension supported mp4, flv, and 3gp</span>
-                        </div>
+                          {!! Form::label('Video',\Lang::get('messages.video').'*',['class'=>'col-sm-3 col-lg-2 control-label']) !!}
+                          <div class="col-sm-9 col-lg-10 controls">
+                              {!! Form::file('Video',["accept"=>"video/*",'class'=>'default']) !!}
+                               <span class='label label-important'>NOTE!</span>
+                               <span>Only extension supported mp4, flv, and 3gp</span>
+                          </div>
 
                         </div>
 

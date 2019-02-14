@@ -727,6 +727,286 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2019-02-10 08:10:27',
                 'function_name' => 'destroy',
             ),
+            71 => 
+            array (
+                'id' => 120,
+                'method' => 'get',
+                'route' => 'category',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'index',
+            ),
+            72 => 
+            array (
+                'id' => 121,
+                'method' => 'get',
+                'route' => 'category/create',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'create',
+            ),
+            73 => 
+            array (
+                'id' => 122,
+                'method' => 'post',
+                'route' => 'category',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'store',
+            ),
+            74 => 
+            array (
+                'id' => 123,
+                'method' => 'get',
+                'route' => 'category/{id}',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'show',
+            ),
+            75 => 
+            array (
+                'id' => 124,
+                'method' => 'get',
+                'route' => 'category/{id}/edit',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'edit',
+            ),
+            76 => 
+            array (
+                'id' => 125,
+                'method' => 'patch',
+                'route' => 'category/{id}',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'update',
+            ),
+            77 => 
+            array (
+                'id' => 126,
+                'method' => 'get',
+                'route' => 'category/{id}/delete',
+                'controller_name' => 'CategoryController',
+                'created_at' => '2019-02-14 13:01:13',
+                'updated_at' => '2019-02-14 13:01:13',
+                'function_name' => 'destroy',
+            ),
+            78 => 
+            array (
+                'id' => 127,
+                'method' => 'get',
+                'route' => 'content_type',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:21',
+                'updated_at' => '2019-02-14 13:02:21',
+                'function_name' => 'index',
+            ),
+            79 => 
+            array (
+                'id' => 128,
+                'method' => 'get',
+                'route' => 'content_type/create',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:21',
+                'updated_at' => '2019-02-14 13:02:21',
+                'function_name' => 'create',
+            ),
+            80 => 
+            array (
+                'id' => 129,
+                'method' => 'post',
+                'route' => 'content_type',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:21',
+                'updated_at' => '2019-02-14 13:02:21',
+                'function_name' => 'store',
+            ),
+            81 => 
+            array (
+                'id' => 130,
+                'method' => 'get',
+                'route' => 'content_type/{id}',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:21',
+                'updated_at' => '2019-02-14 13:02:21',
+                'function_name' => 'show',
+            ),
+            82 => 
+            array (
+                'id' => 131,
+                'method' => 'get',
+                'route' => 'content_type/{id}/edit',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:22',
+                'updated_at' => '2019-02-14 13:02:22',
+                'function_name' => 'edit',
+            ),
+            83 => 
+            array (
+                'id' => 132,
+                'method' => 'patch',
+                'route' => 'content_type/{id}',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:22',
+                'updated_at' => '2019-02-14 13:02:22',
+                'function_name' => 'update',
+            ),
+            84 => 
+            array (
+                'id' => 133,
+                'method' => 'get',
+                'route' => 'content_type/{id}/delete',
+                'controller_name' => 'ContentTypeController',
+                'created_at' => '2019-02-14 13:02:22',
+                'updated_at' => '2019-02-14 13:02:22',
+                'function_name' => 'destroy',
+            ),
+            85 => 
+            array (
+                'id' => 134,
+                'method' => 'get',
+                'route' => 'content',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'index',
+            ),
+            86 => 
+            array (
+                'id' => 135,
+                'method' => 'get',
+                'route' => 'content/create',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'create',
+            ),
+            87 => 
+            array (
+                'id' => 136,
+                'method' => 'post',
+                'route' => 'content',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'store',
+            ),
+            88 => 
+            array (
+                'id' => 137,
+                'method' => 'get',
+                'route' => 'content/{id}',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'show',
+            ),
+            89 => 
+            array (
+                'id' => 138,
+                'method' => 'get',
+                'route' => 'content/{id}/edit',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'edit',
+            ),
+            90 => 
+            array (
+                'id' => 139,
+                'method' => 'patch',
+                'route' => 'content/{id}',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'update',
+            ),
+            91 => 
+            array (
+                'id' => 140,
+                'method' => 'get',
+                'route' => 'content/{id}/delete',
+                'controller_name' => 'ContentController',
+                'created_at' => '2019-02-14 13:03:26',
+                'updated_at' => '2019-02-14 13:03:26',
+                'function_name' => 'destroy',
+            ),
+            92 => 
+            array (
+                'id' => 141,
+                'method' => 'get',
+                'route' => 'post',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'index',
+            ),
+            93 => 
+            array (
+                'id' => 142,
+                'method' => 'get',
+                'route' => 'post/create',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'create',
+            ),
+            94 => 
+            array (
+                'id' => 143,
+                'method' => 'post',
+                'route' => 'post',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'store',
+            ),
+            95 => 
+            array (
+                'id' => 144,
+                'method' => 'get',
+                'route' => 'post/{id}',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'show',
+            ),
+            96 => 
+            array (
+                'id' => 145,
+                'method' => 'get',
+                'route' => 'post/{id}/edit',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'edit',
+            ),
+            97 => 
+            array (
+                'id' => 146,
+                'method' => 'patch',
+                'route' => 'post/{id}',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'update',
+            ),
+            98 => 
+            array (
+                'id' => 147,
+                'method' => 'get',
+                'route' => 'post/{id}/delete',
+                'controller_name' => 'PostController',
+                'created_at' => '2019-02-14 13:04:09',
+                'updated_at' => '2019-02-14 13:04:09',
+                'function_name' => 'destroy',
+            ),
         ));
         
         

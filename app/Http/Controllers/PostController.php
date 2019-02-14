@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Country;
-use Validator;
-class CountryController extends Controller
+
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countrys = Country::all();
-        return view('country.index',compact('countrys'));
+        //
     }
 
     /**
@@ -28,8 +26,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        $country = NULL;
-        return view('country.form',compact('country'));
+        //
     }
 
     /**
@@ -40,17 +37,7 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-                    'title' => 'required|string|unique:countries',
-            ]);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $country = Country::create($request->all());
-        \Session::flash('success', 'Country Created Successfully');
-        return redirect('/country');
+        //
     }
 
     /**
@@ -72,8 +59,7 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $country = Country::findOrFail($id);
-        return view('country.form',compact('country'));
+        //
     }
 
     /**
@@ -85,18 +71,7 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $validator = Validator::make($request->all(), [
-                  'title' => 'required|string|unique:countries,title,'.$id,
-          ]);
-
-      if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
-      }
-
-      $country = Country::findOrFail($id)->update($request->all());
-
-      \Session::flash('success', 'Country Update Successfully');
-      return redirect('/country');
+        //
     }
 
     /**
@@ -105,10 +80,8 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-      $country = Country::findOrFail($id)->delete();
-      \Session::flash('success', 'Country Delete Successfully');
-      return back();
+        //
     }
 }

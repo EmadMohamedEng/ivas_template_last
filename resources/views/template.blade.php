@@ -373,7 +373,72 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <li id="operator_create"><a href="{{url('operator/create')}}">Create Operator</a></li>
                             </ul>
                         </li>
-                    </ul>   
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="country">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-cloud"></i>
+                                <span>Category</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="country_index"><a href="{{url('category')}}">List category</a></li>
+                                <li id="country_create"><a href="{{url('category/create')}}">Create Category</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="country">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-cloud"></i>
+                                <span>Content Type</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="country_index"><a href="{{url('content_type')}}">List Content Type</a></li>
+                                <li id="country_create"><a href="{{url('content_type/create')}}">Create Content Type</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="country">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-cloud"></i>
+                                <span>Content</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="country_index"><a href="{{url('content')}}">List Content </a></li>
+                                <li id="country_create"><a href="{{url('content/create')}}">Create Content</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                    <ul class="nav nav-list">
+                        <li id="country">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-cloud"></i>
+                                <span>Post</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="country_index"><a href="{{url('post')}}">List Post </a></li>
+                                <li id="country_create"><a href="{{url('post/create')}}">Create Post</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                     {{--@endif--}}
                 </ul>
                 <!-- END Navlist -->

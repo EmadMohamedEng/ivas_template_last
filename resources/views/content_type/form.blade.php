@@ -34,8 +34,8 @@
 @section('script')
     <script>
 
-        $('#categories').addClass('active');
-        $('#categories_create').addClass('active');
+        $('#content_types').addClass('active');
+        $('#content_types_create').addClass('active');
 
     </script>
 @stop

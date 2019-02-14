@@ -18,7 +18,7 @@
                     <?php echo Form::model($category,["url"=>"category/$category->id","class"=>"form-horizontal","method"=>"patch","files"=>"True"]); ?>
 
                     <?php echo $__env->make('category.input',['buttonAction'=>'Edit','required'=>'  (optional)'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                    <?php else: ?> 
+                    <?php else: ?>
                     <?php echo Form::open(["url"=>"category","class"=>"form-horizontal","method"=>"POST","files"=>"True"]); ?>
 
                     <?php echo $__env->make('category.input',['buttonAction'=>'Save','required'=>'  *'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -35,10 +35,11 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
     <script>
-      
-        $('#categories').addClass('active');
-        $('#categories_create').addClass('active');       
+
+        $('#category').addClass('active');
+        $('#category_create').addClass('active');       
 
     </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

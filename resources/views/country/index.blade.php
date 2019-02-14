@@ -76,7 +76,7 @@
 
     </script>
 	<script>
-		$('#country').addClass('active');
-		$('#country-index').addClass('active');
+	$('#country').addClass('active');
+	$('#country_index').addClass('active');
 	</script>
 @stop

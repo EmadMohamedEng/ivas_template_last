@@ -76,7 +76,7 @@
 
     </script>
 	<script>
-		$('#type').addClass('active');
-		$('#type-index').addClass('active');
+	$('#content_types').addClass('active');
+	$('#content_types_index').addClass('active');
 	</script>
 @stop

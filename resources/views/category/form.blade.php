@@ -18,7 +18,7 @@
                     @if($category)
                     {!! Form::model($category,["url"=>"category/$category->id","class"=>"form-horizontal","method"=>"patch","files"=>"True"]) !!}
                     @include('category.input',['buttonAction'=>'Edit','required'=>'  (optional)'])
-                    @else 
+                    @else
                     {!! Form::open(["url"=>"category","class"=>"form-horizontal","method"=>"POST","files"=>"True"]) !!}
                     @include('category.input',['buttonAction'=>'Save','required'=>'  *'])
                     @endif
@@ -33,9 +33,9 @@
 @stop
 @section('script')
     <script>
-      
-        $('#categories').addClass('active');
-        $('#categories_create').addClass('active');       
+
+        $('#category').addClass('active');
+        $('#category_create').addClass('active');       
 
     </script>
 @stop

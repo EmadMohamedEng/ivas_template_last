@@ -33,8 +33,8 @@
 @stop
 @section('script')
     <script>
-        $('#categories').addClass('active');
-        $('#categories_create').addClass('active');
+        $('#operator').addClass('active');
+        $('#operator_create').addClass('active');
 
     </script>
 @stop

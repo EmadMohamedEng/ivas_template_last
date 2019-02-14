@@ -88,8 +88,8 @@
 <script>
 
 
-    $('#categories').addClass('active');
-    $('#categories_list').addClass('active');
+$('#post').addClass('active');
+$('#post_index').addClass('active');
 
 </script>
 @stop

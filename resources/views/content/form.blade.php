@@ -33,8 +33,8 @@
 @stop
 @section('script')
     <script>
-        $('#categories').addClass('active');
-        $('#categories_create').addClass('active');
+        $('#contents').addClass('active');
+        $('#contents_create').addClass('active');
 
         $('#first_select').on('change', function() {
             if (this.value == 1) {

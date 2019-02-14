@@ -78,8 +78,8 @@
 <script>
 
 
-    $('#categories').addClass('active');
-    $('#categories_list').addClass('active');
+    $('#category').addClass('active');
+    $('#category_index').addClass('active');
 
 </script>
 <?php $__env->stopSection(); ?>

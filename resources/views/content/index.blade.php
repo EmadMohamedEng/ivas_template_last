@@ -93,8 +93,8 @@
 <script>
 
 
-    $('#categories').addClass('active');
-    $('#categories_list').addClass('active');
+    $('#contents').addClass('active');
+    $('#contents_index').addClass('active');
 
 </script>
 @stop

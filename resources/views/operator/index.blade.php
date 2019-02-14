@@ -84,6 +84,6 @@
     </script>
 	<script>
 		$('#operator').addClass('active');
-		$('#operator-index').addClass('active');
+		$('#operator_index').addClass('active');
 	</script>
 @stop

@@ -11,6 +11,7 @@ use App\Content;
 use App\ContentType;
 use App\Category;
 use Validator;
+use FFMpeg;
 class ContentController extends Controller
 {
     /**
@@ -87,6 +88,16 @@ class ContentController extends Controller
         {
             \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
             return back();
+        }
+        if(!$request->image_preview)
+        {
+          $ffmpeg = FFMpeg\FFMpeg::create();
+          $video = $ffmpeg->open($request->path);
+          $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2));
+          $image_name = time().rand(0,999);
+          $image_preview = base_path('/uploads/content/image/'.$image_name.'.jpg');
+          $request->request->add(['image_preview' => $image_name]);
+          $frame->save($image_preview);
         }
       }
 

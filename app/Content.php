@@ -10,9 +10,16 @@ class Content extends Model
 
   ///////////////////set image///////////////////////////////
   public function setImagePreviewAttribute($value){
-    $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
-    $value->move(base_path('/uploads/content/image'),$img_name);
-    $this->attributes['image_preview']= $img_name ;
+    if(!is_numeric($value))
+    {
+      $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
+      $value->move(base_path('/uploads/content/image'),$img_name);
+      $this->attributes['image_preview']= $img_name ;
+    }
+    else{
+      $this->attributes['image_preview']= $value.'.jpg' ;
+    }
+
   }
 
   public function getImagePreviewAttribute($value)

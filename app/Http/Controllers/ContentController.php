@@ -21,10 +21,8 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $categorys     = Category::all();
-        $content_types = ContentType::all();
         $contents      = Content::all();
-        return view('content.index',compact('categorys','content_types','contents'));
+        return view('content.index',compact('contents'));
     }
 
     /**
@@ -115,7 +113,8 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        //
+      $content = Content::findOrFail($id);
+      return view('content.show_post',compact('content'));
     }
 
     /**
@@ -156,14 +155,14 @@ class ContentController extends Controller
       $content = Content::findOrFail($id);
 
       if($content->image_preview){
-        $this->delete_image_if_exists(base_path('/uploads/content/image/'.$content->image_preview));
+        $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
       }
 
       if($content->path){
-        $this->delete_image_if_exists(base_path('/uploads/content/path/'.$content->path));
+        $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
       }
 
-      $content ->update($request->all());
+      $content->update($request->all());
 
       \Session::flash('success', 'Content Updated Successfully');
       return redirect('/content');
@@ -180,11 +179,11 @@ class ContentController extends Controller
       $content = Content::findOrFail($id);
 
       if($content->image_preview){
-        $this->delete_image_if_exists(base_path('/uploads/content/image/'.$content->image_preview));
+        $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
       }
 
       if($content->path){
-        $this->delete_image_if_exists(base_path('/uploads/content/path/'.$content->path));
+        $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
       }
 
       $content->delete();

@@ -2,7 +2,7 @@
 <div class="form-group">
     <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Content<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        <select id="first_select" name="content_id" class="form-control chosen-rtl">
+        <select  name="content_id" class="form-control chosen-rtl">
             <option id="category_<?php echo e($_REQUEST['content_id']); ?>" value="<?php echo e($_REQUEST['content_id']); ?>"><?php echo e($_REQUEST['title']); ?></option>
         </select>
     </div>
@@ -11,7 +11,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Content<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        <?php echo Form::select('content_id',$contents->pluck('title','id'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required']); ?>
+        <?php echo Form::select('content_id',$contents->pluck('title','id'),null,['class'=>'form-control chosen-rtl','required']); ?>
 
     </div>
 </div>
@@ -39,7 +39,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Status<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        <?php echo Form::select('active',array('1' => 'Active' , '0' => 'Not Active'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required']); ?>
+        <?php echo Form::select('active',array('1' => 'Active' , '0' => 'Not Active'),null,['class'=>'form-control chosen-rtl','required']); ?>
 
     </div>
 </div>

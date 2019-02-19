@@ -698,6 +698,17 @@ if (Config::get('languages')[App::getLocale()] == "English") {
             $(function () {
                 $("#resizable").resizable();
             });
+            try {
+                $('.js-datepicker').datepicker({
+                    "singleDatePicker": true,
+                    "showDropdowns": true,
+                    "autoUpdateInput": false,
+                     dateFormat: 'yy-mm-dd'
+                });
+
+
+
+            } catch(er) {console.log(er);}
         </script>
         <script src="{{url('js/flaty-demo-codes.js')}}"></script>
     <?php } ?>

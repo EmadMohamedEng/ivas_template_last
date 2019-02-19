@@ -10,9 +10,16 @@ class Content extends Model
 
   ///////////////////set image///////////////////////////////
   public function setImagePreviewAttribute($value){
-    $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
-    $value->move(base_path('/uploads/content/image'),$img_name);
-    $this->attributes['image_preview']= $img_name ;
+    if(!is_numeric($value))
+    {
+      $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
+      $value->move(base_path('/uploads/content/image'),$img_name);
+      $this->attributes['image_preview']= $img_name ;
+    }
+    else{
+      $this->attributes['image_preview']= $value.'.jpg' ;
+    }
+
   }
 
   public function getImagePreviewAttribute($value)
@@ -22,7 +29,7 @@ class Content extends Model
 
   ////////////////// set path ////////////////
   public function setPathAttribute($value){
-    if(strpos($value, '.') !== false)
+    if(!is_string($value))
     {
       $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
       $value->move(base_path('/uploads/content/path'),$img_name);
@@ -36,7 +43,7 @@ class Content extends Model
 
   public function getPathAttribute($value)
   {
-    if(strpos($value, '.') !== false)
+    if(preg_match('(mp4|flv|3gp|mp3|webm|wav|png|jpeg|jpg)', $value))
     {
     return url('/uploads/content/path/'.$value);
     }
@@ -61,7 +68,7 @@ class Content extends Model
   public function operators()
   {
     return $this->belongsToMany('App\Operator','posts','content_id','operator_id')
-    ->withPivot('id','published_date','active','patch_number','url')->withTimestamps();
+    ->withPivot('id','published_date','active','patch_number','url','user_id')->withTimestamps();
   }
 
   public function posts()

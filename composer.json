@@ -17,7 +17,8 @@
         "orangehill/iseed": "2.2",
         "intervention/image": "^2.4",
         "spatie/laravel-backup": "^3.11",
-        "thiagoalessio/tesseract_ocr": "^2.7"
+        "thiagoalessio/tesseract_ocr": "^2.7",
+        "php-ffmpeg/php-ffmpeg": "^0.13.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

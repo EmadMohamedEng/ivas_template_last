@@ -18,14 +18,19 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Operator<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        {!! Form::select('operator_id[]',$operators->pluck('name','id'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required' ,'multiple']) !!}
+      <select class="form-control chosen-rtl"  name="operator_id[]" required multiple>
+        @foreach($operators as $operator)
+        <option value="{{$operator->id}}" @if($post) @if($post->operator_id == $operator->id) selected @endif @endif>{{$operator->name}}-{{$operator->country->title}}</option>
+        @endforeach
+      </select>
+        <!-- {!! Form::select('operator_id[]',$operators->pluck('name','id'),null,['class'=>'form-control chosen-rtl','id' => 'first_select','required' ,'multiple']) !!} -->
     </div>
 </div>
 
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Published Date <span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-        {!! Form::date('published_date',null,['placeholder'=>'Title','class'=>'form-control' ,'value' => 'date("Y-m-d")' ]) !!}
+        {!! Form::text('published_date',null,['placeholder'=>'published_date','class'=>'form-control js-datepicker' ,'value' => 'date("Y-m-d")' ]) !!}
     </div>
 </div>
 

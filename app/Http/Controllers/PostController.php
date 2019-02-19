@@ -13,6 +13,7 @@ use App\Operator;
 use App\Post;
 
 use Validator;
+use Auth;
 class PostController extends Controller
 {
     /**
@@ -64,7 +65,7 @@ class PostController extends Controller
 
       foreach ($request->operator_id as  $operator_id) {
         $operator = $content->operators()->attach([$operator_id => ['url' => url('user/content/'.$request->content_id.'?op_id='.$operator_id) ,
-        'published_date' => $request->published_date,'active' => $request->active,'patch_number' => $request->patch_number , 'user_id' => 1]]);
+        'published_date' => $request->published_date,'active' => $request->active,'patch_number' => $request->patch_number , 'user_id' => Auth::user()->id]]);
       }
 
       $posts = Post::where('content_id',$request->content_id)->whereIn('operator_id',$request->operator_id)->get();

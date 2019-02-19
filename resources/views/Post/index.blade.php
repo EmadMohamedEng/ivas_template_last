@@ -41,6 +41,7 @@
                                         <th>Status</th>
                                         <th>patch number</th>
                                         <th>url</th>
+                                        <th>user</th>
                                         <th >Action</th>
                                     </tr>
                                 </thead>
@@ -61,6 +62,7 @@
                                           <span class="btn" onclick="x = document.getElementById('url_h{{$value->id}}{{$key}}{{$value->pivot->id}}'); x.select();document.execCommand('copy')"> <i class="fa fa-copy"></i> </span>
                                           <br>
                                         </td>
+                                        <td>{{DB::table('users')->where('id',$value->pivot->user_id)->first()->name}}</td>
                                         </td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">

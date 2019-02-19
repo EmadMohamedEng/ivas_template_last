@@ -19,7 +19,7 @@ class CreateOperatorsTable extends Migration
             $table->string('rbt_ussd_code');
             $table->string('image');
             $table->integer('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('CASCADE')->onUpdate('RESTRICT') ;
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('CASCADE')->onUpdate('CASCADE') ;
             $table->timestamps();
         });
     }

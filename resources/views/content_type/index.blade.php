@@ -1,6 +1,6 @@
 @extends('template')
 @section('page_title')
-	Operators
+	Content Type
 @stop
 @section('content')
 	@include('errors')
@@ -10,7 +10,7 @@
 	    <div class="col-md-12">
 	        <div class="box box-black">
 	            <div class="box-title">
-	                <h3><i class="fa fa-table"></i> Operator Table</h3>
+	                <h3><i class="fa fa-table"></i> Content Type Table</h3>
 	                <div class="box-tool">
 	                    <a data-action="collapse" href="#"><i class="fa fa-chevron-up"></i></a>
 	                    <a data-action="close" href="#"><i class="fa fa-times"></i></a>
@@ -19,9 +19,9 @@
 	            <div class="box-content">
 					<div class="btn-toolbar pull-right">
 						<div class="btn-group">
-							<a class="btn btn-circle show-tooltip" title="" href="{{url('operator/create')}}" data-original-title="Add new operator"><i class="fa fa-plus"></i></a>
+							<a class="btn btn-circle show-tooltip" title="Add new Content Type" href="{{url('content_type/create')}}" data-original-title="Add new Content Type"><i class="fa fa-plus"></i></a>
 							<?php
-								$table_name = "operators" ;
+								$table_name = "content_types" ;
 								// pass table name to delete all function
 								// if the current route exists in delete all table flags it will appear in view
 								// else it'll not appear
@@ -35,28 +35,20 @@
 						<thead>
 							<tr>
 								<th style="width:18px"><input type="checkbox" onclick="select_all('settings')"></th>
-								<th>operator image</th>
-								<th>operator name</th>
-								<th>Sms Code</th>
-								<th>Ussd Code</th>
-								<th>county</th>
+								<th>Title</th>
 								<th class="visible-md visible-lg" style="width:130px">Action</th>
 							</tr>
 						</thead>
 						<tbody id="tablecontents">
-						@foreach($operators as $operator)
+						@foreach($content_types as $type)
 							<tr class="table-flag-blue">
-								<td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$operator->id}}" onclick="collect_selected(this)"></td>
-								<td><img src="{{$operator->image}}" width="300" height="225"></td>
-								<td>{{$operator->name}}</td>
-								<td>{{$operator->rbt_sms_code}}</td>
-								<td>{{$operator->rbt_ussd_code}}</td>
-								<td>{{$operator->country->title}}</td>
-								</td>
+								<td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$type->id}}" onclick="collect_selected(this)"></td>
+								<td>{{$type->title}}</td>
 								<td class="visible-md visible-lg">
 								    <div class="btn-group">
-								    	<a class="btn btn-sm show-tooltip" title="" href="{{url('operator/'.$operator->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>
-								      <a class="btn btn-sm btn-danger show-tooltip" title="" onclick = 'return ConfirmDelete()' href="{{url('operator/'.$operator->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+											<!-- <a class="btn btn-sm btn-success show-tooltip" title="Add Content" href="{{url("content/create?type_id=".$type->id."&title=".$type->title)}}" data-original-title="Add Content"><i class="fa fa-plus"></i></a> -->
+								    	<a class="btn btn-sm show-tooltip" title="" href="{{url('content_type/'.$type->id.'/edit')}}" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+								      <a class="btn btn-sm btn-danger show-tooltip" title="" onclick = 'return ConfirmDelete()' href="{{url('content_type/'.$type->id.'/delete')}}" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
 								    </div>
 								</td>
 							</tr>
@@ -78,12 +70,13 @@
     <script type="text/javascript">
 
     $(function () {
-    $("#example").DataTable();
+    	$("#example").DataTable();
+
     });
 
     </script>
 	<script>
-		$('#operator').addClass('active');
-		$('#operator_index').addClass('active');
+	$('#content_types').addClass('active');
+	$('#content_types_index').addClass('active');
 	</script>
 @stop

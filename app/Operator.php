@@ -30,10 +30,15 @@ class Operator extends Model
       return $this->belongsTo('App\Country') ;
   }
 
-  public function operators_posts()
+  public function posts()
   {
-    return $this->belongsToMany('App\Post','operators_posts','post_id','operator_id')
-    ->withPivot('url','show_date','active');
+    return $this->hasMany('App\Post','operator_id','id');
+  }
+
+  public function contents()
+  {
+    return $this->belongsToMany('App\Content','posts','operator_id','content_id')
+    ->withPivot('id','published_date','active','patch_number','url')->withTimestamps();
   }
 
 }

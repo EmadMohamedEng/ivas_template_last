@@ -59,6 +59,7 @@ class SettingController extends Controller
         ]);
         $setting = new Setting();
         $check = false ;
+        
         if($request['myField'] == '3')
         {
            if ($request->hasFile('Image'))

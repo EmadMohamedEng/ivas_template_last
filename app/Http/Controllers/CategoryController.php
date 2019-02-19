@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Operator;
-use App\Country;
+
+use App\Category;
 use Validator;
-class OperatorController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $operators = Operator::all();
-        return view('operator.index',compact('operators'));
+        $categorys = Category::all();
+        return view('category.index',compact('categorys'));
     }
 
     /**
@@ -29,9 +29,8 @@ class OperatorController extends Controller
      */
     public function create()
     {
-        $countrys = Country::all();
-        $operator = NULL;
-        return view('operator.form',compact('countrys','operator'));
+        $category = null;
+        return view('category.form',compact('category'));
     }
 
     /**
@@ -43,21 +42,18 @@ class OperatorController extends Controller
     public function store(Request $request)
     {
       $validator = Validator::make($request->all(), [
-                  'name' => 'required|string|unique:operators,name,null,id,country_id,'.$request->country_id,
-                  'rbt_sms_code' => 'required',
-                  'rbt_ussd_code' => '',
-                  'country_id' => 'required',
-                  'image' => 'required'
+                  'title' => 'required|string',
+                  'image' => ''
           ]);
 
       if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
       }
 
-      $operator = Operator::create($request->all());
+      $category = Category::create($request->all());
 
-      \Session::flash('success', 'Operator Created Successfully');
-      return redirect('/operator');
+      \Session::flash('success', 'Category Created Successfully');
+      return redirect('/category');
     }
 
     /**
@@ -79,9 +75,8 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-      $operator = Operator::findOrFail($id);
-      $countrys = Country::all();
-      return view('operator.form',compact('operator','countrys'));
+        $category = Category::findOrFail($id);
+        return view('category.form',compact('category'));
     }
 
     /**
@@ -91,30 +86,26 @@ class OperatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-      //dd($request->all());
       $validator = Validator::make($request->all(), [
-                  'name' => 'required|string|unique:operators,name,'.$id.',id,country_id,'.$request->country_id,
-                  'rbt_sms_code' => 'required',
-                  'rbt_ussd_code' => '',
-                  'country_id' => 'required',
+                  'title' => 'required|string',
                   'image' => ''
           ]);
 
       if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
       }
-
-      $operator = Operator::findOrFail($id);
+      $category = Category::findOrFail($id);
 
       if($request->image){
-        $this->delete_image_if_exists(base_path('/uploads/operator/'.$operator->image));
+        $this->delete_image_if_exists(base_path('/uploads/category/'.$category->image));
       }
 
-      $operator->update($request->all());
-      \Session::flash('success', 'Operator Update Successfully');
-      return redirect('/operator');
+      $category->update($request->all());
+
+      \Session::flash('success', 'Category Updated Successfully');
+      return redirect('/category');
     }
 
     /**
@@ -125,14 +116,14 @@ class OperatorController extends Controller
      */
     public function destroy($id)
     {
-      $operator = Operator::findOrFail($id);
+      $category = Category::findOrFail($id);
 
-      if($operator->image){
-        $this->delete_image_if_exists(base_path('/uploads/operator/'.$operator->image));
+      if($category->image){
+        $this->delete_image_if_exists(base_path('/uploads/category/'.$category->image));
       }
-      $operator->delete();
+      $category->delete();
 
-      \Session::flash('success', 'Operator Delete Successfully');
+      \Session::flash('success', 'Category Delete Successfully');
       return back();
     }
 }

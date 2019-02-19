@@ -39,5 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call('TranslatablesTableSeeder');
         $this->call('CountriesTableSeeder');
         $this->call('OperatorsTableSeeder');
+        $this->call('CategoriesTableSeeder');
+        $this->call('ContentTypesTableSeeder');
+        $this->call('ContentsTableSeeder');
+        $this->call('PostsTableSeeder');
     }
 }

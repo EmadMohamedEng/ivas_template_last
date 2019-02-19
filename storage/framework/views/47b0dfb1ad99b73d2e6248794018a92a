@@ -374,7 +374,72 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                                 <li id="operator_create"><a href="<?php echo e(url('operator/create')); ?>">Create Operator</a></li>
                             </ul>
                         </li>
-                    </ul>   
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="category">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                                <span>Category</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="category_index"><a href="<?php echo e(url('category')); ?>">List category</a></li>
+                                <li id="category_create"><a href="<?php echo e(url('category/create')); ?>">Create Category</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="content_types">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-tag"></i>
+                                <span>Content Type</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="content_types_index"><a href="<?php echo e(url('content_type')); ?>">List Content Type</a></li>
+                                <li id="content_types_create"><a href="<?php echo e(url('content_type/create')); ?>">Create Content Type</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
+                        <li id="contents">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="glyphicon glyphicon-cloud"></i>
+                                <span>Content</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="contents_index"><a href="<?php echo e(url('content')); ?>">List Content </a></li>
+                                <li id="contents_create"><a href="<?php echo e(url('content/create')); ?>">Create Content</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                    <ul class="nav nav-list">
+                        <li id="post">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-file"></i>
+                                <span>Post</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li id="post_index"><a href="<?php echo e(url('post')); ?>">List Post </a></li>
+                                <li id="post_create"><a href="<?php echo e(url('post/create')); ?>">Create Post</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                     <?php /*<?php endif; ?>*/ ?>
                 </ul>
                 <!-- END Navlist -->

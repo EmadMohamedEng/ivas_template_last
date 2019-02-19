@@ -22,7 +22,7 @@ class Content extends Model
 
   ////////////////// set path ////////////////
   public function setPathAttribute($value){
-    if(strpos($value, '.') !== false)
+    if(!is_string($value))
     {
       $img_name = time().rand(0,999).'.'.$value->getClientOriginalExtension();
       $value->move(base_path('/uploads/content/path'),$img_name);
@@ -36,7 +36,7 @@ class Content extends Model
 
   public function getPathAttribute($value)
   {
-    if(strpos($value, '.') !== false)
+    if(preg_match('(mp4|flv|3gp|mp3|webm|wav|png|jpeg|jpg)', $value))
     {
     return url('/uploads/content/path/'.$value);
     }

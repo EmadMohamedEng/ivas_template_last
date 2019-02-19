@@ -1,6 +1,6 @@
 @extends('template')
 @section('page_title')
- Category
+ {{$category->title}}
 @stop
 @section('content')
 <div class="row">
@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="box box-black">
                     <div class="box-title">
-                        <h3><i class="fa fa-table"></i> Category Table</h3>
+                        <h3><i class="fa fa-table"></i> Content Table</h3>
                         <div class="box-tool">
                             <a data-action="collapse" href="#"><i class="fa fa-chevron-up"></i></a>
                             <a data-action="close" href="#"><i class="fa fa-times"></i></a>
@@ -19,9 +19,9 @@
                     <div class="box-content">
                         <div class="btn-toolbar pull-right">
                             <div class="btn-group">
-                                <a class="btn btn-circle show-tooltip" title="" href="{{url('category/create')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
+                                <a class="btn btn-circle show-tooltip" title="" href="{{url('content/create')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
                                 <?php
-                                $table_name = "categories";
+                                $table_name = "contents";
                                 // pass table name to delete all function
                                 // if the current route exists in delete all table flags it will appear in view
                                 // else it'll not appear
@@ -32,18 +32,18 @@
                         <br><br>
                         <div class="table-responsive">
                             <table id="example" class="table table-striped dt-responsive" cellspacing="0" width="100%">
-
                                 <thead>
                                     <tr>
-                                        <th style="width:18px"><input type="checkbox" onclick="select_all('categories')"></th>
+                                        <th style="width:18px"><input type="checkbox" onclick="select_all('contents')"></th>
                                         <th>id</th>
                                         <th>Title</th>
-                                        <th>Image</th>
+                                        <th>Content</th>
+                                        <th>Content Type</th>
                                         <th >Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($categorys as $value)
+                                    @foreach($contents as $value)
                                     <tr>
                                         <td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}" class="roles" onclick="collect_selected(this)"></td>
                                         <td>{{$value->id}}</td>
@@ -51,16 +51,24 @@
                                             {{$value->title}}
                                         </td>
                                         <td>
-                                            <img class=" img-circle" width="100px" height="100px" src="{{$value->image}}"/>
+                                          @if($value->type->id == 1)
+                                          {!! $value->path !!}
+                                          @elseif($value->type->id == 2)
+                                          {{$value->path}}
+                                          @elseif($value->type->id == 3)
+                                          <img src="{{$value->path}}" alt="" style="width:250px" height="200px">
+                                          @elseif($value->type->id == 4)
+                                          <audio controls src="{{$value->path}}" style="width:100%"></audio>
+                                          @else
+                                          <video src="{{$value->path}}" style="width:250px;height:200px" height="200px" controls poster="{{$value->image_preview}}"></video>
+                                          @endif
                                         </td>
+                                        <td>{{$value->type->title}}</td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
-                                                <a class="btn btn-sm btn-success show-tooltip" title="Add Content" href="{{url("content/create?category_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Content"><i class="fa fa-plus"></i></a>
-                                                @if(count($value->contents) > 0)
-                                                <a class="btn btn-sm show-tooltip" title="Show Content" href="{{url("category/$value->id")}}" data-original-title="show Content"><i class="fa fa-step-forward"></i></a>
-                                                @endif
-                                                <a class="btn btn-sm show-tooltip" href="{{url("category/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("category/$value->id/delete")}}" title="Delete"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-sm btn-success show-tooltip" title="Add Post" href="{{url("post/create?content_id=".$value->id."&title=".$value->title)}}" data-original-title="Add Post"><i class="fa fa-plus"></i></a>
+                                                <a class="btn btn-sm show-tooltip" href="{{url("content/$value->id/edit")}}" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="{{url("content/$value->id/delete")}}" title="Delete"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -82,8 +90,8 @@
 <script>
 
 
-    $('#category').addClass('active');
-    $('#category_index').addClass('active');
+    $('#categories').addClass('active');
+    $('#categories_index').addClass('active');
 
 </script>
 @stop

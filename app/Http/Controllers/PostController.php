@@ -71,7 +71,7 @@ class PostController extends Controller
 
       foreach ($posts as $post) {
         Post::find($post->id)->update([
-          'url' => url('user/content/'.$request->content_id.'?op_id='.$operator_id.'&post_id='.$post->id)
+          'url' => url('user/content/'.$request->content_id.'?op_id='.$post->operator_id.'&post_id='.$post->id)
         ]);
       }
 

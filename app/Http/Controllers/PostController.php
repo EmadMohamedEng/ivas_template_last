@@ -67,6 +67,14 @@ class PostController extends Controller
         'published_date' => $request->published_date,'active' => $request->active,'patch_number' => $request->patch_number , 'user_id' => 1]]);
       }
 
+      $posts = Post::where('content_id',$request->content_id)->whereIn('operator_id',$request->operator_id)->get();
+
+      foreach ($posts as $post) {
+        Post::find($post->id)->update([
+          'url' => url('user/content/'.$request->content_id.'?op_id='.$operator_id.'&post_id='.$post->id)
+        ]);
+      }
+
       \Session::flash('success', 'post created Successfully');
       return redirect('/post');
     }

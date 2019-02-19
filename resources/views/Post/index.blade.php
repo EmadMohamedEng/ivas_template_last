@@ -56,9 +56,9 @@
                                         <td>@if($value->pivot->active) active @else not active @endif</td>
                                         <td>{{$value->pivot->patch_number}}</td>
                                         <td>
-                                          <input type="text"  id="url_h{{$value->id}}{{$key}}" value="{{$value->pivot->url}}">
+                                          <input type="text"  id="url_h{{$value->id}}{{$key}}{{$value->pivot->id}}" value="{{$value->pivot->url}}">
                                           <span class="btn">{{$value->name}}</span>
-                                          <span class="btn" onclick="x = document.getElementById('url_h{{$value->id}}{{$key}}'); x.select();document.execCommand('copy')"> <i class="fa fa-copy"></i> </span>
+                                          <span class="btn" onclick="x = document.getElementById('url_h{{$value->id}}{{$key}}{{$value->pivot->id}}'); x.select();document.execCommand('copy')"> <i class="fa fa-copy"></i> </span>
                                           <br>
                                         </td>
                                         </td>

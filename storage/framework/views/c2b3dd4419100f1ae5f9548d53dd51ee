@@ -1,3 +1,13 @@
+<?php if(isset($_REQUEST['category_id'])): ?>
+<div class="form-group">
+    <label for="textfield5" class="col-sm-3 col-lg-2 control-label">Category<span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        <select id="first_select" name="category_id" class="form-control chosen-rtl">
+            <option id="category_<?php echo e($_REQUEST['category_id']); ?>" value="<?php echo e($_REQUEST['category_id']); ?>"><?php echo e($_REQUEST['title']); ?></option>
+        </select>
+    </div>
+</div>
+<?php else: ?>
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Category<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
@@ -5,6 +15,7 @@
 
     </div>
 </div>
+<?php endif; ?>
 
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Content Type<span class="text-danger">*</span></label>

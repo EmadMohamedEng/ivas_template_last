@@ -99,7 +99,6 @@
 <?php $__env->startSection('script'); ?>
 <script>
 
-
     $('#contents').addClass('active');
     $('#contents_index').addClass('active');
 

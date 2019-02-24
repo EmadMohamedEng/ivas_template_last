@@ -25,12 +25,12 @@ class DatabaseSeeder extends Seeder
         $this->call('RoleHasPermissionsTableSeeder');
         $this->call('ScaffoldinterfacesTableSeeder');
         $this->call('RelationsTableSeeder');
-        $this->call('MigrationsTableSeeder');
+        // $this->call('MigrationsTableSeeder');
         $this->call('PasswordResetsTableSeeder');
         $this->call('RoutesTableSeeder');
         $this->call('RoleRouteTableSeeder');
         $this->call('TypesTableSeeder');
-        $this->call('SettingsTableSeeder'); 
+        $this->call('SettingsTableSeeder');
         $this->call('DeleteAllFlagsTableSeeder');
         $this->call('LanguagesTableSeeder');
         $this->call('StaticBodiesTableSeeder');

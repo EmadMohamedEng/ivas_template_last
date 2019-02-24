@@ -201,7 +201,7 @@
               <div class="fileupload fileupload-new" data-provides="fileupload">
                   <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
                     @if($content)
-                    <video controls>
+                    <video width="100%" height="100%" controls>
                       <source src="{{$content->path}}">
                     </video>
                     @endif
@@ -254,7 +254,7 @@
               <div class="fileupload fileupload-new" data-provides="fileupload">
                   <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
                     @if($content)
-                    <video controls>
+                    <video width="100%" height="100%" controls>
                       <source src="{{$content->path}}">
                     </video>
                     @endif

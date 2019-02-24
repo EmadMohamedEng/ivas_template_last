@@ -13,6 +13,7 @@ use App\Operator;
 use App\Post;
 
 use Validator;
+use Auth;
 class PostController extends Controller
 {
     /**
@@ -64,14 +65,14 @@ class PostController extends Controller
 
       foreach ($request->operator_id as  $operator_id) {
         $operator = $content->operators()->attach([$operator_id => ['url' => url('user/content/'.$request->content_id.'?op_id='.$operator_id) ,
-        'published_date' => $request->published_date,'active' => $request->active,'patch_number' => $request->patch_number , 'user_id' => 1]]);
+        'published_date' => $request->published_date,'active' => $request->active,'patch_number' => $request->patch_number , 'user_id' => Auth::user()->id]]);
       }
 
       $posts = Post::where('content_id',$request->content_id)->whereIn('operator_id',$request->operator_id)->get();
 
       foreach ($posts as $post) {
         Post::find($post->id)->update([
-          'url' => url('user/content/'.$request->content_id.'?op_id='.$operator_id.'&post_id='.$post->id)
+          'url' => url('user/content/'.$request->content_id.'?op_id='.$post->operator_id.'&post_id='.$post->id)
         ]);
       }
 
@@ -133,7 +134,7 @@ class PostController extends Controller
       $input =$request->only('published_date','active','patch_number','content_id');
       $post = Post::findOrFail($id);
       $content = Content::findOrFail($request->content_id);
-      $post->update($input+['operator_id' => $request->operator_id[0]]);
+      $post->update($input+['operator_id' => $request->operator_id[0] , 'url' => url('user/content/'.$request->content_id.'?op_id='.$request->operator_id[0].'&post_id='.$post->id)]);
 
       \Session::flash('success', 'Post Update Successfully');
       return redirect('/post');

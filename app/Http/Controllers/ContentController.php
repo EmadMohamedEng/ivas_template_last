@@ -11,6 +11,7 @@ use App\Content;
 use App\ContentType;
 use App\Category;
 use Validator;
+use FFMpeg;
 class ContentController extends Controller
 {
     /**
@@ -20,10 +21,8 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $categorys     = Category::all();
-        $content_types = ContentType::all();
         $contents      = Content::all();
-        return view('content.index',compact('categorys','content_types','contents'));
+        return view('content.index',compact('contents'));
     }
 
     /**
@@ -88,6 +87,16 @@ class ContentController extends Controller
             \Session::flash('failed','Video must be mp4, flv, or 3gp only !! No updates takes place, try again with that extensions please..');
             return back();
         }
+        if(!$request->image_preview)
+        {
+          $ffmpeg = FFMpeg\FFMpeg::create();
+          $video = $ffmpeg->open($request->path);
+          $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(2));
+          $image_name = time().rand(0,999);
+          $image_preview = base_path('/uploads/content/image/'.$image_name.'.jpg');
+          $request->request->add(['image_preview' => $image_name]);
+          $frame->save($image_preview);
+        }
       }
 
       $content = Content::create($request->all());
@@ -104,7 +113,8 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        //
+      $content = Content::findOrFail($id);
+      return view('content.show_post',compact('content'));
     }
 
     /**
@@ -145,14 +155,14 @@ class ContentController extends Controller
       $content = Content::findOrFail($id);
 
       if($content->image_preview){
-        $this->delete_image_if_exists(base_path('/uploads/content/image/'.$content->image_preview));
+        $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
       }
 
       if($content->path){
-        $this->delete_image_if_exists(base_path('/uploads/content/path/'.$content->path));
+        $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
       }
 
-      $content ->update($request->all());
+      $content->update($request->all());
 
       \Session::flash('success', 'Content Updated Successfully');
       return redirect('/content');
@@ -169,11 +179,11 @@ class ContentController extends Controller
       $content = Content::findOrFail($id);
 
       if($content->image_preview){
-        $this->delete_image_if_exists(base_path('/uploads/content/image/'.$content->image_preview));
+        $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
       }
 
       if($content->path){
-        $this->delete_image_if_exists(base_path('/uploads/content/path/'.$content->path));
+        $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
       }
 
       $content->delete();

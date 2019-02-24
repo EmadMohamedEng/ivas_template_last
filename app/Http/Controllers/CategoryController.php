@@ -46,9 +46,20 @@ class CategoryController extends Controller
                   'image' => ''
           ]);
 
-      if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
-      }
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        if($request->image)
+        {
+          $imgExtensions = array("png","jpeg","jpg");
+          $file = $request->image;
+          if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+          {
+              \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+              return back();
+         }
+       }
 
       $category = Category::create($request->all());
 
@@ -64,7 +75,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $contents = $category->contents;
+        return view('category.show_content',compact('contents','category'));
     }
 
     /**
@@ -99,7 +112,14 @@ class CategoryController extends Controller
       $category = Category::findOrFail($id);
 
       if($request->image){
-        $this->delete_image_if_exists(base_path('/uploads/category/'.$category->image));
+        $imgExtensions = array("png","jpeg","jpg");
+        $file = $request->image;
+        if(! in_array($file->getClientOriginalExtension(),$imgExtensions))
+        {
+            \Session::flash('failed','Image must be jpg, png, or jpeg only !! No updates takes place, try again with that extensions please..');
+            return back();
+       }
+        $this->delete_image_if_exists(base_path('/uploads/category/'.basename($category->image)));
       }
 
       $category->update($request->all());
@@ -119,7 +139,7 @@ class CategoryController extends Controller
       $category = Category::findOrFail($id);
 
       if($category->image){
-        $this->delete_image_if_exists(base_path('/uploads/category/'.$category->image));
+        $this->delete_image_if_exists(base_path('/uploads/category/'.basename($category->image)));
       }
       $category->delete();
 

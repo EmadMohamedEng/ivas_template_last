@@ -1,5 +1,6 @@
 <?php $__env->startSection('page_title'); ?>
- Content
+ <?php echo e($category->title); ?>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
@@ -37,7 +38,6 @@
                                         <th>id</th>
                                         <th>Title</th>
                                         <th>Content</th>
-                                        <th>Category</th>
                                         <th>Content Type</th>
                                         <th >Action</th>
                                     </tr>
@@ -66,17 +66,10 @@
                                           <video src="<?php echo e($value->path); ?>" style="width:250px;height:200px" height="200px" controls poster="<?php echo e($value->image_preview); ?>"></video>
                                           <?php endif; ?>
                                         </td>
-                                        <td>
-                                            <?php echo e($value->category->title); ?>
-
-                                        </td>
                                         <td><?php echo e($value->type->title); ?></td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">
                                                 <a class="btn btn-sm btn-success show-tooltip" title="Add Post" href="<?php echo e(url("post/create?content_id=".$value->id."&title=".$value->title)); ?>" data-original-title="Add Post"><i class="fa fa-plus"></i></a>
-                                                <?php if(count($value->operators) > 0): ?>
-                                                <a class="btn btn-sm show-tooltip" title="Show Posts" href="<?php echo e(url("content/$value->id")); ?>" data-original-title="show Posts"><i class="fa fa-step-forward"></i></a>
-                                                <?php endif; ?>
                                                 <a class="btn btn-sm show-tooltip" href="<?php echo e(url("content/$value->id/edit")); ?>" title="Edit"><i class="fa fa-edit"></i></a>
                                                 <a class="btn btn-sm show-tooltip btn-danger" onclick="return ConfirmDelete();" href="<?php echo e(url("content/$value->id/delete")); ?>" title="Delete"><i class="fa fa-trash"></i></a>
                                             </div>
@@ -99,8 +92,9 @@
 <?php $__env->startSection('script'); ?>
 <script>
 
-    $('#contents').addClass('active');
-    $('#contents_index').addClass('active');
+
+    $('#categories').addClass('active');
+    $('#categories_index').addClass('active');
 
 </script>
 <?php $__env->stopSection(); ?>

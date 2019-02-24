@@ -1,6 +1,6 @@
 @extends('template')
 @section('page_title')
- Post
+ {{$content->title}}
 @stop
 @section('content')
 <div class="row">
@@ -36,7 +36,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width:18px"><input type="checkbox" onclick="select_all('posts')"></th>
-                                        <th>content</th>
+                                        <th>Post title</th>
                                         <th>published date</th>
                                         <th>Status</th>
                                         <th>patch number</th>
@@ -46,7 +46,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($contents as $key=>$content)
                                     @foreach($content->operators as $value)
                                     <tr>
                                         <td><input class="select_all_template" type="checkbox" name="selected_rows[]" value="{{$value->id}}" class="roles" onclick="collect_selected(this)"></td>
@@ -57,9 +56,9 @@
                                         <td>@if($value->pivot->active) active @else not active @endif</td>
                                         <td>{{$value->pivot->patch_number}}</td>
                                         <td>
-                                          <input type="text"  id="url_h{{$value->id}}{{$key}}{{$value->pivot->id}}" value="{{$value->pivot->url}}">
+                                          <input type="text"  id="url_h{{$value->id}}{{$content->id}}{{$value->pivot->id}}" value="{{$value->pivot->url}}">
                                           <span class="btn">{{$value->name}}</span>
-                                          <span class="btn" onclick="x = document.getElementById('url_h{{$value->id}}{{$key}}{{$value->pivot->id}}'); x.select();document.execCommand('copy')"> <i class="fa fa-copy"></i> </span>
+                                          <span class="btn" onclick="x = document.getElementById('url_h{{$value->id}}{{$content->id}}{{$value->pivot->id}}'); x.select();document.execCommand('copy')"> <i class="fa fa-copy"></i> </span>
                                           <br>
                                         </td>
                                         <td>{{DB::table('users')->where('id',$value->pivot->user_id)->first()->name}}</td>
@@ -71,7 +70,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
                                     @endforeach
                                 </tbody>
                             </table>
@@ -90,8 +88,8 @@
 <script>
 
 
-$('#post').addClass('active');
-$('#post_index').addClass('active');
+$('#content').addClass('active');
+$('#content_index').addClass('active');
 
 </script>
 @stop

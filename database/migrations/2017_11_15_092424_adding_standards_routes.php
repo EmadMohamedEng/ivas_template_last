@@ -12,12 +12,12 @@ class AddingStandardsRoutes extends Migration
      */
     public function up()
     {
-        
+
 
         \DB::table('routes')->delete();
-        
+
         \DB::table('routes')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'method' => 'get',
@@ -27,7 +27,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-09 06:13:14',
                 'function_name' => 'index',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'method' => 'get',
@@ -37,7 +37,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'method' => 'post',
@@ -47,7 +47,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'method' => 'get',
@@ -57,7 +57,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-15 08:28:55',
                 'function_name' => ' index',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'method' => 'get',
@@ -67,7 +67,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'method' => 'get',
@@ -77,7 +77,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'profile',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'method' => 'post',
@@ -87,7 +87,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-14 12:29:01',
                 'function_name' => 'UpdatePassword',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'method' => 'post',
@@ -97,7 +97,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-14 12:29:08',
                 'function_name' => 'UpdateProfilePicture',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'method' => 'post',
@@ -107,7 +107,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-14 12:29:19',
                 'function_name' => 'UpdateNameAndEmail',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'method' => 'get',
@@ -117,7 +117,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-15 08:34:32',
                 'function_name' => 'destroy',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'method' => 'get',
@@ -127,7 +127,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-14 12:29:40',
                 'function_name' => 'edit',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'method' => 'post',
@@ -137,7 +137,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-14 12:29:49',
                 'function_name' => 'update',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 14,
                 'method' => 'get',
@@ -147,7 +147,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-14 12:29:57',
                 'function_name' => 'index',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 15,
                 'method' => 'get',
@@ -157,7 +157,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 16,
                 'method' => 'get',
@@ -167,7 +167,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 17,
                 'method' => 'get',
@@ -177,7 +177,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 18,
                 'method' => 'get',
@@ -187,7 +187,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 19,
                 'method' => 'post',
@@ -197,7 +197,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 20,
                 'method' => 'post',
@@ -207,7 +207,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 21,
                 'method' => 'get',
@@ -217,7 +217,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'file_manager',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 22,
                 'method' => 'get',
@@ -227,7 +227,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'multi_upload',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 23,
                 'method' => 'post',
@@ -237,7 +237,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'save_uploaded',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 24,
                 'method' => 'get',
@@ -247,7 +247,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'upload_resize',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 25,
                 'method' => 'post',
@@ -257,7 +257,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'save_image',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 26,
                 'method' => 'post',
@@ -267,7 +267,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-12 12:19:46',
                 'function_name' => 'update',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 27,
                 'method' => 'get',
@@ -277,7 +277,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 28,
                 'method' => 'get',
@@ -287,7 +287,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 29,
                 'method' => 'post',
@@ -297,7 +297,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 30,
                 'method' => 'get',
@@ -307,7 +307,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 31,
                 'method' => 'get',
@@ -317,7 +317,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 32,
                 'method' => 'post',
@@ -327,7 +327,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 33,
                 'method' => 'get',
@@ -337,7 +337,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 34,
                 'method' => 'get',
@@ -347,7 +347,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 35,
                 'method' => 'post',
@@ -357,7 +357,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 36,
                 'method' => 'get',
@@ -367,7 +367,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 37,
                 'method' => 'get',
@@ -377,7 +377,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 38,
                 'method' => 'post',
@@ -387,7 +387,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 39,
                 'method' => 'get',
@@ -397,7 +397,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 40,
                 'method' => 'get',
@@ -407,7 +407,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'index',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 41,
                 'method' => 'post',
@@ -417,7 +417,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'store',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 42,
                 'method' => 'get',
@@ -427,7 +427,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'edit',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 43,
                 'method' => 'post',
@@ -437,7 +437,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'update',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 44,
                 'method' => 'get',
@@ -447,7 +447,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'destroy',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 45,
                 'method' => 'get',
@@ -457,7 +457,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '0000-00-00 00:00:00',
                 'function_name' => 'create',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 57,
                 'method' => 'get',
@@ -467,7 +467,7 @@ class AddingStandardsRoutes extends Migration
                 'updated_at' => '2017-11-12 14:04:53',
                 'function_name' => 'index_v2',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 58,
                 'method' => 'get',

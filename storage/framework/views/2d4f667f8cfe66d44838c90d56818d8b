@@ -1,5 +1,5 @@
 <?php $__env->startSection('page_title'); ?>
- Content
+ <?php if(isset($category)): ?> <?php echo e($category->title); ?> <?php else: ?> Content <?php endif; ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
@@ -37,7 +37,9 @@
                                         <th>id</th>
                                         <th>Title</th>
                                         <th>Content</th>
+                                        <?php if(!isset($category)): ?>
                                         <th>Category</th>
+                                        <?php endif; ?>
                                         <th>Content Type</th>
                                         <th >Action</th>
                                     </tr>
@@ -66,10 +68,12 @@
                                           <video src="<?php echo e($value->path); ?>" style="width:250px;height:200px" height="200px" controls poster="<?php echo e($value->image_preview); ?>"></video>
                                           <?php endif; ?>
                                         </td>
+                                        <?php if(!isset($category)): ?>
                                         <td>
                                             <?php echo e($value->category->title); ?>
 
                                         </td>
+                                        <?php endif; ?>
                                         <td><?php echo e($value->type->title); ?></td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">

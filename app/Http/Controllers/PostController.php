@@ -134,7 +134,7 @@ class PostController extends Controller
       $input =$request->only('published_date','active','patch_number','content_id');
       $post = Post::findOrFail($id);
       $content = Content::findOrFail($request->content_id);
-      $post->update($input+['operator_id' => $request->operator_id[0] , 'url' => url('user/content/'.$request->content_id.'?op_id='.$request->operator_id[0].'&post_id='.$post->id)]);
+      $post->update($input+['operator_id' => $request->operator_id[0] , 'url' => url('user/content/'.$request->content_id.'?op_id='.$request->operator_id[0].'&post_id='.$post->id) , 'user_id' => Auth::id()]);
 
       \Session::flash('success', 'Post Update Successfully');
       return redirect('/post');

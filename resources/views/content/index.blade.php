@@ -1,6 +1,6 @@
 @extends('template')
 @section('page_title')
- Content
+ @if(isset($category)) {{$category->title}} @else Content @endif
 @stop
 @section('content')
 <div class="row">
@@ -38,7 +38,9 @@
                                         <th>id</th>
                                         <th>Title</th>
                                         <th>Content</th>
+                                        @if(!isset($category))
                                         <th>Category</th>
+                                        @endif
                                         <th>Content Type</th>
                                         <th >Action</th>
                                     </tr>
@@ -64,9 +66,11 @@
                                           <video src="{{$value->path}}" style="width:250px;height:200px" height="200px" controls poster="{{$value->image_preview}}"></video>
                                           @endif
                                         </td>
+                                        @if(!isset($category))
                                         <td>
                                             {{$value->category->title}}
                                         </td>
+                                        @endif
                                         <td>{{$value->type->title}}</td>
                                         <td class="visible-md visible-lg">
                                             <div class="btn-group">

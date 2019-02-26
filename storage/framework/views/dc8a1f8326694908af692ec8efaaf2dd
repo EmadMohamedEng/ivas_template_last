@@ -19,7 +19,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Operator<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-      <select class="form-control chosen-rtl"  name="operator_id[]" required multiple>
+      <select class="form-control chosen-rtl"  name="operator_id[]" required <?php if(!$post): ?> multiple <?php endif; ?>>  
         <?php foreach($operators as $operator): ?>
         <option value="<?php echo e($operator->id); ?>" <?php if($post): ?> <?php if($post->operator_id == $operator->id): ?> selected <?php endif; ?> <?php endif; ?>><?php echo e($operator->name); ?>-<?php echo e($operator->country->title); ?></option>
         <?php endforeach; ?>

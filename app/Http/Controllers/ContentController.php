@@ -197,9 +197,15 @@ class ContentController extends Controller
               $image_preview = base_path('/uploads/content/image/'.$image_name.'.jpg');
               $request->request->add(['image_preview' => $image_name]);
               $frame->save($image_preview);
+              //delete old image_preview
+              if($content->image_preview){
+                $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
+              }
             }
+            //delete ol path
+            $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
           }
-          $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
+
       }
 
 
@@ -220,11 +226,11 @@ class ContentController extends Controller
     {
       $content = Content::findOrFail($id);
 
-      if($request->image_preview){
+      if($content->image_preview){
         $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
       }
 
-      if($request->path){
+      if($content->path){
         $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
       }
 

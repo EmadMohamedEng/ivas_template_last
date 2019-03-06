@@ -64,8 +64,10 @@
                                           <img src="<?php echo e($value->path); ?>" alt="" style="width:250px" height="200px">
                                           <?php elseif($value->type->id == 4): ?>
                                           <audio controls src="<?php echo e($value->path); ?>" style="width:100%"></audio>
-                                          <?php else: ?>
+                                          <?php elseif($value->type->id == 5): ?>
                                           <video src="<?php echo e($value->path); ?>" style="width:250px;height:200px" height="200px" controls poster="<?php echo e($value->image_preview); ?>"></video>
+                                          <?php elseif($value->type->id == 6): ?>
+                                          <iframe src="<?php echo e($value->path); ?>" width="250px" height="200px"></iframe>
                                           <?php endif; ?>
                                         </td>
                                         <?php if(!isset($category)): ?>

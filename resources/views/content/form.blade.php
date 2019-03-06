@@ -43,6 +43,7 @@
               $('#image').hide('slow').find('input').prop('disabled',true);
               $('#audio').hide('slow').find('input').prop('disabled',true);
               $('#video').hide('slow').find('input').prop('disabled',true);
+              $('#external').hide('slow').find('input').prop('disabled',true);
             }
             if (this.value == 2) {
               $('#normal').show(1000).find('input').prop('disabled',false);
@@ -50,6 +51,7 @@
               $('#image').hide('slow').find('input').prop('disabled',true);
               $('#audio').hide('slow').find('input').prop('disabled',true);
               $('#video').hide('slow').find('input').prop('disabled',true);
+              $('#external').hide('slow').find('input').prop('disabled',true);
             }
             if (this.value == 3) {
               $('#image').show(1000).find('input').prop('disabled',false);
@@ -57,6 +59,7 @@
               $('#normal').hide('slow').find('input').prop('disabled',true);
               $('#audio').hide('slow').find('input').prop('disabled',true);
               $('#video').hide('slow').find('input').prop('disabled',true);
+              $('#external').hide('slow').find('input').prop('disabled',true);
             }
             if (this.value == 4) {
               $('#audio').show(1000).find('input').prop('disabled',false);
@@ -64,6 +67,7 @@
               $('#image').hide('slow').find('input').prop('disabled',true);
               $('#normal').hide('slow').find('input').prop('disabled',true);
               $('#video').hide('slow').find('input').prop('disabled',true);
+              $('#external').hide('slow').find('input').prop('disabled',true);
             }
             if (this.value == 5) {
               $('#video').show(1000).find('input').prop('disabled',false);
@@ -71,6 +75,16 @@
               $('#image').hide('slow').find('input').prop('disabled',true);
               $('#audio').hide('slow').find('input').prop('disabled',true);
               $('#normal').hide('slow').find('input').prop('disabled',true);
+              $('#external').hide('slow').find('input').prop('disabled',true);
+            }
+
+            if (this.value == 6) {
+              $('#external').show(1000).find('input').prop('disabled',false);
+              $('#advanced').hide('slow');
+              $('#image').hide('slow').find('input').prop('disabled',true);
+              $('#audio').hide('slow').find('input').prop('disabled',true);
+              $('#normal').hide('slow').find('input').prop('disabled',true);
+              $('#video').hide('slow').find('input').prop('disabled',true);
             }
         });
     </script>

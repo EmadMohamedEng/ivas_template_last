@@ -18,7 +18,9 @@
         "intervention/image": "^2.4",
         "spatie/laravel-backup": "^3.11",
         "thiagoalessio/tesseract_ocr": "^2.7",
-        "php-ffmpeg/php-ffmpeg": "^0.13.0"
+        "php-ffmpeg/php-ffmpeg": "^0.13.0",
+        "norkunas/youtube-dl-php": "^0.3.5",
+        "athlon1600/youtube-downloader": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

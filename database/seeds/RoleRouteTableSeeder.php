@@ -465,6 +465,118 @@ class RoleRouteTableSeeder extends Seeder
                 'created_at' => '2019-02-14 13:04:09',
                 'updated_at' => '2019-02-14 13:04:09',
             ),
+            56 => 
+            array (
+                'id' => 57,
+                'role_id' => 1,
+                'route_id' => 148,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            57 => 
+            array (
+                'id' => 58,
+                'role_id' => 6,
+                'route_id' => 148,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            58 => 
+            array (
+                'id' => 59,
+                'role_id' => 1,
+                'route_id' => 149,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            59 => 
+            array (
+                'id' => 60,
+                'role_id' => 6,
+                'route_id' => 149,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            60 => 
+            array (
+                'id' => 61,
+                'role_id' => 1,
+                'route_id' => 150,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            61 => 
+            array (
+                'id' => 62,
+                'role_id' => 6,
+                'route_id' => 150,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            62 => 
+            array (
+                'id' => 63,
+                'role_id' => 1,
+                'route_id' => 151,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            63 => 
+            array (
+                'id' => 64,
+                'role_id' => 6,
+                'route_id' => 151,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            64 => 
+            array (
+                'id' => 65,
+                'role_id' => 1,
+                'route_id' => 152,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            65 => 
+            array (
+                'id' => 66,
+                'role_id' => 6,
+                'route_id' => 152,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            66 => 
+            array (
+                'id' => 67,
+                'role_id' => 1,
+                'route_id' => 153,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            67 => 
+            array (
+                'id' => 68,
+                'role_id' => 6,
+                'route_id' => 153,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            68 => 
+            array (
+                'id' => 69,
+                'role_id' => 1,
+                'route_id' => 154,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
+            69 => 
+            array (
+                'id' => 70,
+                'role_id' => 6,
+                'route_id' => 154,
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+            ),
         ));
         
         

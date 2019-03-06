@@ -12,6 +12,7 @@ use App\ContentType;
 use App\Category;
 use Validator;
 use FFMpeg;
+use YoutubeDl\YoutubeDl;
 class ContentController extends Controller
 {
     /**
@@ -99,6 +100,33 @@ class ContentController extends Controller
         }
       }
 
+      else if($request->content_type_id ==6)
+      {
+        if(filter_var($request->path, FILTER_VALIDATE_URL) == false)
+        {
+          \Session::flash('failed','The Content Must be Valid Url');
+          return back();
+        }
+
+        if(!$request->image_preview)
+        {
+          $image_name = time().rand(0,999);
+          $link = explode('embed/',$request->path);
+          if(isset($link[1]))
+          {
+            $y_id = explode('?',$link[1]);
+            file_put_contents(base_path('/uploads/content/image/'.$image_name.'.jpg') , file_get_contents('http://img.youtube.com/vi/'.$y_id[0].'/maxresdefault.jpg'));
+          }
+          else
+          {
+            $link = explode('?v=',$request->path);
+            file_put_contents(base_path('/uploads/content/image/'.$image_name.'.jpg') , file_get_contents('http://img.youtube.com/vi/'.$link[1].'/maxresdefault.jpg'));
+            $request->request->add(['path' => 'http://www.youtube.com/embed/'.$link[1].'?rel=0']);
+          }
+          $request->request->add(['image_preview' => $image_name]);
+        }
+
+      }
       $content = Content::create($request->all());
 
       \Session::flash('success', 'Content Created Successfully');
@@ -205,7 +233,37 @@ class ContentController extends Controller
             //delete ol path
             $this->delete_image_if_exists(base_path('/uploads/content/path/'.basename($content->path)));
           }
+          else if($request->content_type_id ==6)
+          {
+            if(filter_var($request->path, FILTER_VALIDATE_URL) == false)
+            {
+              \Session::flash('failed','The Content Must be Valid Url');
+              return back();
+            }
 
+            if(!$request->image_preview)
+            {
+              $image_name = time().rand(0,999);
+              $link = explode('embed/',$request->path);
+              if(isset($link[1]))
+              {
+                $y_id = explode('?',$link[1]);
+                file_put_contents(base_path('/uploads/content/image/'.$image_name.'.jpg') , file_get_contents('http://img.youtube.com/vi/'.$y_id[0].'/maxresdefault.jpg'));
+              }
+              else
+              {
+                $link = explode('?v=',$request->path);
+                file_put_contents(base_path('/uploads/content/image/'.$image_name.'.jpg') , file_get_contents('http://img.youtube.com/vi/'.$link[1].'/maxresdefault.jpg'));
+                $request->request->add(['path' => 'http://www.youtube.com/embed/'.$link[1].'?rel=0']);
+              }
+              $request->request->add(['image_preview' => $image_name]);
+              //delete old image_preview
+              if($content->image_preview){
+                $this->delete_image_if_exists(base_path('/uploads/content/image/'.basename($content->image_preview)));
+              }
+            }
+
+          }
       }
 
 

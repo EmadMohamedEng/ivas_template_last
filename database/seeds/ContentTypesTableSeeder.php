@@ -52,6 +52,13 @@ class ContentTypesTableSeeder extends Seeder
                 'created_at' => '2019-02-14 13:06:38',
                 'updated_at' => '2019-02-14 13:06:38',
             ),
+            5 => 
+            array (
+                'id' => 6,
+                'title' => 'external youtube link',
+                'created_at' => '2019-03-05 09:34:50',
+                'updated_at' => '2019-03-05 09:34:50',
+            ),
         ));
         
         

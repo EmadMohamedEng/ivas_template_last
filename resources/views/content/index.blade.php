@@ -62,8 +62,10 @@
                                           <img src="{{$value->path}}" alt="" style="width:250px" height="200px">
                                           @elseif($value->type->id == 4)
                                           <audio controls src="{{$value->path}}" style="width:100%"></audio>
-                                          @else
+                                          @elseif($value->type->id == 5)
                                           <video src="{{$value->path}}" style="width:250px;height:200px" height="200px" controls poster="{{$value->image_preview}}"></video>
+                                          @elseif($value->type->id == 6)
+                                          <iframe src="{{$value->path}}" width="250px" height="200px"></iframe>
                                           @endif
                                         </td>
                                         @if(!isset($category))

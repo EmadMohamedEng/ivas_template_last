@@ -120,27 +120,67 @@ class MigrationsTableSeeder extends Seeder
             20 => 
             array (
                 'migration' => '2018_01_28_075912_add_type_table_to_template',
-                'batch' => 2,
+                'batch' => 1,
             ),
             21 => 
             array (
                 'migration' => '2018_01_28_080917_rename_type_coloumn_in_settings',
-                'batch' => 2,
+                'batch' => 1,
             ),
             22 => 
             array (
                 'migration' => '2018_01_28_081429_add_foriegn_keys_to_settings_table',
-                'batch' => 3,
+                'batch' => 1,
             ),
             23 => 
             array (
                 'migration' => '2018_01_28_090855_add_order_coloumn_to_settings_table',
-                'batch' => 3,
+                'batch' => 1,
             ),
             24 => 
             array (
                 'migration' => '2018_02_04_080901_create_delete_all_table',
-                'batch' => 4,
+                'batch' => 1,
+            ),
+            25 => 
+            array (
+                'migration' => '2019_02_10_073431_create_countries_table',
+                'batch' => 1,
+            ),
+            26 => 
+            array (
+                'migration' => '2019_02_10_073454_create_operators_table',
+                'batch' => 1,
+            ),
+            27 => 
+            array (
+                'migration' => '2019_02_12_124621_create_categories_table',
+                'batch' => 1,
+            ),
+            28 => 
+            array (
+                'migration' => '2019_02_12_124712_create_content_types_table',
+                'batch' => 1,
+            ),
+            29 => 
+            array (
+                'migration' => '2019_02_12_124731_create_contents_table',
+                'batch' => 1,
+            ),
+            30 => 
+            array (
+                'migration' => '2019_02_12_130119_create_posts_table',
+                'batch' => 1,
+            ),
+            31 => 
+            array (
+                'migration' => '2019_02_20_073231_change_contnent_path_type',
+                'batch' => 1,
+            ),
+            32 => 
+            array (
+                'migration' => '2019_03_06_085632_add_parent_id_to_category',
+                'batch' => 2,
             ),
         ));
         

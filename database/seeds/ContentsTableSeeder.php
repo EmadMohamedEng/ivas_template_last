@@ -31,24 +31,57 @@ class ContentsTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 12,
-                'title' => 'dd',
-                'path' => '1550589274464.png',
-                'image_preview' => NULL,
-                'content_type_id' => 3,
+                'title' => 'new',
+                'path' => '1551190970700.mp4',
+                'image_preview' => '1551190969770.jpg',
+                'content_type_id' => 5,
                 'category_id' => 1,
                 'created_at' => '2019-02-19 09:14:38',
-                'updated_at' => '2019-02-19 15:14:34',
+                'updated_at' => '2019-02-26 14:22:50',
             ),
             2 => 
             array (
                 'id' => 13,
-                'title' => 'f',
-                'path' => '1550590462462.mp4',
-                'image_preview' => '1550589300614.png',
+                'title' => 'Content 2',
+                'path' => '1551190934599.mp4',
+                'image_preview' => '1551190934751.jpg',
                 'content_type_id' => 5,
                 'category_id' => 1,
                 'created_at' => '2019-02-19 09:15:20',
-                'updated_at' => '2019-02-19 15:34:22',
+                'updated_at' => '2019-02-26 14:22:14',
+            ),
+            3 => 
+            array (
+                'id' => 14,
+                'title' => 'title 1',
+                'path' => '1551190923518.mp4',
+                'image_preview' => '1551190923993.jpg',
+                'content_type_id' => 5,
+                'category_id' => 1,
+                'created_at' => '2019-02-24 13:56:31',
+                'updated_at' => '2019-02-26 14:22:03',
+            ),
+            4 => 
+            array (
+                'id' => 21,
+                'title' => 'new',
+                'path' => 'https://www.youtube.com/embed/csBE9bxtkec?rel=0',
+                'image_preview' => '1551863019118.jpg',
+                'content_type_id' => 6,
+                'category_id' => 3,
+                'created_at' => '2019-03-06 09:02:00',
+                'updated_at' => '2019-03-06 09:03:39',
+            ),
+            5 => 
+            array (
+                'id' => 22,
+                'title' => 'naser',
+                'path' => 'http://www.youtube.com/embed/bTOlMI5imqg?rel=0',
+                'image_preview' => '15518630980.jpg',
+                'content_type_id' => 6,
+                'category_id' => 1,
+                'created_at' => '2019-03-06 09:04:00',
+                'updated_at' => '2019-03-06 09:04:59',
             ),
         ));
         

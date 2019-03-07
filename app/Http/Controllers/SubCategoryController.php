@@ -63,7 +63,7 @@ class SubCategoryController extends Controller
       $category = Category::create($request->all());
 
       \Session::flash('success', 'Sub Category Created Successfully');
-      return redirect('/sub_category');
+      return redirect('sub_category/'.$request->parent_id);
     }
 
     /**
@@ -126,7 +126,7 @@ class SubCategoryController extends Controller
       $category->update($request->all());
 
       \Session::flash('success', 'Sub Category Updated Successfully');
-      return redirect('/sub_category');
+      return redirect('sub_category/'.$request->parent_id);
     }
 
     /**

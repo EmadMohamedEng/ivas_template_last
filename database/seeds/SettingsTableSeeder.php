@@ -37,6 +37,16 @@ class SettingsTableSeeder extends Seeder
                 'type_id' => 7,
                 'order' => 0,
             ),
+            2 => 
+            array (
+                'id' => 28,
+                'key' => 'content_type_flag',
+                'value' => '0',
+                'created_at' => '2019-03-07 10:50:04',
+                'updated_at' => '2019-03-07 10:50:29',
+                'type_id' => 7,
+                'order' => 0,
+            ),
         ));
         
         

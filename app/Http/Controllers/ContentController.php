@@ -12,7 +12,6 @@ use App\ContentType;
 use App\Category;
 use Validator;
 use FFMpeg;
-use YoutubeDl\YoutubeDl;
 class ContentController extends Controller
 {
     /**

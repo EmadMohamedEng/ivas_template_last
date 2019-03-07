@@ -36,8 +36,8 @@
 <?php $__env->startSection('script'); ?>
     <script>
 
-    $('#type').addClass('active');
-    $('#type-create').addClass('active');
+    $('#country').addClass('active');
+    $('#country_create').addClass('active');
 
     </script>
 <?php $__env->stopSection(); ?>

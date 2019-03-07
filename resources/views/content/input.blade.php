@@ -276,6 +276,74 @@
         </div>
       </div>
       @endif
+
+      @if($content->type->id == 6)
+      <div  id="external">
+        <div class="form-group">
+            <label class="col-sm-3 col-md-2 control-label">Image Preview</label>
+            <div class="col-sm-9 col-md-8 controls">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
+                        @if($content)
+                            <img src="{{$content->image_preview}}" alt="" />
+                        @else
+                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                        @endif
+                    </div>
+                    <div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                    <div>
+                        <span class="btn btn-file"><span class="fileupload-new">@lang('messages.select_image')</span>
+                            <span class="fileupload-exists">Change</span>
+                            {!! Form::file('image_preview',["accept"=>"image/*" ,"class"=>"default"]) !!}
+                        </span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                </div>
+                <span class="label label-important">NOTE!</span>
+                <span>Only extensions supported png, jpg, and jpeg</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-lg-2 control-label">Content <span class="text-danger">*</span></label>
+            <div class="col-sm-9 col-lg-10 controls">
+                {!! Form::text('path',null,['placeholder'=>'Content','class'=>'form-control' ]) !!}
+            </div>
+        </div>
+      </div>
+      @else
+      <div hidden id="external">
+        <div class="form-group">
+            <label class="col-sm-3 col-md-2 control-label">Image Preview</label>
+            <div class="col-sm-9 col-md-8 controls">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
+                        @if($content)
+                            <img src="{{$content->image_preview}}" alt="" />
+                        @else
+                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                        @endif
+                    </div>
+                    <div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                    <div>
+                        <span class="btn btn-file"><span class="fileupload-new">@lang('messages.select_image')</span>
+                            <span class="fileupload-exists">Change</span>
+                            {!! Form::file('image_preview',["accept"=>"image/*" ,"class"=>"default"]) !!}
+                        </span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                </div>
+                <span class="label label-important">NOTE!</span>
+                <span>Only extensions supported png, jpg, and jpeg</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-lg-2 control-label">Content <span class="text-danger">*</span></label>
+            <div class="col-sm-9 col-lg-10 controls">
+                {!! Form::text('path',null,['placeholder'=>'Content','class'=>'form-control','disabled' =>true ]) !!}
+            </div>
+        </div>
+      </div>
+      @endif
 @else
     <div class="form-group"   id="advanced">
         <label class="col-sm-3 col-lg-2 control-label">Content <span class="text-danger">*</span></label>
@@ -378,6 +446,39 @@
             <span class="label label-important">NOTE!</span>
             <span>Only extensions supported png, jpg, and jpeg</span>
         </div>
+    </div>
+
+    <div hidden id="external">
+      <div class="form-group">
+          <label class="col-sm-3 col-md-2 control-label">Image Preview</label>
+          <div class="col-sm-9 col-md-8 controls">
+              <div class="fileupload fileupload-new" data-provides="fileupload">
+                  <div class="fileupload-new img-thumbnail" style="width: 200px; height: 150px;">
+                      @if($content)
+                          <img src="{{$content->image_preview}}" alt="" />
+                      @else
+                          <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                      @endif
+                  </div>
+                  <div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                  <div>
+                      <span class="btn btn-file"><span class="fileupload-new">@lang('messages.select_image')</span>
+                          <span class="fileupload-exists">Change</span>
+                          {!! Form::file('image_preview',["accept"=>"image/*" ,"class"=>"default" ,'disabled' =>true]) !!}
+                      </span>
+                      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                  </div>
+              </div>
+              <span class="label label-important">NOTE!</span>
+              <span>Only extensions supported png, jpg, and jpeg</span>
+          </div>
+      </div>
+      <div class="form-group">
+          <label class="col-sm-3 col-lg-2 control-label">Content <span class="text-danger">*</span></label>
+          <div class="col-sm-9 col-lg-10 controls">
+              {!! Form::text('path',null,['placeholder'=>'Content','class'=>'form-control','disabled' =>true ]) !!}
+          </div>
+      </div>
     </div>
 @endif
 <div class="form-group">

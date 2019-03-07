@@ -18,7 +18,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">Operator<span class="text-danger">*</span></label>
     <div class="col-sm-9 col-lg-10 controls">
-      <select class="form-control chosen-rtl"  name="operator_id[]" required multiple>
+      <select class="form-control chosen-rtl"  name="operator_id[]" required @if(!$post) multiple @endif>  
         @foreach($operators as $operator)
         <option value="{{$operator->id}}" @if($post) @if($post->operator_id == $operator->id) selected @endif @endif>{{$operator->name}}-{{$operator->country->title}}</option>
         @endforeach

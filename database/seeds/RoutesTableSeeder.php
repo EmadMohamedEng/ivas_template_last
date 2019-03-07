@@ -1007,6 +1007,76 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2019-02-14 13:04:09',
                 'function_name' => 'destroy',
             ),
+            99 => 
+            array (
+                'id' => 148,
+                'method' => 'get',
+                'route' => 'sub_category',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'index',
+            ),
+            100 => 
+            array (
+                'id' => 149,
+                'method' => 'get',
+                'route' => 'sub_category/create',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'create',
+            ),
+            101 => 
+            array (
+                'id' => 150,
+                'method' => 'post',
+                'route' => 'sub_category',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'store',
+            ),
+            102 => 
+            array (
+                'id' => 151,
+                'method' => 'get',
+                'route' => 'sub_category/{id}',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'show',
+            ),
+            103 => 
+            array (
+                'id' => 152,
+                'method' => 'get',
+                'route' => 'sub_category/{id}/edit',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'edit',
+            ),
+            104 => 
+            array (
+                'id' => 153,
+                'method' => 'patch',
+                'route' => 'sub_category/{id}',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'update',
+            ),
+            105 => 
+            array (
+                'id' => 154,
+                'method' => 'get',
+                'route' => 'sub_category/{id}/delete',
+                'controller_name' => 'SubCategoryController',
+                'created_at' => '2019-03-06 09:00:28',
+                'updated_at' => '2019-03-06 09:00:28',
+                'function_name' => 'destroy',
+            ),
         ));
         
         

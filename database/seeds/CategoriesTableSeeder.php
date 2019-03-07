@@ -38,11 +38,20 @@ class CategoriesTableSeeder extends Seeder
             2 => 
             array (
                 'id' => 3,
-                'title' => 'sub_Category 2',
+                'title' => 'aflam sub1',
                 'image' => '1551862904307.png',
                 'created_at' => '2019-03-06 09:01:44',
-                'updated_at' => '2019-03-06 09:01:44',
+                'updated_at' => '2019-03-07 10:51:04',
                 'parent_id' => 1,
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'title' => 'aflam sub1 sub 1',
+                'image' => '155195590821.jpg',
+                'created_at' => '2019-03-07 10:51:48',
+                'updated_at' => '2019-03-07 10:51:48',
+                'parent_id' => 3,
             ),
         ));
         

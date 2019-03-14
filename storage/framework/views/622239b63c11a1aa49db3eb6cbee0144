@@ -39,7 +39,6 @@
                                         <th>Post title</th>
                                         <th>published date</th>
                                         <th>Status</th>
-                                        <th>patch number</th>
                                         <th>url</th>
                                         <th>user</th>
                                         <th >Action</th>
@@ -55,7 +54,6 @@
                                         </td>
                                         <td><?php echo e($value->pivot->published_date); ?></td>
                                         <td><?php if($value->pivot->active): ?> active <?php else: ?> not active <?php endif; ?></td>
-                                        <td><?php echo e($value->pivot->patch_number); ?></td>
                                         <td>
                                           <input type="text"  id="url_h<?php echo e($value->id); ?><?php echo e($content->id); ?><?php echo e($value->pivot->id); ?>" value="<?php echo e($value->pivot->url); ?>">
                                           <span class="btn"><?php echo e($value->name); ?></span>
@@ -89,8 +87,8 @@
 <script>
 
 
-$('#content').addClass('active');
-$('#content_index').addClass('active');
+$('#post').addClass('active');
+$('#post_index').addClass('active');
 
 </script>
 <?php $__env->stopSection(); ?>

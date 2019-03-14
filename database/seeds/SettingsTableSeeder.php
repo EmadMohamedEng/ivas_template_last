@@ -43,7 +43,7 @@ class SettingsTableSeeder extends Seeder
                 'key' => 'content_type_flag',
                 'value' => '0',
                 'created_at' => '2019-03-07 10:50:04',
-                'updated_at' => '2019-03-07 10:50:29',
+                'updated_at' => '2019-03-14 08:54:06',
                 'type_id' => 7,
                 'order' => 0,
             ),

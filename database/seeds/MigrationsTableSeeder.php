@@ -180,7 +180,22 @@ class MigrationsTableSeeder extends Seeder
             32 => 
             array (
                 'migration' => '2019_03_06_085632_add_parent_id_to_category',
-                'batch' => 2,
+                'batch' => 1,
+            ),
+            33 => 
+            array (
+                'migration' => '2019_03_14_080226_create_rbt_codes_table',
+                'batch' => 1,
+            ),
+            34 => 
+            array (
+                'migration' => '2019_03_14_080700_drop_patch_number_posts',
+                'batch' => 1,
+            ),
+            35 => 
+            array (
+                'migration' => '2019_03_14_080827_add_patch_number_contents',
+                'batch' => 1,
             ),
         ));
         

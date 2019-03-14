@@ -19,7 +19,7 @@
                     <div class="box-content">
                         <div class="btn-toolbar pull-right">
                             <div class="btn-group">
-                                <a class="btn btn-circle show-tooltip" title="" href="{{url('content/create')}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
+                                <a class="btn btn-circle show-tooltip" title="" href="{{url('sub_category/create/?category_id='.$sub_categorys[0]->cat->id.'&title='.$sub_categorys[0]->cat->title)}}" data-original-title="Add new record"><i class="fa fa-plus"></i></a>
                                 <?php
                                 $table_name = "contents";
                                 // pass table name to delete all function
@@ -84,9 +84,8 @@
 @section('script')
 <script>
 
-
-    $('#sub_categories').addClass('active');
-    $('#sub_categories_index').addClass('active');
+$('#category').addClass('active');
+$('#category_index').addClass('active');
 
 </script>
 @stop

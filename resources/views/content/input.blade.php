@@ -30,6 +30,13 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label class="col-sm-3 col-lg-2 control-label">Patch Number <span class="text-danger">*</span></label>
+    <div class="col-sm-9 col-lg-10 controls">
+        {!! Form::number('patch_number',null,['placeholder'=>'Patch Number','class'=>'form-control','min'=>0,'required']) !!}
+    </div>
+</div>
+
 @if($content)
 
       @if($content->type->id == 1)

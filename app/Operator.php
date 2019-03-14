@@ -38,7 +38,7 @@ class Operator extends Model
   public function contents()
   {
     return $this->belongsToMany('App\Content','posts','operator_id','content_id')
-    ->withPivot('id','published_date','active','patch_number','url','user_id')->withTimestamps();
+    ->withPivot('id','published_date','active','url','user_id')->withTimestamps();
   }
 
 }

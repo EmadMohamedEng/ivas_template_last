@@ -35,8 +35,8 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
     <script>
-        $('#categories').addClass('active');
-        $('#categories_create').addClass('active');
+        $('#operator').addClass('active');
+        $('#operator_create').addClass('active');
 
     </script>
 <?php $__env->stopSection(); ?>

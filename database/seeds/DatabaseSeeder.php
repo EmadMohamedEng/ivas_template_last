@@ -43,5 +43,6 @@ class DatabaseSeeder extends Seeder
         $this->call('ContentTypesTableSeeder');
         $this->call('ContentsTableSeeder');
         $this->call('PostsTableSeeder');
+        $this->call('RbtCodesTableSeeder');
     }
 }

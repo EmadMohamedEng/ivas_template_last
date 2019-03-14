@@ -50,6 +50,7 @@ class ContentController extends Controller
                   'title' => 'required|string',
                   'content_type_id' => 'required',
                   'category_id' => 'required',
+                  'patch_number' => 'required',
                   'path' => 'required',
                   'image_preview' => ''
           ]);
@@ -129,7 +130,7 @@ class ContentController extends Controller
       $content = Content::create($request->all());
 
       \Session::flash('success', 'Content Created Successfully');
-      return redirect('/content');
+      return redirect('category/'.$request->category_id);
     }
 
     /**
@@ -170,6 +171,7 @@ class ContentController extends Controller
       $validator = Validator::make($request->all(), [
                   'title' => 'required|string',
                   'content_type_id' => 'required',
+                  'patch_number' => 'required',
                   'category_id' => 'required',
                   'path' => '',
                   'image_preview' => ''
@@ -270,7 +272,7 @@ class ContentController extends Controller
       $content->update($request->all());
 
       \Session::flash('success', 'Content Updated Successfully');
-      return redirect('/content');
+      return redirect('category/'.$request->category_id);
     }
 
     /**

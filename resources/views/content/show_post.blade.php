@@ -39,7 +39,6 @@
                                         <th>Post title</th>
                                         <th>published date</th>
                                         <th>Status</th>
-                                        <th>patch number</th>
                                         <th>url</th>
                                         <th>user</th>
                                         <th >Action</th>
@@ -54,7 +53,6 @@
                                         </td>
                                         <td>{{$value->pivot->published_date}}</td>
                                         <td>@if($value->pivot->active) active @else not active @endif</td>
-                                        <td>{{$value->pivot->patch_number}}</td>
                                         <td>
                                           <input type="text"  id="url_h{{$value->id}}{{$content->id}}{{$value->pivot->id}}" value="{{$value->pivot->url}}">
                                           <span class="btn">{{$value->name}}</span>
@@ -88,8 +86,8 @@
 <script>
 
 
-$('#content').addClass('active');
-$('#content_index').addClass('active');
+$('#post').addClass('active');
+$('#post_index').addClass('active');
 
 </script>
 @stop

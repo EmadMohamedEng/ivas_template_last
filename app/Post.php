@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-  protected $fillable = ['published_date','active','patch_number','url','content_id','operator_id','user_id'];
+  protected $fillable = ['published_date','active','url','content_id','operator_id','user_id'];
 
 
   public function operator()

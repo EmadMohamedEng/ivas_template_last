@@ -23,32 +23,32 @@ class OperatorsTableSeeder extends Seeder
                 'name' => 'etisalat',
                 'rbt_sms_code' => '123',
                 'rbt_ussd_code' => '1234',
-                'image' => '1549890755615.png',
+                'image' => '1552552540477.png',
                 'country_id' => 1,
                 'created_at' => '2019-02-11 13:12:35',
-                'updated_at' => '2019-02-11 13:12:35',
+                'updated_at' => '2019-03-14 08:35:40',
             ),
             1 => 
-            array (
-                'id' => 2,
-                'name' => 'Zain',
-                'rbt_sms_code' => '1234',
-                'rbt_ussd_code' => '12345',
-                'image' => '1549890778951.png',
-                'country_id' => 2,
-                'created_at' => '2019-02-11 13:12:58',
-                'updated_at' => '2019-02-11 13:12:58',
-            ),
-            2 => 
             array (
                 'id' => 4,
                 'name' => 'Vodafone',
                 'rbt_sms_code' => '123',
                 'rbt_ussd_code' => '',
-                'image' => '1549898629360.png',
+                'image' => '1552552433218.png',
                 'country_id' => 1,
                 'created_at' => '2019-02-11 15:23:49',
-                'updated_at' => '2019-02-11 15:23:49',
+                'updated_at' => '2019-03-14 08:33:53',
+            ),
+            2 => 
+            array (
+                'id' => 5,
+                'name' => 'Orange',
+                'rbt_sms_code' => '123456789',
+                'rbt_ussd_code' => '123',
+                'image' => '1552552570122.png',
+                'country_id' => 1,
+                'created_at' => '2019-03-14 08:36:10',
+                'updated_at' => '2019-03-14 08:36:10',
             ),
         ));
         

@@ -50,7 +50,6 @@ class PostController extends Controller
     {
       $validator = Validator::make($request->all(), [
                   'published_date' => 'required|date',
-                  'patch_number' => 'required',
                   'content_id' => 'required',
                   'active' => 'required',
                   'operator_id'=> 'required'
@@ -65,7 +64,7 @@ class PostController extends Controller
 
       foreach ($request->operator_id as  $operator_id) {
         $operator = $content->operators()->attach([$operator_id => ['url' => url('user/content/'.$request->content_id.'?op_id='.$operator_id) ,
-        'published_date' => $request->published_date,'active' => $request->active,'patch_number' => $request->patch_number , 'user_id' => Auth::user()->id]]);
+        'active' => $request->active ,'published_date' => $request->published_date, 'user_id' => Auth::user()->id]]);
       }
 
       $posts = Post::where('content_id',$request->content_id)->whereIn('operator_id',$request->operator_id)->get();
@@ -77,7 +76,7 @@ class PostController extends Controller
       }
 
       \Session::flash('success', 'post created Successfully');
-      return redirect('/post');
+      return redirect('content/'.$request->content_id);
     }
 
     /**
@@ -122,7 +121,6 @@ class PostController extends Controller
     {
       $validator = Validator::make($request->all(), [
               'published_date' => 'required|date',
-              'patch_number' => 'required',
               'content_id' => 'required',
               'active' => 'required',
               'operator_id'=> 'required'
@@ -131,13 +129,13 @@ class PostController extends Controller
       if ($validator->fails()) {
           return back()->withErrors($validator)->withInput();
       }
-      $input =$request->only('published_date','active','patch_number','content_id');
+      $input =$request->only('published_date','active','content_id');
       $post = Post::findOrFail($id);
       $content = Content::findOrFail($request->content_id);
       $post->update($input+['operator_id' => $request->operator_id[0] , 'url' => url('user/content/'.$request->content_id.'?op_id='.$request->operator_id[0].'&post_id='.$post->id) , 'user_id' => Auth::id()]);
 
       \Session::flash('success', 'Post Update Successfully');
-      return redirect('/post');
+      return redirect('content/'.$request->content_id);
     }
 
     /**

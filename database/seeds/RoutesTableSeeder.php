@@ -1077,6 +1077,76 @@ class RoutesTableSeeder extends Seeder
                 'updated_at' => '2019-03-06 09:00:28',
                 'function_name' => 'destroy',
             ),
+            106 => 
+            array (
+                'id' => 155,
+                'method' => 'get',
+                'route' => 'rbt',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:14',
+                'updated_at' => '2019-03-14 08:51:14',
+                'function_name' => 'index',
+            ),
+            107 => 
+            array (
+                'id' => 156,
+                'method' => 'get',
+                'route' => 'rbt/create',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:14',
+                'updated_at' => '2019-03-14 08:51:14',
+                'function_name' => 'create',
+            ),
+            108 => 
+            array (
+                'id' => 157,
+                'method' => 'post',
+                'route' => 'rbt',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:15',
+                'updated_at' => '2019-03-14 08:51:15',
+                'function_name' => 'store',
+            ),
+            109 => 
+            array (
+                'id' => 158,
+                'method' => 'get',
+                'route' => 'rbt/{id}',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:15',
+                'updated_at' => '2019-03-14 08:51:15',
+                'function_name' => 'show',
+            ),
+            110 => 
+            array (
+                'id' => 159,
+                'method' => 'get',
+                'route' => 'rbt/{id}/edit',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:15',
+                'updated_at' => '2019-03-14 08:51:15',
+                'function_name' => 'edit',
+            ),
+            111 => 
+            array (
+                'id' => 160,
+                'method' => 'patch',
+                'route' => 'rbt/{id}',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:15',
+                'updated_at' => '2019-03-14 08:51:15',
+                'function_name' => 'update',
+            ),
+            112 => 
+            array (
+                'id' => 161,
+                'method' => 'get',
+                'route' => 'rbt/{id}/delete',
+                'controller_name' => 'RbtController',
+                'created_at' => '2019-03-14 08:51:15',
+                'updated_at' => '2019-03-14 08:51:15',
+                'function_name' => 'destroy',
+            ),
         ));
         
         

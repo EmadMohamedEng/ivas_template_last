@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
-  protected $fillable = ['title','path','image_preview','content_type_id','category_id'];
+  protected $fillable = ['title','path','image_preview','content_type_id','category_id','patch_number'];
 
   ///////////////////set image///////////////////////////////
   public function setImagePreviewAttribute($value){
@@ -65,10 +65,17 @@ class Content extends Model
     return $this->belongsTo('App\ContentType','content_type_id','id');
   }
 
+  // rbt sms code realtion
+  public function rbt_operators()
+  {
+    return $this->belongsToMany('App\Operator','rbt_codes','content_id','operator_id')
+    ->withPivot('id','rbt_code')->withTimestamps();
+  }
+
   public function operators()
   {
     return $this->belongsToMany('App\Operator','posts','content_id','operator_id')
-    ->withPivot('id','published_date','active','patch_number','url','user_id')->withTimestamps();
+    ->withPivot('id','published_date','active','url','user_id')->withTimestamps();
   }
 
   public function posts()

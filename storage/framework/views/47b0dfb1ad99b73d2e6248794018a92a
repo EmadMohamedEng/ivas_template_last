@@ -247,6 +247,7 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             <li id="setting-import-DB"><a href="<?php echo e(url('database_backups')); ?>">Database Backups</a></li>
                             <li id="setting-index"><a href="<?php echo e(url('clear-cache')); ?>">Clear Cashe</a></li>
                             <li id="setting-seed"><a href="<?php echo e(url('admin/seed_manager')); ?>">Create Seed Files</a></li>
+                            <li id="setting-migrate"><a href="<?php echo e(url('admin/migrate_manager')); ?>">Create Migrate Files</a></li>
                         </ul>
                         <!-- END Submenu -->
                     </li>

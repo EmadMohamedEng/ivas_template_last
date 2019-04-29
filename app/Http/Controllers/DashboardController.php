@@ -366,6 +366,13 @@ class DashboardController extends Controller
         $tables = $request->tables;
         if($tables)
         {
+         $dir = new DirectoryIterator(base_path('database/migrations/'));
+         foreach ($dir as $fileinfo) {
+          if (!$fileinfo->isDot() && strpos($fileinfo->getFilename(),'create_permission_tables') == false) {
+              unlink(base_path('database/migrations/'.$fileinfo->getFilename()));
+          }
+         }
+  
           $table_migrate=implode(',',$tables);
           //return $table_migrate;
           $command = "php artisan migrate:generate $table_migrate -n";
